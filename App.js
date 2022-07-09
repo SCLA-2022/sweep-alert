@@ -35,7 +35,13 @@ export default function App() {
   const openDrawer = () => {
     console.log('open drawer')
   }
-
+  renderContent = () => {
+    return (
+        <View>
+            <Text>Get directions to your location</Text>
+        </View>
+    )
+}
   return (
     <View style={styles.container}>
       {location === null ? null : <MapView
@@ -46,8 +52,9 @@ export default function App() {
           longitudeDelta: 0.0421,
         }}
         style={styles.map}
-
+        
       >
+        
         
           <Marker 
           onPress={openDrawer}
@@ -57,9 +64,18 @@ export default function App() {
           }} />
        
       </MapView>}
+      
+      <BottomDrawer
+                containerHeight={100}
+                offset={TAB_BAR_HEIGHT}
+            >
+                {this.renderContent()}
+            </BottomDrawer>
+          
       {/* <Text style={styles.paragraph}>{text}</Text> */}
     </View>
   );
+  
 }
 
 const styles = StyleSheet.create({
