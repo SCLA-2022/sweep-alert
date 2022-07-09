@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions, Pressable } from 'react-native';
 import * as Location from 'expo-location';
+import BottomDrawer from 'react-native-bottom-drawer-view';
+
+const TAB_BAR_HEIGHT = 49;
 
 export default function App() {
   const [location, setLocation] = useState(null);
@@ -45,13 +48,14 @@ export default function App() {
         style={styles.map}
 
       >
-        <Pressable onPress={openDrawer}>
-          <Marker coordinate={{
+        
+          <Marker 
+          onPress={openDrawer}
+          coordinate={{
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
           }} />
-        </Pressable>
-
+       
       </MapView>}
       {/* <Text style={styles.paragraph}>{text}</Text> */}
     </View>
