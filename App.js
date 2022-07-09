@@ -5,12 +5,14 @@ import { StyleSheet, Text, View, Dimensions, Pressable, Button } from 'react-nat
 import * as Location from 'expo-location';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { NativeBaseProvider, Actionsheet, Box } from 'native-base';
+import { SearchBar } from 'react-native-elements';
 
 const TAB_BAR_HEIGHT = 49;
 
 export default function App() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [search, setsearch] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const sheetRef = React.useRef(null);
 
@@ -40,11 +42,19 @@ export default function App() {
   const openDrawer = () => {
     setIsOpen(true);
   }
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
 
   function AddaCar() {
+    const { search } = this.state;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+       <SearchBar
+        placeholder="Type Here..."
+        onChangeText={this.updateSearch}
+        value={search}
+      />
       </View>
     );
   }
@@ -52,7 +62,7 @@ export default function App() {
   const onClose = () => {
     setIsOpen(false);
   }
-  
+
   const renderContent = () => {
     return (
       <View>
