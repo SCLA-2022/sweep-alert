@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Pressable, Button } from 'react-native';
 import * as Location from 'expo-location';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { NativeBaseProvider, Actionsheet, Box } from 'native-base';
@@ -70,14 +70,18 @@ export default function App() {
 
 
           <Marker
-            onPress={openDrawer}
             coordinate={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
             }} />
 
-        </MapView>}
 
+        </MapView>}
+        <Button
+          onPress={openDrawer}
+          title="Drawer"
+          color="#841584"
+        />
         <Actionsheet isOpen={isOpen} onClose={onClose}>
           <Actionsheet.Content>
             <Box w="100%" h={60} px={4} justifyContent="center">
@@ -87,11 +91,7 @@ export default function App() {
                 Albums
               </Text>
             </Box>
-            <Actionsheet.Item>Delete</Actionsheet.Item>
-            <Actionsheet.Item>Share</Actionsheet.Item>
-            <Actionsheet.Item>Play</Actionsheet.Item>
-            <Actionsheet.Item>Favourite</Actionsheet.Item>
-            <Actionsheet.Item>Cancel</Actionsheet.Item>
+            <Actionsheet.Item>Add Car</Actionsheet.Item>
           </Actionsheet.Content>
         </Actionsheet>
       </View >
