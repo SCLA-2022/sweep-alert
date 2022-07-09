@@ -41,10 +41,18 @@ export default function App() {
     setIsOpen(true);
   }
 
+  function AddaCar() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+      </View>
+    );
+  }
+
   const onClose = () => {
     setIsOpen(false);
   }
-
+  
   const renderContent = () => {
     return (
       <View>
