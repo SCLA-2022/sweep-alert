@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Dimensions, Pressable, Button } from 'react-nat
 import * as Location from 'expo-location';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { NativeBaseProvider, Actionsheet, Box } from 'native-base';
-import AddCarPage from './components/AddCarPage'
+import AddCarPage from './AddCarPage'
 
 
 const TAB_BAR_HEIGHT = 49;
