@@ -9,7 +9,7 @@ import AddCarPage from './AddCarPage'
 
 const TAB_BAR_HEIGHT = 49;
 
-export default function App() {
+export default function App({navigation}) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
