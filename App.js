@@ -2,8 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import MapPage from './Components/MapPage'
-import AddCarPage from './Components/AddCarPage'
+import MapPage from './components/MapPage'
+import AddCarPage from './components/AddCarPage'
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
