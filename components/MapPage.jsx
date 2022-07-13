@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { NativeBaseProvider, Actionsheet, Box } from 'native-base';
 import AddCarPage from './AddCarPage'
-
+import AllCarsPage from './AllCarsPage'
 
 const TAB_BAR_HEIGHT = 49;
 
@@ -92,6 +92,9 @@ export default function App({navigation}) {
             <Actionsheet.Item onPress={() =>
         navigation.navigate('AddCarPage')
       }>Add Car</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('AllCarsPage')
+      }>View All Cars</Actionsheet.Item>
           </Actionsheet.Content>
         </Actionsheet>
       </View >
@@ -112,17 +115,3 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 });
-<View style={{ flex: 1 }}>
-    <MapView
-      style={{ flex: 1 }}
-    />
-    <View
-        style={{
-            position: 'absolute',//use absolute position to show button on top of the map
-            top: '50%', //for center align
-            alignSelf: 'flex-end' //for align to right
-        }}
-    >
-        <Button />
-    </View>
-</View>
