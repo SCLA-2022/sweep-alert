@@ -67,11 +67,19 @@ export default function App({navigation}) {
 
 
         </MapView>}
+        <View
+        style={{
+            position: 'absolute',//use absolute position to show button on top of the map
+            top: '90%', //for center align
+            alignSelf: 'center' //for align to right
+        }}
+    >
         <Button
           onPress={openDrawer}
-          title="Drawer"
+          title="Dashboard"
           color="#841584"
         />
+    </View>
         <Actionsheet isOpen={isOpen} onClose={onClose}>
           <Actionsheet.Content>
             <Box w="100%" h={60} px={4} justifyContent="center">
@@ -104,3 +112,17 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 });
+<View style={{ flex: 1 }}>
+    <MapView
+      style={{ flex: 1 }}
+    />
+    <View
+        style={{
+            position: 'absolute',//use absolute position to show button on top of the map
+            top: '50%', //for center align
+            alignSelf: 'flex-end' //for align to right
+        }}
+    >
+        <Button />
+    </View>
+</View>

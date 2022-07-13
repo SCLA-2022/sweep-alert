@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Constants from 'expo-constants';
 
-const GOOGLE_PLACES_API_KEY = 'AIzaSyD0l466H_FRw4SUyvZVgPtv-Cd-NhPiRnQ';
+const GOOGLE_PLACES_API_KEY = 'AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU';
 
 const App = () => {
   return (
