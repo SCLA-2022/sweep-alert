@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import MapPage from './components/MapPage'
 import AddCarPage from './components/AddCarPage'
+import AllCarsPage from './components/AllCarsPage'
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -15,6 +16,7 @@ const MyStack = () => {
           component={MapPage}
         />
         <Stack.Screen name="AddCarPage" component={AddCarPage} />
+        <Stack.Screen name="AllCarsPage" component={AllCarsPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
