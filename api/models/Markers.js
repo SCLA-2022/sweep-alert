@@ -8,6 +8,14 @@ const MarkerSchema = new mongoose.Schema({
     address:{
         type:String,
         required: true
+    },
+    lat:{
+        type: Number,
+        required: true
+    },
+    long: {
+        type: Number,
+        required: true
     }
 },{timestamps: true});
 
