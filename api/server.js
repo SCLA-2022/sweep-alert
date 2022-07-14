@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
-//const markersRoute = require("./routes/marker");
+const markersRoute = require("./routes/marker");
 
 dotenv.config();
 app.use(express.json());
@@ -14,7 +14,7 @@ mongoose.connect(process.env.mongo_url).then(console.log("connected to mongo")).
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-//app.use("/api/marker", markersRoute);
+app.use("/api/marker", markersRoute);
 
 // app.use(express.static(path.join(__dirname, "/client/build")));
 
