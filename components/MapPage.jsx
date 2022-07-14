@@ -95,6 +95,9 @@ export default function App({navigation}) {
        <Actionsheet.Item onPress={() =>
         navigation.navigate('AllCarsPage')
       }>View All Cars</Actionsheet.Item>
+       {/* <Actionsheet.Item onPress={() =>
+        navigation.navigate('here the login page will be here')
+      }>View All Cars</Actionsheet.Item> */}
           </Actionsheet.Content>
         </Actionsheet>
       </View >
