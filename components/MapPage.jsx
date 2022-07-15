@@ -6,6 +6,7 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import { NativeBaseProvider, Actionsheet, Box } from 'native-base';
 import AddCarPage from './AddCarPage'
 import AllCarsPage from './AllCarsPage'
+import Timer1 from './Timer1'
 
 const TAB_BAR_HEIGHT = 49;
 
@@ -107,6 +108,15 @@ export default function App({navigation}) {
        <Actionsheet.Item onPress={() =>
         navigation.navigate('LoginPage')
       }>Login/Make account</Actionsheet.Item>
+      {/* <Actionsheet.Item onPress={() =>
+        navigation.navigate('Timer1')
+      }>Timer1</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('Timer1')
+      }>Timer2</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('Timer1')
+      }>Timer3</Actionsheet.Item> */}
           </Actionsheet.Content>
         </Actionsheet>
       </View >

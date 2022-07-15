@@ -6,6 +6,7 @@ import MapPage from './components/MapPage'
 import AddCarPage from './components/AddCarPage'
 import AllCarsPage from './components/AllCarsPage'
 import LoginPage from './components/LoginPage'
+import Timer1 from './components/Timer1'
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -19,6 +20,7 @@ const MyStack = () => {
         <Stack.Screen name="AddCarPage" component={AddCarPage} />
         <Stack.Screen name="AllCarsPage" component={AllCarsPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
+        <Stack.Screen name="Timer1" component={Timer1} />
       </Stack.Navigator>
     </NavigationContainer>
   );
