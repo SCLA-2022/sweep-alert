@@ -14,6 +14,7 @@ import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
 import Timer1 from "./Timer1";
+import RoutesPage from "./RoutesPage"
 import BottomSheet from '@gorhom/bottom-sheet';
 const TAB_BAR_HEIGHT = 49;
 
@@ -122,7 +123,7 @@ export default function App({ navigation }) {
             alignSelf: "center", //for align to right
           }}
         >
-          <Button onPress={openDrawer} title="Dashboard" color="#841584" />
+          <Button onPress={openDrawer} title="Dashboard" color="black" />
         </View>
       </BottomSheet>
         <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -132,6 +133,21 @@ export default function App({ navigation }) {
               onChangeText={onChangeSearch}
               value={searchQuery}
             />
+            <Actionsheet.Item onPress={() =>
+        navigation.navigate('AddCarPage')
+      }>Add Car</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('AllCarsPage')
+      }>View All Cars</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('LoginPage')
+      }>Login/Make account</Actionsheet.Item>
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('Timer1')
+      }>Timer1</Actionsheet.Item> 
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('RoutesPage')
+      }>RoutesPage</Actionsheet.Item> 
           </Actionsheet.Content>
         </Actionsheet>
       </View>
@@ -165,15 +181,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#902E2E',
   },
 });
-/* <Actionsheet.Item onPress={() =>
-        navigation.navigate('AddCarPage')
-      }>Add Car</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('AllCarsPage')
-      }>View All Cars</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('LoginPage')
-      }>Login/Make account</Actionsheet.Item>
-      <Actionsheet.Item onPress={() =>
-        navigation.navigate('Timer1')
-      }>Timer1</Actionsheet.Item> */
