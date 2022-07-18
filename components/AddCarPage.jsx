@@ -9,7 +9,6 @@ const GOOGLE_PLACES_API_KEY = 'AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU';
 const App = () => {
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
-  const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
   return (
     <View style={styles.container}>
       <GooglePlacesAutocomplete
@@ -26,20 +25,6 @@ const App = () => {
           useOnPlatform: 'web',
         }} // this in only required for use on the web. See https://git.io/JflFv more for details.
       />
-      <SafeAreaView>
-     <TextInput
-       style={styles.input}
-       onChangeText={onChangeText}
-       value={text}
-     />
-    <Text style={styles.titleText}>
-        Your Current Location
-    </Text>
-    <Text style={styles.baseText}>
-        {"\n"}
-      <Text numberOfLines={5}>{bodyText}</Text>
-    </Text>
-   </SafeAreaView>
     </View>
   );
 };
