@@ -121,7 +121,6 @@ export default function App({ navigation }) {
                 {"\n"}
                 <Text numberOfLines={5}>{bodyText}</Text>
               </Text>
-              
             </Box>
         </View>
         <View
