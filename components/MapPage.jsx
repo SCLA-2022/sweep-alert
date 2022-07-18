@@ -13,6 +13,7 @@ import * as Location from "expo-location";
 import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
+import DetailedRoutes from "./DetailedRoutes"
 import Timer1 from "./Timer1";
 import RoutesPage from "./RoutesPage"
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -148,6 +149,9 @@ export default function App({ navigation }) {
       <Actionsheet.Item onPress={() =>
         navigation.navigate('RoutesPage')
       }>RoutesPage</Actionsheet.Item> 
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('DetailedRoutes')
+      }>DetailedRoutesExample</Actionsheet.Item> 
           </Actionsheet.Content>
         </Actionsheet>
       </View>
