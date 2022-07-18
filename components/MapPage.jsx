@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import MapView, { Marker } from "react-native-maps";
 import {
   StyleSheet,
@@ -14,13 +20,16 @@ import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
 import Timer1 from "./Timer1";
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet from "@gorhom/bottom-sheet";
+import BottomDrawer from 'react-native-bottom-drawer-view';
+
 const TAB_BAR_HEIGHT = 49;
 
 export default function App({ navigation }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const [homeIsOpen, setHomeIsOpen] = useState(true);
+  const [dashboardIsOpen, setDashboardIsOpen] = useState(true);
   const [searchQuery, setSearchQuery] = React.useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
 
@@ -40,11 +49,11 @@ export default function App({ navigation }) {
   const bottomSheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['15%', '30%' ], []);
+  const snapPoints = useMemo(() => ["15%", "30%"], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+    console.log("handleSheetChanges", index);
   }, []);
 
   let text = "Waiting..";
@@ -56,11 +65,11 @@ export default function App({ navigation }) {
   }
 
   const openDrawer = () => {
-    setIsOpen(true);
-  };
+    setDashboardIsOpen(true);
+  }
 
-  const onClose = () => {
-    setIsOpen(false);
+  const dashboardOnClose = () => {
+    setDashboardIsOpen(false);
   };
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
 
@@ -97,8 +106,7 @@ export default function App({ navigation }) {
             />
           </MapView>
         )}
-        
-       
+
         <BottomSheet
         ref={bottomSheetRef}
         index={1}
@@ -113,6 +121,7 @@ export default function App({ navigation }) {
                 {"\n"}
                 <Text numberOfLines={5}>{bodyText}</Text>
               </Text>
+              
             </Box>
         </View>
         <View
@@ -122,16 +131,27 @@ export default function App({ navigation }) {
             alignSelf: "center", //for align to right
           }}
         >
-          <Button onPress={openDrawer} title="Dashboard" color="#841584" />
+          <Button onPress={openDrawer} title="Dashboard" color="white" />
         </View>
       </BottomSheet>
-        <Actionsheet isOpen={isOpen} onClose={onClose}>
+         
+      <Actionsheet isOpen={dashboardIsOpen} onClose={dashboardOnClose}>
+        <Text style={styles.titleText}>Dashboard</Text>
           <Actionsheet.Content>
-            <Searchbar
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            />
+            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
+              Add Car
+            </Actionsheet.Item>
+            <Actionsheet.Item
+              onPress={() => navigation.navigate("AllCarsPage")}
+            >
+              View All Cars
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
+              Login/Make account
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
+              Timer1
+            </Actionsheet.Item>
           </Actionsheet.Content>
         </Actionsheet>
       </View>
@@ -153,27 +173,21 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 18,
     // fontWeight: "bold",
-    color: 'white',
+    color: "white",
   },
   baseText: {
     fontSize: 27,
-    color: 'white',
+    color: "white",
   },
   contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#902E2E',
+    alignItems: "center",
+    backgroundColor: "#902E2E",
   },
+  searchBar: {
+    // width: 100,
+    // height: 50
+  },
+  BottomSheet: {
+  }
+
 });
-/* <Actionsheet.Item onPress={() =>
-        navigation.navigate('AddCarPage')
-      }>Add Car</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('AllCarsPage')
-      }>View All Cars</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('LoginPage')
-      }>Login/Make account</Actionsheet.Item>
-      <Actionsheet.Item onPress={() =>
-        navigation.navigate('Timer1')
-      }>Timer1</Actionsheet.Item> */
