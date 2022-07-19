@@ -1,39 +1,25 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { Searchbar } from "react-native-paper";
 
-const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-  ];
-  
-  const Item = ({ title }) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-  
   const App = () => {
-    const renderItem = ({ item }) => (
-      <Item title={item.title} />
-    );
-  
+    const onChangeSearch = (query) => setSearchQuery(query);
+    const [searchQuery, setSearchQuery] = React.useState("");
+
     return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-        />
+      <SafeAreaView>
+        <Text style={styles.headerstyle}>
+          Login
+          </Text>
+          <Text style={styles.userstyle}>
+          Email
+          </Text>
+          <View style={styles.Viewstyle}>
+            {/* <Searchbar
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            /> */}
+            </View>
       </SafeAreaView>
     );
   }
@@ -49,9 +35,28 @@ const DATA = [
       marginVertical: 8,
       marginHorizontal: 16,
     },
+    headerstyle: {
+      // justifyContent: 'center',
+      alignSelf: 'center',
+      color: "#591818",
+      fontSize: 32,
+      paddingTop: 50,
+    },
     title: {
       fontSize: 32,
     },
+    userstyle: {
+      fontSize: 20,
+      flexDirection: 'row-reverse',
+      marginTop: 50,
+      marginHorizontal: 20,
+    },
+    Viewstyle: {
+      backgroundColor: '#902E2E',
+      padding: 20,
+      marginVertical: 8,
+      marginHorizontal: 16,
+    }
   });
   
   export default App;

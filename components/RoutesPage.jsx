@@ -21,15 +21,33 @@ export default function App({ navigation }) {
       <Text style={styles.Textbody}>
         3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
       </Text>
+      <Entypo
+        onPress={() => navigation.navigate("MapPage")}
+        style={styles.IconStyle}
+        style={styles.IconStyle}
+        name="chevron-left"
+        size={24}
+        color="black"
+      />
       <View style={styles.OuterView}>
         <View style={styles.Viewstyle}>
           <View>
             <Text style={styles.headerstyle}>Thursday</Text>
             <Text style={styles.headerstyle}>4am - 6:30am</Text>
-            <Text style={styles.headerstyle}>2nd & 4th friday of the month</Text>
+            <Text style={styles.headerstyle}>
+              2nd & 4th friday of the month
+            </Text>
           </View>
-          <View style={styles.IconView}>
-            <Entypo name="chevron-right" size={30} color="black" />
+        </View>
+      </View>
+      <View style={styles.OuterView}>
+        <View style={styles.Viewstyle}>
+          <View>
+            <Text style={styles.headerstyle}>Thursday</Text>
+            <Text style={styles.headerstyle}>4am - 6:30am</Text>
+            <Text style={styles.headerstyle}>
+              2nd & 4th friday of the month
+            </Text>
           </View>
         </View>
       </View>
@@ -44,11 +62,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  IconStyle: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    marginTop: -85,
+  },
   Textheading: {
     color: "#902E2E",
     textAlign: "center",
     fontSize: 24,
     fontWeight: "500",
+    marginBottom: 10,
+    marginTop: 50,
   },
   Textbody: {
     color: "black",
@@ -62,9 +87,10 @@ const styles = StyleSheet.create({
     height: 110,
     borderWidth: 2,
     borderRadius: 9,
-    marginTop: 100,
+    marginTop: 80,
     padding: 5,
     flexDirection: "row",
+    marginBottom: -55,
   },
   OuterView: {
     justifyContent: "center",
@@ -79,7 +105,7 @@ const styles = StyleSheet.create({
   },
   headerstyle: {
     fontSize: 22,
-    color: 'white',
+    color: "white",
   },
   subHeaderStyle: {
     fontSize: 15,
