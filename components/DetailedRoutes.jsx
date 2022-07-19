@@ -33,6 +33,11 @@ export default function App({ navigation }) {
           </View>
         </View>
       </View>
+      <View style={styles.OuterView} >
+      <View style={styles.TimerViewStyle}>
+        <Text style={styles.Timer}>Set Alarm</Text>
+        </View>
+        </View>
     </SafeAreaView>
   );
 }
@@ -65,6 +70,20 @@ const styles = StyleSheet.create({
     marginTop: 100,
     padding: 5,
     flexDirection: "row",
+    borderColor: "#902E2E"
+  },
+  TimerViewStyle: {
+    backgroundColor: "#902E2E",
+    width: 200,
+    height: 60,
+    borderWidth: 2,
+    borderRadius: 9,
+    marginTop: 250,
+    padding: 5,
+    flexDirection: "row",
+    borderColor: "#902E2E",
+    justifyContent: "center",
+    alignItems: "center",
   },
   OuterView: {
     justifyContent: "center",
@@ -86,6 +105,12 @@ const styles = StyleSheet.create({
   },
   content: {
     fontSize: 20,
+  },
+  Timer: {
+    letterSpacing: 5,
+    color: 'white',
+    justifyContent: "center",
+    textAlign: 'center',
   },
 });
 // onPress={popup}

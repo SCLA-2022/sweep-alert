@@ -19,6 +19,7 @@ import * as Location from "expo-location";
 import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
+import DetailedRoutes from "./DetailedRoutes"
 import Timer1 from "./Timer1";
 import BottomSheet from "@gorhom/bottom-sheet";
 import BottomDrawer from 'react-native-bottom-drawer-view';
@@ -137,23 +138,29 @@ export default function App({ navigation }) {
       <Actionsheet isOpen={dashboardIsOpen} onClose={dashboardOnClose}>
         <Text style={styles.titleText}>Dashboard</Text>
           <Actionsheet.Content>
-            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
-              Add Car
-            </Actionsheet.Item>
-            <Actionsheet.Item
-              onPress={() => navigation.navigate("AllCarsPage")}
-            >
-              View All Cars
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
-              Login/Make account
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
-              Timer1
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("RoutesPage")}>
-              RoutesPage
-            </Actionsheet.Item>
+            <Searchbar
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+            <Actionsheet.Item onPress={() =>
+        navigation.navigate('AddCarPage')
+      }>Add Car</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('AllCarsPage')
+      }>View All Cars</Actionsheet.Item>
+       <Actionsheet.Item onPress={() =>
+        navigation.navigate('LoginPage')
+      }>Login/Make account</Actionsheet.Item>
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('Timer1')
+      }>Timer1</Actionsheet.Item> 
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('RoutesPage')
+      }>RoutesPage</Actionsheet.Item> 
+      <Actionsheet.Item onPress={() =>
+        navigation.navigate('DetailedRoutes')
+      }>DetailedRoutesExample</Actionsheet.Item> 
           </Actionsheet.Content>
         </Actionsheet>
       </View>
