@@ -151,6 +151,9 @@ export default function App({ navigation }) {
             <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
               Timer1
             </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("RoutesPage")}>
+              RoutesPage
+            </Actionsheet.Item>
           </Actionsheet.Content>
         </Actionsheet>
       </View>
