@@ -1,5 +1,12 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import MapView, { Marker } from "react-native-maps";
+import { Entypo } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
@@ -13,10 +20,10 @@ import * as Location from "expo-location";
 import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
-import DetailedRoutes from "./DetailedRoutes"
+import DetailedRoutes from "./DetailedRoutes";
 import Timer1 from "./Timer1";
-import RoutesPage from "./RoutesPage"
-import BottomSheet from '@gorhom/bottom-sheet';
+import RoutesPage from "./RoutesPage";
+import BottomSheet from "@gorhom/bottom-sheet";
 const TAB_BAR_HEIGHT = 49;
 
 export default function App({ navigation }) {
@@ -42,11 +49,11 @@ export default function App({ navigation }) {
   const bottomSheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['15%', '30%' ], []);
+  const snapPoints = useMemo(() => ["15%", "30%"], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+    console.log("handleSheetChanges", index);
   }, []);
 
   let text = "Waiting..";
@@ -99,59 +106,71 @@ export default function App({ navigation }) {
             />
           </MapView>
         )}
-        
-       
+
         <BottomSheet
-        ref={bottomSheetRef}
-        index={1}
-        snapPoints={snapPoints}
-        backgroundStyle = {{backgroundColor: '#902E2E'}}
-        onChange={handleSheetChanges}
-      >
-        <View style={styles.contentContainer}>
-        <Box w="100%" h={120} px={4} justifyContent="center">
+          ref={bottomSheetRef}
+          index={1}
+          snapPoints={snapPoints}
+          backgroundStyle={{ backgroundColor: "#902E2E" }}
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.contentContainer}>
+            <View style={styles.ViewStyle}>
               <Text style={styles.titleText}>Your Current Location</Text>
               <Text style={styles.baseText}>
-                {"\n"}
-                <Text numberOfLines={5}>{bodyText}</Text>
+                3655 S Grand Ave #220,{"\n"}Los Angeles, CA 90007
               </Text>
-            </Box>
-        </View>
-        <View
-          style={{
-            position: "absolute", //use absolute position to show button on top of the map
-            top: "70%", //for center align
-            alignSelf: "center", //for align to right
-          }}
-        >
-          <Button onPress={openDrawer} title="Dashboard" color="black" />
-        </View>
-      </BottomSheet>
+            </View>
+            <View style={styles.iconContainer}>
+      
+              <Entypo
+              onPress={() => navigation.navigate("RoutesPage")}
+              name="chevron-right"
+              size={30}
+              color="black"
+            />
+            </View>
+ 
+          </View>
+          <View
+            style={{
+              position: "absolute", //use absolute position to show button on top of the map
+              top: "70%", //for center align
+              alignSelf: "center", //for align to right
+            }}
+          >
+            <Button onPress={openDrawer} title="Dashboard" color="black" />
+          </View>
+        </BottomSheet>
         <Actionsheet isOpen={isOpen} onClose={onClose}>
           <Actionsheet.Content>
-            <Searchbar
+            {/* <Searchbar
               placeholder="Search"
               onChangeText={onChangeSearch}
               value={searchQuery}
-            />
-            <Actionsheet.Item onPress={() =>
-        navigation.navigate('AddCarPage')
-      }>Add Car</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('AllCarsPage')
-      }>View All Cars</Actionsheet.Item>
-       <Actionsheet.Item onPress={() =>
-        navigation.navigate('LoginPage')
-      }>Login/Make account</Actionsheet.Item>
-      <Actionsheet.Item onPress={() =>
-        navigation.navigate('Timer1')
-      }>Timer1</Actionsheet.Item> 
-      <Actionsheet.Item onPress={() =>
-        navigation.navigate('RoutesPage')
-      }>RoutesPage</Actionsheet.Item> 
-      <Actionsheet.Item onPress={() =>
-        navigation.navigate('DetailedRoutes')
-      }>DetailedRoutesExample</Actionsheet.Item> 
+            /> */}
+            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
+              Add Car
+            </Actionsheet.Item>
+            <Actionsheet.Item
+              onPress={() => navigation.navigate("AllCarsPage")}
+            >
+              View All Cars
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
+              Login/Make account
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
+              Timer1
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("RoutesPage")}>
+              RoutesPage
+            </Actionsheet.Item>
+            <Actionsheet.Item
+              onPress={() => navigation.navigate("DetailedRoutes")}
+            >
+              DetailedRoutesExample
+            </Actionsheet.Item>
           </Actionsheet.Content>
         </Actionsheet>
       </View>
@@ -171,17 +190,37 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
   },
   titleText: {
-    fontSize: 18,
-    // fontWeight: "bold",
-    color: 'white',
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 10,
+    marginTop: -5,
+    justifyContent: "center",
+    flexDirection: "row",
   },
   baseText: {
-    fontSize: 27,
-    color: 'white',
+    fontSize: 22,
+    color: "white",
+    justifyContent: "left",
+    alignSelf: "flex-start",
+    marginTop: 5,
   },
   contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#902E2E',
+    // flex: 1,
+    alignItems: "center",
+    backgroundColor: "#902E2E",
+    flexDirection: 'row',
+    paddingHorizontal: 18,
+    marginTop: 20 
   },
+  ViewStyle: {
+    flexDirection: 'column',
+    flex: 1
+  },
+  iconContainer:{
+    flexDirection: 'row',
+    justifyContent:'flex-end',
+    marginTop: 45,
+    marginHorizontal: 15,
+  }
 });
