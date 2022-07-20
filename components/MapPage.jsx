@@ -122,7 +122,6 @@ export default function App({ navigation }) {
               </Text>
             </View>
             <View style={styles.iconContainer}>
-      
               <Entypo
               onPress={() => navigation.navigate("RoutesPage")}
               name="chevron-right"

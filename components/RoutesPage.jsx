@@ -24,7 +24,6 @@ export default function App({ navigation }) {
       <Entypo
         onPress={() => navigation.navigate("MapPage")}
         style={styles.IconStyle}
-        style={styles.IconStyle}
         name="chevron-left"
         size={24}
         color="black"
@@ -37,6 +36,15 @@ export default function App({ navigation }) {
             <Text style={styles.headerstyle}>
               2nd & 4th friday of the month
             </Text>
+            <View style = {styles.iconContainer}>
+            <Entypo
+        onPress={() => navigation.navigate("MapPage")}
+        style={styles.IconStyle}
+        name="chevron-left"
+        size={24}
+        color="black"
+      />
+      </View>
           </View>
         </View>
       </View>
@@ -48,6 +56,13 @@ export default function App({ navigation }) {
             <Text style={styles.headerstyle}>
               2nd & 4th friday of the month
             </Text>
+            <Entypo
+        onPress={() => navigation.navigate("MapPage")}
+        style={styles.IconStyle}
+        name="chevron-left"
+        size={24}
+        color="black"
+      />
           </View>
         </View>
       </View>
@@ -113,5 +128,11 @@ const styles = StyleSheet.create({
   content: {
     fontSize: 20,
   },
+  iconContainer:{
+    flexDirection: 'row',
+    justifyContent:'flex-end',
+    marginTop: 45,
+    marginHorizontal: 15,
+  }
 });
 // onPress={popup}
