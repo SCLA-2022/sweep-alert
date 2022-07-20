@@ -111,12 +111,14 @@ export default function App({ navigation }) {
                 size={24}
                 color="black"
               />
+              <View style={styles.ellipsefour}>
               <Entypo
                 style={styles.dotsstyle}
                 name="dots-three-vertical"
                 size={24}
                 color="black"
               />
+              </View>
             </View>
           </MapView>
         )}
@@ -198,8 +200,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#902E2E",
     // padding: 50,
   },
+  ellipsefour: {
+    alignItems: "flex-end",
+width: 50,
+height: 50,
+left: 372,
+top: 177,
+background: '#912E2E',
+  },
   dotsstyle: {
     backgroundColor: "#902E2E",
+    // borderRadius: 15,
+    // borderWidth: 10,
+    // borderColor: '#902E2E',
+    overflow: 'hidden',
+    top: 100,
+  //   width: 44,
+  //  height: 44,
+   borderRadius: 18,
+   padding: 6,
   },
   IconStyle: {
     alignItems: "flex-end",
