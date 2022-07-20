@@ -16,8 +16,10 @@ import {
 // function popup () {
 //     console.log(this is working)
 // },
-export default function App({ navigation }) {
+export default function App({ navigation,route }) {
   const [modalVisible, setModalVisible] = useState(false);
+  console.log(route)
+
   return (
     <View>
         {/* <Modal
@@ -36,10 +38,10 @@ export default function App({ navigation }) {
       <View style={styles.OuterView}>
         <View style={styles.Viewstyle}>
           <View>
-            <Text style={styles.headerstyle}>Thursday</Text>
-            <Text style={styles.headerstyle}>4am - 6:30am</Text>
+            <Text style={styles.headerstyle}>{route.params.day}</Text>
+            <Text style={styles.headerstyle}>{route.params.time}</Text>
             <Text style={styles.headerstyle}>
-              2nd & 4th friday of the month
+             {route.params.frequency}
             </Text>
           </View>
           {/* <View style={styles.IconView}>

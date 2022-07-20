@@ -37,7 +37,7 @@ export default function App({ navigation }) {
               2nd & 4th Thursday of the month
             </Text>
             <View style={styles.IconView, styles.IconViewone}>
-              <Entypo onPress={() => navigation.navigate("DetailedRoutes")} name="chevron-right" size={30} color="black" />
+              <Entypo onPress={() => navigation.navigate("DetailedRoutes",{day:'Thursday', time:'4am - 6:30am', frequency:'2nd & 4th Thursday of the month'})} name="chevron-right" size={30} color="black" />
             </View>
           </View>
         </View>
@@ -51,7 +51,7 @@ export default function App({ navigation }) {
               2nd & 4th friday of the month
             </Text>
             <View style={styles.IconView}>
-              <Entypo  onPress={() => navigation.navigate("DetailedRoutes")}  name="chevron-right" size={30} color="black" />
+              <Entypo  onPress={() => navigation.navigate("DetailedRoutes",{day:'Friday',time:'4am - 6:30am',frequency:'2nd & 4th Friday of the month'})}  name="chevron-right" size={30} color="black" />
             </View>
           </View>
         </View>

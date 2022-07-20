@@ -66,7 +66,7 @@ export default function App({ navigation }) {
 
   const openDrawer = () => {
     setIsOpen(true);
-  }
+  };
 
   const onClose = () => {
     setIsOpen(false);
@@ -104,6 +104,20 @@ export default function App({ navigation }) {
                 longitude: -118.30012121882638,
               }}
             />
+            <View style={styles.IconStyle}>
+              <Entypo
+                style={styles.magnifyingstyle}
+                name="magnifying-glass"
+                size={24}
+                color="black"
+              />
+              <Entypo
+                style={styles.dotsstyle}
+                name="dots-three-vertical"
+                size={24}
+                color="black"
+              />
+            </View>
           </MapView>
         )}
 
@@ -122,15 +136,13 @@ export default function App({ navigation }) {
               </Text>
             </View>
             <View style={styles.iconContainer}>
-      
               <Entypo
-              onPress={() => navigation.navigate("RoutesPage")}
-              name="chevron-right"
-              size={30}
-              color="black"
-            />
+                onPress={() => navigation.navigate("RoutesPage")}
+                name="chevron-right"
+                size={30}
+                color="black"
+              />
             </View>
- 
           </View>
           <View
             style={{
@@ -138,9 +150,7 @@ export default function App({ navigation }) {
               top: "70%", //for center align
               alignSelf: "center", //for align to right
             }}
-          >
-            <Button onPress={openDrawer} title="Dashboard" color="black" />
-          </View>
+          ></View>
         </BottomSheet>
         <Actionsheet isOpen={isOpen} onClose={onClose}>
           <Actionsheet.Content>
@@ -182,6 +192,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  magnifyingstyle: {
+    // alignSelf: 'flex-end',
+    // top: 100,
+    backgroundColor: "#902E2E",
+    // padding: 50,
+  },
+  dotsstyle: {
+    backgroundColor: "#902E2E",
+  },
+  IconStyle: {
+    alignItems: "flex-end",
+
+    // backgroundColor: '#902E2E'
+  },
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
@@ -198,7 +222,7 @@ const styles = StyleSheet.create({
   baseText: {
     fontSize: 22,
     color: "white",
-    justifyContent: "left",
+    justifyContent: "flex-start",
     alignSelf: "flex-start",
     marginTop: 5,
   },
@@ -206,18 +230,21 @@ const styles = StyleSheet.create({
     // flex: 1,
     alignItems: "center",
     backgroundColor: "#902E2E",
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 18,
-    marginTop: 20 
+    marginTop: 20,
   },
   ViewStyle: {
-    flexDirection: 'column',
-    flex: 1
+    flexDirection: "column",
+    flex: 1,
   },
-  iconContainer:{
-    flexDirection: 'row',
-    justifyContent:'flex-end',
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
     marginTop: 45,
     marginHorizontal: 15,
-  }
+  },
 });
+{
+  /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
+}
