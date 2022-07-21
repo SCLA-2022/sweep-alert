@@ -24,6 +24,7 @@ import DetailedRoutes from "./DetailedRoutes";
 import Timer1 from "./Timer1";
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
+import Dashboard from "./Dashboard"
 const TAB_BAR_HEIGHT = 49;
 
 export default function App({ navigation }) {
@@ -111,14 +112,13 @@ export default function App({ navigation }) {
                 size={24}
                 color="black"
               />
-              <View style={styles.ellipsefour}>
               <Entypo
+              onPress={() => navigation.navigate("Dashboard")}
                 style={styles.dotsstyle}
                 name="dots-three-vertical"
                 size={24}
                 color="black"
               />
-              </View>
             </View>
           </MapView>
         )}
