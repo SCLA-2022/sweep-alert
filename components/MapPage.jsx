@@ -24,7 +24,7 @@ import DetailedRoutes from "./DetailedRoutes";
 import Timer1 from "./Timer1";
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
-import Dashboard from "./Dashboard"
+import Dashboard from "./Dashboard";
 const TAB_BAR_HEIGHT = 49;
 
 export default function App({ navigation }) {
@@ -113,7 +113,7 @@ export default function App({ navigation }) {
                 color="black"
               />
               <Entypo
-              onPress={() => navigation.navigate("Dashboard")}
+                onPress={() => navigation.navigate("Dashboard")}
                 style={styles.dotsstyle}
                 name="dots-three-vertical"
                 size={24}
@@ -202,23 +202,23 @@ const styles = StyleSheet.create({
   },
   ellipsefour: {
     alignItems: "flex-end",
-width: 50,
-height: 50,
-left: 372,
-top: 177,
-background: '#912E2E',
+    width: 50,
+    height: 50,
+    left: 372,
+    top: 177,
+    background: "#912E2E",
   },
   dotsstyle: {
     backgroundColor: "#902E2E",
     // borderRadius: 15,
     // borderWidth: 10,
     // borderColor: '#902E2E',
-    overflow: 'hidden',
+    overflow: "hidden",
     top: 100,
-  //   width: 44,
-  //  height: 44,
-   borderRadius: 18,
-   padding: 6,
+    //   width: 44,
+    //  height: 44,
+    borderRadius: 18,
+    padding: 6,
   },
   IconStyle: {
     alignItems: "flex-end",
