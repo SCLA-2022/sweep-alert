@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Entypo } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -9,14 +9,28 @@ import {
   Button,
   SafeAreaView,
   TextInput,
+  Alert,
+  Modal,
 } from "react-native";
 
 // function popup () {
 //     console.log(this is working)
 // },
-export default function App({ navigation }) {
+export default function App({ navigation,route }) {
+  const [modalVisible, setModalVisible] = useState(false);
+  console.log(route)
+
   return (
-    <SafeAreaView>
+    <View>
+        {/* <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      > */}
       <Text style={styles.Textheading}>Route Schedules Near</Text>
       <Text style={styles.Textbody}>
         3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
@@ -24,21 +38,23 @@ export default function App({ navigation }) {
       <View style={styles.OuterView}>
         <View style={styles.Viewstyle}>
           <View>
-            <Text style={styles.headerstyle}>Thursday</Text>
-            <Text style={styles.headerstyle}>4am - 6:30am</Text>
-            <Text style={styles.headerstyle}>2nd & 4th friday of the month</Text>
+            <Text style={styles.headerstyle}>{route.params.day}</Text>
+            <Text style={styles.headerstyle}>{route.params.time}</Text>
+            <Text style={styles.headerstyle}>
+             {route.params.frequency}
+            </Text>
           </View>
-          <View style={styles.IconView}>
+          {/* <View style={styles.IconView}>
             <Entypo name="chevron-right" size={30} color="black" />
-          </View>
+          </View> */}
         </View>
       </View>
-      <View style={styles.OuterView} >
-      <View style={styles.TimerViewStyle}>
-        <Text style={styles.Timer}>Set Alarm</Text>
+      <View style={styles.OuterView}>
+        <View style={styles.TimerViewStyle}>
+          <Text style={styles.Timer}>Set Alarm</Text>
         </View>
-        </View>
-    </SafeAreaView>
+      </View>
+    </View>
   );
 }
 
@@ -70,7 +86,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     padding: 5,
     flexDirection: "row",
-    borderColor: "#902E2E"
+    borderColor: "#902E2E",
   },
   TimerViewStyle: {
     backgroundColor: "#902E2E",
@@ -93,12 +109,12 @@ const styles = StyleSheet.create({
     width: 25,
     height: "100%",
     justifyContent: "flex-start",
-    alignSelf: "center",
-    alignItems: "flex-start",
+    // alignSelf: "center",
+    alignItems: "flex-end",
   },
   headerstyle: {
     fontSize: 22,
-    color: 'white',
+    color: "white",
   },
   subHeaderStyle: {
     fontSize: 15,
@@ -108,9 +124,9 @@ const styles = StyleSheet.create({
   },
   Timer: {
     letterSpacing: 5,
-    color: 'white',
+    color: "white",
     justifyContent: "center",
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 // onPress={popup}
