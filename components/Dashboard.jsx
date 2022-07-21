@@ -3,6 +3,18 @@ import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import MapPage from "./MapPage";
 
+// const Header = () => (
+//   <View style={styles.ViewStyle}>
+//     <Entypo
+//       onPress={() => navigation.navigate("MapPage")}
+//       style={styles.arrowstyle}
+//       name="chevron-left"
+//       size={30}
+//       color="black"
+//     />
+//     <Text style={styles.DashStyle}>DASHBOARD</Text>
+//   </View>
+// );
 const App = ({ navigation }) => {
   return (
     <View style={styles.flexstyle}>
@@ -14,44 +26,43 @@ const App = ({ navigation }) => {
           size={30}
           color="black"
         />
-        <Text style={styles.DashStyle}>DASHBOARD</Text>
       </View>
-    <View style={styles.viewspacing}>
-      <View style={styles.boxtext}>
-        <View>
-          <Text style={styles.boxestext}>Save An Adress</Text>
+      <Text style={styles.DashStyle}>DASHBOARD</Text>
+      <View style={styles.viewspacing}>
+        <View style={styles.boxtext}>
+          <View>
+            <Text style={styles.boxestext}>Save An Adress</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.boxtext}>
-        <View>
-          <Text style={styles.boxestext}>View Current Alarms</Text>
+        <View style={styles.boxtext}>
+          <View>
+            <Text style={styles.boxestext}>View Current Alarms</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.boxtext}>
-        <View>
-          <Text style={styles.boxestext}>View Saved Adresses</Text>
+        <View style={styles.boxtext}>
+          <View>
+            <Text style={styles.boxestext}>View Saved Adresses</Text>
+          </View>
         </View>
-      </View>
-    <View>
-      <View style={styles.boxtext}>
         <View>
-          <Text style={styles.boxestext}>Log Out</Text>
+          <View style={styles.boxtext}>
+            <View>
+              <Text style={styles.boxestext}>Log Out</Text>
+            </View>
+          </View>
+          <View style={styles.boxtext}>
+            <View>
+              <Text style={styles.boxestext}>SweepAlert</Text>
+            </View>
+          </View>
         </View>
-      </View>
-      <View style={styles.boxtext}>
-        <View>
-          <Text style={styles.boxestext}>SweepAlert</Text>
-        </View>
-      </View>
-    <View>
       </View>
     </View>
   );
 };
 
-
 const styles = StyleSheet.create({
-    ViewStyle: {
+  ViewStyle: {
     flexDirection: "row",
     marginVertical: 55,
     backgroundColor: "red",
