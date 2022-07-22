@@ -31,7 +31,7 @@ const App = ({ navigation }) => {
       <View style={styles.viewspacing}>
         <View style={styles.boxtext}>
           <View>
-            <Text style={styles.boxestext}>Save An Adress</Text>
+            <Text style={styles.boxestext}>Save An Address</Text>
           </View>
         </View>
         <View style={styles.boxtext}>
@@ -41,7 +41,7 @@ const App = ({ navigation }) => {
         </View>
         <View style={styles.boxtext}>
           <View>
-            <Text style={styles.boxestext}>View Saved Adresses</Text>
+            <Text style={styles.boxestext}>View Saved Addresses</Text>
           </View>
         </View>
         <View>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   ViewStyle: {
     flexDirection: "row",
     marginVertical: 55,
-    backgroundColor: "red",
+    //backgroundColor: "red",
   },
   viewspacing: {
     marginTop: 60,
