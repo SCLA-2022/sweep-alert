@@ -106,18 +106,18 @@ export default function App({ navigation }) {
               }}
             />
             <View style={styles.IconStyle}>
-              <Entypo
+              {/* <Entypo
                 style={styles.magnifyingstyle}
                 name="magnifying-glass"
                 size={24}
                 color="black"
-              />
+              /> */}
               <Entypo
                 onPress={() => navigation.navigate("Dashboard")}
                 style={styles.dotsstyle}
                 name="dots-three-vertical"
                 size={24}
-                color="black"
+                color="white"
               />
             </View>
           </MapView>
@@ -176,7 +176,11 @@ export default function App({ navigation }) {
               Timer1
             </Actionsheet.Item>
             <Actionsheet.Item
-              onPress={() => navigation.navigate("DetailedRoutes")}
+              onPress={() => navigation.navigate("DetailedRoutes", {
+                day: 'Thursyda',
+                time: '121:!2`121212',
+                frequency: 'frey sdfsasdsad'
+              })}
             >
               DetailedRoutesExample
             </Actionsheet.Item>

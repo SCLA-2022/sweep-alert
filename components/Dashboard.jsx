@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import MapPage from "./MapPage";
-
+import AddCarPage from "./AddCarPage"
+import Timer1 from "./Timer1"
+import {
+    useFonts,
+    Roboto_100Thin,
+    Roboto_100Thin_Italic,
+    Roboto_300Light,
+    Roboto_300Light_Italic,
+    Roboto_400Regular,
+    Roboto_400Regular_Italic,
+    Roboto_500Medium,
+    Roboto_500Medium_Italic,
+    Roboto_700Bold,
+    Roboto_700Bold_Italic,
+    Roboto_900Black,
+    Roboto_900Black_Italic,
+  } from "@expo-google-fonts/roboto";
 // const Header = () => (
 //   <View style={styles.ViewStyle}>
 //     <Entypo
@@ -31,17 +46,17 @@ const App = ({ navigation }) => {
       <View style={styles.viewspacing}>
         <View style={styles.boxtext}>
           <View>
-            <Text style={styles.boxestext}>Save An Adress</Text>
+            <Text onPress={() => navigation.navigate("AddCarPage")} style={styles.boxestext}>Save An Adress</Text>
           </View>
         </View>
         <View style={styles.boxtext}>
           <View>
-            <Text style={styles.boxestext}>View Current Alarms</Text>
+            <Text onPress={() => navigation.navigate("Timer1")} style={styles.boxestext}>View Current Alarms</Text>
           </View>
         </View>
         <View style={styles.boxtext}>
           <View>
-            <Text style={styles.boxestext}>View Saved Adresses</Text>
+            <Text style={styles.boxestext}>View Saved Address</Text>
           </View>
         </View>
         <View>
@@ -50,9 +65,12 @@ const App = ({ navigation }) => {
               <Text style={styles.boxestext}>Log Out</Text>
             </View>
           </View>
-          <View style={styles.boxtext}>
+          <View style={styles.minilogostyle}>
             <View>
-              <Text style={styles.boxestext}>SweepAlert</Text>
+              <Text style={styles.formattingone}>SWEEP
+              <Text style={styles.formattingtwo}>
+              ALERT</Text>
+              </Text>
             </View>
           </View>
         </View>
@@ -65,10 +83,10 @@ const styles = StyleSheet.create({
   ViewStyle: {
     flexDirection: "row",
     marginVertical: 55,
-    backgroundColor: "red",
+    // backgroundColor: "red",
   },
   viewspacing: {
-    marginTop: 60,
+    marginTop: 30,
   },
   flexstyle: {
     flex: 1,
@@ -83,12 +101,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontSize: 35,
     marginHorizontal: 50,
-    // marginVertical: -100,
+    marginTop: -100,
+    marginBottom: 25,
     // backgroundColor: 'blue',
-    flexDirection: "column",
     color: "#591818",
     fontWeight: "bold",
     letterSpacing: 1,
+    fontFamily: "RobotoCondensed_700Bold",
   },
   arrowstyle: {
     marginVertical: 10,
@@ -105,10 +124,31 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     margin: 10,
     width: 300,
-    height: 50,
+    height: 75,
+  },
+  formattingone: {
+    color: "black",
+    fontSize: 20,
+    letterSpacing: 4,
+    fontFamily:'RobotoMono_600SemiBold',
+    marginTop: 15,
+  },
+  formattingtwo: {
+    color: "#902E2E",
+    fontSize: 20,
+    letterSpacing: 4,
+    fontFamily:'RobotoMono_600SemiBold',
+  },
+  minilogostyle: {
+    alignSelf: "center",
+    // fontFamily: "Roboto",
   },
   boxestext: {
     textAlign: "center",
+    color: "white",
+    fontFamily: "Roboto_500Medium",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
 export default App;

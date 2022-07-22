@@ -11,9 +11,12 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import RoutesPage from './components/RoutesPage'
 import DetailedRoutes from './components/DetailedRoutes'
 import Dashboard from './components/Dashboard'
-const Stack = createNativeStackNavigator();
+import usePreloadedFonts from './hooks/usePreloadedFonts';
+ const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
+
+  const {isLoading} = usePreloadedFonts();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
     <NavigationContainer>
