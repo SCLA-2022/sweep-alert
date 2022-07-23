@@ -65,6 +65,7 @@ export default function usePreloadedFonts(){
                         Roboto_900Black_Italic,
                         RobotoCondensed_700Bold,
                         RobotoMono_600SemiBold,
+                        RobotoCondensed_300Light,
                     });
 
                     setIsLoading(false);

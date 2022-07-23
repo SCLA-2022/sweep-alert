@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import AddCarPage from "./AddCarPage"
-import CurrentAlarms from "./CurrentAlarms"
-import SavedAddresses from "./SavedAddresses"
+import AddCarPage from "./AddCarPage";
+import CurrentAlarms from "./CurrentAlarms";
+import SavedAddresses from "./SavedAddresses";
 import {
-    useFonts,
-    Roboto_100Thin,
-    Roboto_100Thin_Italic,
-    Roboto_300Light,
-    Roboto_300Light_Italic,
-    Roboto_400Regular,
-    Roboto_400Regular_Italic,
-    Roboto_500Medium,
-    Roboto_500Medium_Italic,
-    Roboto_700Bold,
-    Roboto_700Bold_Italic,
-    Roboto_900Black,
-    Roboto_900Black_Italic,
-  } from "@expo-google-fonts/roboto";
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic,
+} from "@expo-google-fonts/roboto";
 // const Header = () => (
 //   <View style={styles.ViewStyle}>
 //     <Entypo
@@ -45,36 +44,39 @@ const App = ({ navigation }) => {
       </View>
       <Text style={styles.DashStyle}>DASHBOARD</Text>
       <View style={styles.viewspacing}>
-        
         <View style={styles.boxtext}>
           <View>
-            <Text onPress={() => navigation.navigate("AddCarPage")} style={styles.boxestext}>Save An Addresses</Text>
+            <Text
+              onPress={() => navigation.navigate("AddCarPage")}
+              style={styles.boxestext}
+            >
+              Save An Address
+            </Text>
           </View>
         </View>
         <View style={styles.boxtext}>
           <View>
-            <Text onPress={() => navigation.navigate("SavedAddresses")} style={styles.boxestext}>View Saved Addresses</Text>
+            <Text
+              onPress={() => navigation.navigate("CurrentAlarms")}
+              style={styles.boxestext}
+            >
+              View Current Alarms
+            </Text>
           </View>
         </View>
+      </View>
+      <View style={styles.downwardboxes}>
         <View style={styles.boxtext}>
           <View>
-            <Text onPress={() => navigation.navigate("CurrentAlarms")} style={styles.boxestext}>View Current Alarms</Text>
+            <Text style={styles.boxestext}>Log Out</Text>
           </View>
         </View>
-        
-        <View>
-          <View style={styles.boxtext}>
-            <View>
-              <Text style={styles.boxestext}>Log Out</Text>
-            </View>
-          </View>
-          <View style={styles.minilogostyle}>
-            <View>
-              <Text style={styles.formattingone}>SWEEP
-              <Text style={styles.formattingtwo}>
-              ALERT</Text>
-              </Text>
-            </View>
+        <View style={styles.minilogostyle}>
+          <View>
+            <Text style={styles.formattingone}>
+              SWEEP
+              <Text style={styles.formattingtwo}>ALERT</Text>
+            </Text>
           </View>
         </View>
       </View>
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     // marginVertical: -10,
   },
   downwardboxes: {
-    margin: 10,
+    margin: 35,
   },
   DashStyle: {
     textAlign: "center",
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     // overflow: "hidden",
     // borderWidth: ,
     borderRadius: 10,
-    margin: 10,
+    margin: 15,
     width: 300,
     height: 75,
   },
@@ -133,18 +135,19 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily:'RobotoMono_600SemiBold',
-    marginTop: 15,
+    fontFamily: "RobotoMono_600SemiBold",
+    marginTop: 80,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily:'RobotoMono_600SemiBold',
+    fontFamily: "RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
     // fontFamily: "Roboto",
+    // marginTop: 50,
   },
   boxestext: {
     textAlign: "center",

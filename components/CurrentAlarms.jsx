@@ -1,84 +1,122 @@
-// React Native CountDown Timer | react-native-countdown-component
-// https://aboutreact.com/react-native-countdown-timer/
- 
-// import React in our code
-import React, {useState, useEffect} from 'react';
- 
-// import all the components we are going to use
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
- 
-// import CountDown to show the timer
-import CountDown from 'react-native-countdown-component';
- 
-// import moment to help you play with date and time
-import moment from 'moment';
- 
-const App = () => {
-  const [totalDuration, setTotalDuration] = useState(0);
- 
-  useEffect(() => {
-    // Coundown timer for a given expiry date-time
-    let date = 
-      moment()
-        .utcOffset('+05:30')
-        .format('YYYY-MM-DD hh:mm:ss');
-    
-    // Getting the current date-time
-    // You can set your own date-time
-    let expirydate = '2020-12-23 04:00:45';
-    
-    let diffr = 
-      moment
-        .duration(moment(expirydate)
-        .diff(moment(date)));
-    // Difference of the expiry date-time
-    var hours = parseInt(diffr.asHours());
-    var minutes = parseInt(diffr.minutes());
-    var seconds = parseInt(diffr.seconds());
- 
-    // Converting in seconds
-    var d = hours * 60 * 60 + minutes * 60 + seconds;
- 
-    // Settign up the duration of countdown
-    setTotalDuration(d);
-  }, []);
- 
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
+import { Entypo } from "@expo/vector-icons";
+import AddCarPage from "./AddCarPage";
+import CurrentAlarms from "./CurrentAlarms";
+import {
+  useFonts,
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic,
+} from "@expo-google-fonts/roboto";
+import {
+  RobotoCondensed_300Light,
+  RobotoCondensed_300Light_Italic,
+  RobotoCondensed_400Regular,
+  RobotoCondensed_400Regular_Italic,
+  RobotoCondensed_700Bold,
+  RobotoCondensed_700Bold_Italic,
+} from '@expo-google-fonts/roboto-condensed';
+const App = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          React Native CountDown Timer | 
-          react-native-countdown-component
-        </Text>
-        <CountDown
-          until={totalDuration}
-          //duration of countdown in seconds
-          timetoShow={('H', 'M', 'S')}
-          //formate to show
-          onFinish={() => alert('finished')}
-          //on Finish call
-          onPress={() => alert('hello')}
-          //on Press call
-          size={20}
+    <View style={styles.flexstyle}>
+      <View style={styles.ViewStyle}>
+        <Entypo
+          onPress={() => navigation.navigate("MapPage")}
+          style={styles.arrowstyle}
+          name="chevron-left"
+          size={30}
+          color="black"
         />
       </View>
-    </SafeAreaView>
+      <Text style={styles.DashStyle}>CURRENT ALARMS</Text>
+      <View style={styles.alignment}>
+        <Text style={styles.boxtext}>you have no current alarms :(</Text>
+      </View>
+    </View>
   );
 };
- 
-export default App;
- 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+  ViewStyle: {
+    flexDirection: "row",
+    marginVertical: 55,
+    // backgroundColor: "red",
   },
-  title: {
-    textAlign: 'center',
+  viewspacing: {
+    marginTop: 30,
+  },
+  flexstyle: {
+    flex: 1,
+    // marginVertical: -10,
+  },
+  alignment: {
+    justifyContent: "center", //Centered horizontally
+    alignItems: "center", //Centered vertically
+    flexDirection: "row",
+  },
+  DashStyle: {
+    textAlign: "center",
+    alignSelf: "center",
+    justifyContent: "center",
+    fontSize: 25,
+    marginHorizontal: 50,
+    marginTop: -96,
+    marginBottom: 25,
+    // backgroundColor: 'blue',
+    color: "#591818",
+    fontWeight: "bold",
+    letterSpacing: 1,
+    fontFamily: "RobotoCondensed_700Bold",
+  },
+  arrowstyle: {
+    marginVertical: 10,
+    marginHorizontal: 15,
+    color: "#591818",
+    // backgroundColor: 'yellow',
+  },
+  boxtext: {
+    alignSelf: "center",
+    justifyContent: "center",
+    fontSize: 25,
+    marginTop: 175,
+    textAlign: "center",
+    // backgroundColor: "#902E2E",
+    // borderWidth: ,
+    fontFamily: " RobotoCondensed_300Light",
+  },
+  formattingone: {
+    color: "black",
     fontSize: 20,
-    fontWeight: 'bold',
-    padding: 20,
+    letterSpacing: 4,
+    fontFamily: "RobotoMono_600SemiBold",
+    marginTop: 15,
+  },
+  formattingtwo: {
+    color: "#902E2E",
+    fontSize: 20,
+    letterSpacing: 4,
+    fontFamily: "RobotoMono_600SemiBold",
+  },
+  minilogostyle: {
+    alignSelf: "center",
+    // fontFamily: "Roboto",
+  },
+  boxestext: {
+    textAlign: "center",
+    color: "white",
+    fontFamily: "Roboto_500Medium",
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
+export default App;

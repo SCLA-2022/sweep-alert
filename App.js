@@ -13,6 +13,7 @@ import DetailedRoutes from './components/DetailedRoutes'
 import Dashboard from './components/Dashboard'
 import usePreloadedFonts from './hooks/usePreloadedFonts';
 import SavedAddresses from './components/SavedAddresses'
+
  const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -25,15 +26,16 @@ const MyStack = () => {
         <Stack.Screen
           name="MapPage"
           component={MapPage}
+          options={{headerShown:false}}
         />
-        <Stack.Screen name="AddCarPage" component={AddCarPage} />
-        <Stack.Screen name="AllCarsPage" component={AllCarsPage} />
-        <Stack.Screen name="LoginPage" component={LoginPage} />
-        <Stack.Screen name="CurrentAlarms" component={CurrentAlarms} />
-        <Stack.Screen name="RoutesPage" component={RoutesPage} />
-        <Stack.Screen name="DetailedRoutes" component={DetailedRoutes} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="SavedAddresses" component={SavedAddresses} />
+        <Stack.Screen name="AddCarPage" component={AddCarPage} options={{headerShown:false}} />
+        <Stack.Screen name="AllCarsPage" component={AllCarsPage} options={{headerShown:false}}/>
+        <Stack.Screen name="LoginPage" component={LoginPage} options={{headerShown:false}} />
+        <Stack.Screen name="CurrentAlarms" component={CurrentAlarms} options={{headerShown:false}} />
+        <Stack.Screen name="RoutesPage" component={RoutesPage} options={{headerShown:false}}/>
+        <Stack.Screen name="DetailedRoutes" component={DetailedRoutes} options={{headerShown:false}} />
+        <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown:false}} />
+        <Stack.Screen name="SavedAddresses" component={SavedAddresses} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
     </GestureHandlerRootView>
