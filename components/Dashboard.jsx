@@ -48,11 +48,7 @@ const App = ({ navigation }) => {
         
         <View style={styles.boxtext}>
           <View>
-<<<<<<< HEAD
-            <Text style={styles.boxestext}>Save An Address</Text>
-=======
             <Text onPress={() => navigation.navigate("AddCarPage")} style={styles.boxestext}>Save An Addresses</Text>
->>>>>>> 70fbac95cc29e1eebaaf8ee8ba6790170aa94c75
           </View>
         </View>
         <View style={styles.boxtext}>
@@ -62,11 +58,7 @@ const App = ({ navigation }) => {
         </View>
         <View style={styles.boxtext}>
           <View>
-<<<<<<< HEAD
-            <Text style={styles.boxestext}>View Saved Addresses</Text>
-=======
             <Text onPress={() => navigation.navigate("CurrentAlarms")} style={styles.boxestext}>View Current Alarms</Text>
->>>>>>> 70fbac95cc29e1eebaaf8ee8ba6790170aa94c75
           </View>
         </View>
         
@@ -94,11 +86,7 @@ const styles = StyleSheet.create({
   ViewStyle: {
     flexDirection: "row",
     marginVertical: 55,
-<<<<<<< HEAD
-    //backgroundColor: "red",
-=======
     // backgroundColor: "red",
->>>>>>> 70fbac95cc29e1eebaaf8ee8ba6790170aa94c75
   },
   viewspacing: {
     marginTop: 30,

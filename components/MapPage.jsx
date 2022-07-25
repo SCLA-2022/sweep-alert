@@ -21,7 +21,6 @@ import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
 import DetailedRoutes from "./DetailedRoutes";
-import Timer1 from "./Timer1";
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Dashboard from "./Dashboard";
@@ -156,38 +155,6 @@ export default function App({ navigation }) {
             }}
           ></View>
         </BottomSheet>
-        <Actionsheet isOpen={isOpen} onClose={onClose}>
-          <Actionsheet.Content>
-            {/* <Searchbar
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            /> */}
-            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
-              Add Car
-            </Actionsheet.Item>
-            <Actionsheet.Item
-              onPress={() => navigation.navigate("AllCarsPage")}
-            >
-              View All Cars
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
-              Login/Make account
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
-              Timer1
-            </Actionsheet.Item>
-            <Actionsheet.Item
-              onPress={() => navigation.navigate("DetailedRoutes", {
-                day: 'Thursyda',
-                time: '121:!2`121212',
-                frequency: 'frey sdfsasdsad'
-              })}
-            >
-              DetailedRoutesExample
-            </Actionsheet.Item>
-          </Actionsheet.Content>
-        </Actionsheet>
       </View>
     </NativeBaseProvider>
   );

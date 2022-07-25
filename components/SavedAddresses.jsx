@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import AddCarPage from "./AddCarPage"
-import Timer1 from "./Timer1"
 import {
     useFonts,
     Roboto_100Thin,
