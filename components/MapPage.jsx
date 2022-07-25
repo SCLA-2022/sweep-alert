@@ -21,6 +21,10 @@ import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
 import DetailedRoutes from "./DetailedRoutes";
+<<<<<<< HEAD
+=======
+import CurrentAlarms from "./CurrentAlarms";
+>>>>>>> f3955accdd511257f99fd2ab09145548e2554003
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Dashboard from "./Dashboard";
@@ -64,13 +68,13 @@ export default function App({ navigation }) {
     text = JSON.stringify(location);
   }
 
-  const openDrawer = () => {
-    setIsOpen(true);
-  };
+  // const openDrawer = () => {
+  //   setIsOpen(true);
+  // };
 
-  const onClose = () => {
-    setIsOpen(false);
-  };
+  // const onClose = () => {
+  //   setIsOpen(false);
+  // };
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
 
   return (
@@ -147,13 +151,6 @@ export default function App({ navigation }) {
               />
             </View>
           </View>
-          <View
-            style={{
-              position: "absolute", //use absolute position to show button on top of the map
-              top: "70%", //for center align
-              alignSelf: "center", //for align to right
-            }}
-          ></View>
         </BottomSheet>
       </View>
     </NativeBaseProvider>
@@ -240,3 +237,42 @@ const styles = StyleSheet.create({
 {
   /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
 }
+{/* <Actionsheet isOpen={isOpen} onClose={onClose}>
+          <Actionsheet.Content>
+            <Searchbar
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
+              Add Car
+            </Actionsheet.Item>
+            <Actionsheet.Item
+              onPress={() => navigation.navigate("AllCarsPage")}
+            >
+              View All Cars
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
+              Login/Make account
+            </Actionsheet.Item>
+            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
+              Timer1
+            </Actionsheet.Item>
+            <Actionsheet.Item
+              onPress={() => navigation.navigate("DetailedRoutes", {
+                day: 'Thursyda',
+                time: '121:!2`121212',
+                frequency: 'frey sdfsasdsad'
+              })}
+            >
+              DetailedRoutesExample
+            </Actionsheet.Item>
+          </Actionsheet.Content>
+        </Actionsheet> */}
+      //   <View
+      //   style={{
+      //     position: "absolute", //use absolute position to show button on top of the map
+      //     top: "70%", //for center align
+      //     alignSelf: "center", //for align to right
+      //   }}
+      // ></View>

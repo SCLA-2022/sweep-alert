@@ -1,34 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
+<<<<<<< HEAD
 import AddCarPage from "./AddCarPage"
+=======
+import AddCarPage from "./AddCarPage";
+import SavedAddresses from "./SavedAddresses";
+>>>>>>> f3955accdd511257f99fd2ab09145548e2554003
 import {
-    useFonts,
-    Roboto_100Thin,
-    Roboto_100Thin_Italic,
-    Roboto_300Light,
-    Roboto_300Light_Italic,
-    Roboto_400Regular,
-    Roboto_400Regular_Italic,
-    Roboto_500Medium,
-    Roboto_500Medium_Italic,
-    Roboto_700Bold,
-    Roboto_700Bold_Italic,
-    Roboto_900Black,
-    Roboto_900Black_Italic,
-  } from "@expo-google-fonts/roboto";
-// const Header = () => (
-//   <View style={styles.ViewStyle}>
-//     <Entypo
-//       onPress={() => navigation.navigate("MapPage")}
-//       style={styles.arrowstyle}
-//       name="chevron-left"
-//       size={30}
-//       color="black"
-//     />
-//     <Text style={styles.DashStyle}>DASHBOARD</Text>
-//   </View>
-// );
+  RobotoCondensed_300Light,
+  RobotoCondensed_300Light_Italic,
+  RobotoCondensed_400Regular,
+  RobotoCondensed_400Regular_Italic,
+  RobotoCondensed_700Bold,
+  RobotoCondensed_700Bold_Italic,
+} from '@expo-google-fonts/roboto-condensed';
 const App = ({ navigation }) => {
   return (
     <View style={styles.flexstyle}>
@@ -41,7 +27,10 @@ const App = ({ navigation }) => {
           color="black"
         />
       </View>
-      <Text style={styles.DashStyle}>DASHBOARD</Text>
+      <Text style={styles.DashStyle}>SAVED ADDRESSES</Text>
+      <View style={styles.alignment}>
+        <Text style={styles.boxtext}>you have no saved addresses :(</Text>
+      </View>
     </View>
   );
 };
@@ -59,16 +48,18 @@ const styles = StyleSheet.create({
     flex: 1,
     // marginVertical: -10,
   },
-  downwardboxes: {
-    margin: 10,
+  alignment: {
+    justifyContent: "center", //Centered horizontally
+    alignItems: "center", //Centered vertically
+    flexDirection: "row",
   },
   DashStyle: {
     textAlign: "center",
     alignSelf: "center",
     justifyContent: "center",
-    fontSize: 35,
+    fontSize: 25,
     marginHorizontal: 50,
-    marginTop: -100,
+    marginTop: -96,
     marginBottom: 25,
     // backgroundColor: 'blue',
     color: "#591818",
@@ -78,33 +69,32 @@ const styles = StyleSheet.create({
   },
   arrowstyle: {
     marginVertical: 10,
+    marginHorizontal: 15,
     color: "#591818",
     // backgroundColor: 'yellow',
   },
   boxtext: {
     alignSelf: "center",
     justifyContent: "center",
-    backgroundColor: "#902E2E",
-    padding: 10,
-    // overflow: "hidden",
+    fontSize: 25,
+    marginTop: 175,
+    textAlign: "center",
+    // backgroundColor: "#902E2E",
     // borderWidth: ,
-    borderRadius: 10,
-    margin: 10,
-    width: 300,
-    height: 75,
+    fontFamily: "RobotoCondensed_300Light",
   },
   formattingone: {
     color: "black",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily:'RobotoMono_600SemiBold',
+    fontFamily: "RobotoMono_600SemiBold",
     marginTop: 15,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily:'RobotoMono_600SemiBold',
+    fontFamily: "RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
