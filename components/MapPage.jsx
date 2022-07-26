@@ -21,10 +21,7 @@ import { NativeBaseProvider, Actionsheet, Box } from "native-base";
 import AddCarPage from "./AddCarPage";
 import AllCarsPage from "./AllCarsPage";
 import DetailedRoutes from "./DetailedRoutes";
-<<<<<<< HEAD
-=======
 import CurrentAlarms from "./CurrentAlarms";
->>>>>>> f3955accdd511257f99fd2ab09145548e2554003
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Dashboard from "./Dashboard";
@@ -51,6 +48,10 @@ import {
   Roboto_900Black,
   Roboto_900Black_Italic,
 } from "@expo-google-fonts/roboto";
+import Geocoder from 'react-native-geocoding';
+
+const GOOGLE_PLACES_API_KEY = "AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU";
+Geocoder.init(GOOGLE_PLACES_API_KEY);
 
 const TAB_BAR_HEIGHT = 49;
 
@@ -100,6 +101,13 @@ export default function App({ navigation }) {
   //   setIsOpen(false);
   // };
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
+
+  Geocoder.from("28435 Gold Canyon Dr").then(
+    json => {
+        var location = json.results[0].geometry.location;
+        console.log(location);
+    }).catch(
+        error => console.log(error));
 
   return (
     <NativeBaseProvider>

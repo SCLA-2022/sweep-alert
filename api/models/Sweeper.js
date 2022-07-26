@@ -12,6 +12,14 @@ const SweeperSchema = new mongoose.Schema({
     street: {
         type: String,
         required: true
+    },
+    days: {
+        type: String,
+        required: true
+    },
+    frequency: {
+        type: String,
+        required: true
     }
 },{timestamps: true});
 
