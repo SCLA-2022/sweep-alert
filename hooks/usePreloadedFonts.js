@@ -55,9 +55,9 @@ export default function usePreloadedFonts(){
                         Roboto_100Thin_Italic,
                         Roboto_300Light,
                         Roboto_300Light_Italic,
-                        Roboto_400Regular,
                         Roboto_400Regular_Italic,
                         Roboto_500Medium,
+                        Roboto_400Regular,
                         Roboto_500Medium_Italic,
                         Roboto_700Bold,
                         Roboto_700Bold_Italic,
@@ -66,6 +66,7 @@ export default function usePreloadedFonts(){
                         RobotoCondensed_700Bold,
                         RobotoMono_600SemiBold,
                         RobotoCondensed_300Light,
+                        RobotoCondensed_400Regular,
                     });
 
                     setIsLoading(false);

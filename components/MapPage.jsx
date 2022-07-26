@@ -25,6 +25,30 @@ import CurrentAlarms from "./CurrentAlarms";
 import RoutesPage from "./RoutesPage";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Dashboard from "./Dashboard";
+import {
+  RobotoCondensed_300Light,
+  RobotoCondensed_300Light_Italic,
+  RobotoCondensed_400Regular,
+  RobotoCondensed_400Regular_Italic,
+  RobotoCondensed_700Bold,
+  RobotoCondensed_700Bold_Italic,
+} from '@expo-google-fonts/roboto-condensed';
+
+import {
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic,
+} from "@expo-google-fonts/roboto";
+
 const TAB_BAR_HEIGHT = 49;
 
 export default function App({ navigation }) {
@@ -50,7 +74,7 @@ export default function App({ navigation }) {
   const bottomSheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ["15%", "30%"], []);
+  const snapPoints = useMemo(() => ["15%", "25%", "50%"], []);
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -142,7 +166,7 @@ export default function App({ navigation }) {
                 onPress={() => navigation.navigate("RoutesPage")}
                 name="chevron-right"
                 size={30}
-                color="black"
+                color="white"
               />
             </View>
           </View>
@@ -179,7 +203,7 @@ const styles = StyleSheet.create({
     // borderWidth: 10,
     // borderColor: '#902E2E',
     overflow: "hidden",
-    top: 100,
+    top: 175,
     //   width: 44,
     //  height: 44,
     borderRadius: 18,
@@ -196,19 +220,22 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "white",
     marginBottom: 10,
     marginTop: -5,
+    letterSpacing: 5,
     justifyContent: "center",
     flexDirection: "row",
+    fontFamily: "RobotoCondensed_400Regular",
   },
   baseText: {
-    fontSize: 22,
+    fontSize: 27,
     color: "white",
     justifyContent: "flex-start",
     alignSelf: "flex-start",
-    marginTop: 5,
+    marginTop: 15,
+    fontFamily: "Roboto_400Regular",
   },
   contentContainer: {
     // flex: 1,
@@ -225,8 +252,8 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    marginTop: 45,
-    marginHorizontal: 15,
+    marginTop: 50,
+    marginHorizontal: 30,
   },
 });
 {
