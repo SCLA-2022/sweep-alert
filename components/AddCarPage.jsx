@@ -26,6 +26,10 @@ const App = ({ navigation }) => {
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
   const [search, setSearch] = React.useState("");
+
+  // show timer button
+  const [show, setShow] = React.useState()
+
   // ref
   const bottomSheetRef = useRef < BottomSheet > null;
 
@@ -57,6 +61,7 @@ const App = ({ navigation }) => {
             }}
             onPress={(data, details = null) => {
               console.log(details.description);
+              setShow(true)
               setSearch(details.description);
             }}
             onFail={(error) => console.error(error)}
@@ -142,30 +147,38 @@ const App = ({ navigation }) => {
               visible={modalVisible}
               onRequestClose={() => {
                 Alert.alert("Modal has been closed.");
+                navigation.navigate("Dashboard")
                 setModalVisible(!modalVisible);
               }}
             >
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <Text style={styles.modalText}>Hello World!</Text>
+                  <Text style={styles.modalText}>Address has been saved</Text>
                   <TouchableOpacity
                     style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}
+                    onPress={() => {
+                      setModalVisible(!modalVisible)
+                      setShow(false)  
+                    }}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </Modal>
-            <TouchableOpacity
-              style={styles.buttonstyle}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
+            
+
+            {show ?
+              <TouchableOpacity
+                style={styles.buttonstyle}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
               <Text style={{ color: "white", alignSelf: "center" }}>
                 {" "}
                 Set Timer{" "}
               </Text>
-            </TouchableOpacity>
+              </TouchableOpacity> : null}
+            
+
           </View>
         </BottomSheet>
       </View>
@@ -186,7 +199,7 @@ const styles = StyleSheet.create({
     width: 126,
     justifyContent: "center",
     borderRadius: 200,
-    marginBottom: 25,
+    marginBottom: 380,
     marginHorizontal: 14,
   },
   flexput: {

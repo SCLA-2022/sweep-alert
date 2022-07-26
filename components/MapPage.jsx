@@ -32,7 +32,7 @@ import {
   RobotoCondensed_400Regular_Italic,
   RobotoCondensed_700Bold,
   RobotoCondensed_700Bold_Italic,
-} from '@expo-google-fonts/roboto-condensed';
+} from "@expo-google-fonts/roboto-condensed";
 
 import {
   Roboto_100Thin,
@@ -175,9 +175,15 @@ export default function App({ navigation }) {
               </Text>
             </View>
             <View style={styles.iconContainer}>
-              <Entypo
+              {/* <Entypo
                 onPress={() => navigation.navigate("RoutesPage")}
                 name="chevron-right"
+                size={30}
+                color="white"
+              /> */}
+              <Entypo
+                onPress={() => navigation.navigate("RoutesPage")}
+                name="magnifying-glass"
                 size={30}
                 color="white"
               />
@@ -216,11 +222,12 @@ const styles = StyleSheet.create({
     // borderWidth: 10,
     // borderColor: '#902E2E',
     overflow: "hidden",
-    top: 175,
+    top: 177,
     //   width: 44,
     //  height: 44,
-    borderRadius: 18,
-    padding: 6,
+    borderRadius: 23,
+    padding: 10,
+    marginHorizontal: 6,
   },
   IconStyle: {
     alignItems: "flex-end",
@@ -237,7 +244,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 10,
     marginTop: -5,
-    letterSpacing: 5,
+    letterSpacing: 2.5,
     justifyContent: "center",
     flexDirection: "row",
     fontFamily: "RobotoCondensed_400Regular",
@@ -272,7 +279,8 @@ const styles = StyleSheet.create({
 {
   /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
 }
-{/* <Actionsheet isOpen={isOpen} onClose={onClose}>
+{
+  /* <Actionsheet isOpen={isOpen} onClose={onClose}>
           <Actionsheet.Content>
             <Searchbar
               placeholder="Search"
@@ -303,11 +311,12 @@ const styles = StyleSheet.create({
               DetailedRoutesExample
             </Actionsheet.Item>
           </Actionsheet.Content>
-        </Actionsheet> */}
-      //   <View
-      //   style={{
-      //     position: "absolute", //use absolute position to show button on top of the map
-      //     top: "70%", //for center align
-      //     alignSelf: "center", //for align to right
-      //   }}
-      // ></View>
+        </Actionsheet> */
+}
+//   <View
+//   style={{
+//     position: "absolute", //use absolute position to show button on top of the map
+//     top: "70%", //for center align
+//     alignSelf: "center", //for align to right
+//   }}
+// ></View>
