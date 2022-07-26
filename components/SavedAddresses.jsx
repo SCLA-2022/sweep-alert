@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-<<<<<<< HEAD
-import AddCarPage from "./AddCarPage"
-=======
 import AddCarPage from "./AddCarPage";
 import SavedAddresses from "./SavedAddresses";
->>>>>>> f3955accdd511257f99fd2ab09145548e2554003
 import {
   RobotoCondensed_300Light,
   RobotoCondensed_300Light_Italic,
