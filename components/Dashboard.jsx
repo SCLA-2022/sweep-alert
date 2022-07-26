@@ -33,7 +33,9 @@ import {
 const App = ({ navigation }) => {
   return (
     <View style={styles.flexstyle}>
-      <View style={styles.ViewStyle}>
+      {/* {position: 'relative', left: 0} */}
+      {/* style={styles.ViewStyle} */}
+      <View style = {{marginTop: 86}}>
         <Entypo
           onPress={() => navigation.navigate("MapPage")}
           style={styles.arrowstyle}
@@ -41,8 +43,12 @@ const App = ({ navigation }) => {
           size={30}
           color="black"
         />
+      
+      {/* , {position: 'relative', top: -30}  */}
+      {/* style={styles.DashStyle} */}
+      <Text style = {styles.DashStyle}>DASHBOARD</Text>
+
       </View>
-      <Text style={styles.DashStyle}>DASHBOARD</Text>
       <View style={styles.viewspacing}>
         <View style={styles.boxtext}>
           <View>
@@ -54,7 +60,7 @@ const App = ({ navigation }) => {
             </Text>
           </View>
         </View>
-        <View style={styles.boxtext}>
+        {/* <View style={styles.boxtext}>
           <View>
             <Text
               onPress={() => navigation.navigate("CurrentAlarms")}
@@ -63,7 +69,7 @@ const App = ({ navigation }) => {
               View Current Alarms
             </Text>
           </View>
-        </View>
+        </View> */}
       </View>
       <View style={styles.downwardboxes}>
         <View style={styles.boxtext}>
@@ -80,6 +86,11 @@ const App = ({ navigation }) => {
           </View>
         </View>
       </View>
+
+        {/* <View style = {{backgroundColor: 'blue'}}>
+          <Text style = {{position: 'absolute', left: 0}}> Arrow place hodler</Text>
+          <Text style = {{alignSelf: 'center', backgroundColor: 'red'}}> Does this work? </Text>
+        </View> */}
     </View>
   );
 };
@@ -87,36 +98,50 @@ const App = ({ navigation }) => {
 const styles = StyleSheet.create({
   ViewStyle: {
     flexDirection: "row",
-    marginVertical: 55,
+    marginTop: 86,
+    
+
+    width: '100%',
+    // backgroundColor: 'red',
+    alignItems: 'center'
+    // marginVertical: 86,
     // backgroundColor: "red",
   },
   viewspacing: {
-    marginTop: 30,
+    // marginTop: 30,
+      marginTop: 100
   },
   flexstyle: {
     flex: 1,
     // marginVertical: -10,
   },
   downwardboxes: {
-    margin: 35,
+    // margin: 35,
+    marginTop: 307
   },
   DashStyle: {
-    textAlign: "center",
+    // textAlign: "center",
+    // width: '100%',
     alignSelf: "center",
-    justifyContent: "center",
-    fontSize: 35,
-    marginHorizontal: 50,
-    marginTop: -100,
-    marginBottom: 25,
+    // backgroundColor: 'yellow'
+    // left: 90,
+    // justifyContent: "center",
+    fontSize: 40,
+    // marginTop: -100,
+    // marginBottom: 25,
     // backgroundColor: 'blue',
-    color: "#591818",
+    color: "#000000",
     fontWeight: "bold",
     letterSpacing: 1,
     fontFamily: "RobotoCondensed_700Bold",
   },
   arrowstyle: {
-    marginVertical: 10,
-    color: "#591818",
+    // marginVertical: 10,
+    // alignSelf: 'center',
+    color: "#000000",
+    position: 'absolute',
+    top: 6,
+    left: 25
     // backgroundColor: 'yellow',
   },
   boxtext: {
@@ -133,19 +158,20 @@ const styles = StyleSheet.create({
   },
   formattingone: {
     color: "black",
-    fontSize: 20,
+    fontSize: 32,
     letterSpacing: 4,
     fontFamily: "RobotoMono_600SemiBold",
-    marginTop: 80,
+    // marginTop: 80,
   },
   formattingtwo: {
     color: "#902E2E",
-    fontSize: 20,
+    fontSize: 32,
     letterSpacing: 4,
     fontFamily: "RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
+    marginTop: 100
     // fontFamily: "Roboto",
     // marginTop: 50,
   },
