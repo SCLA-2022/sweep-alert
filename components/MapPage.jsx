@@ -101,15 +101,14 @@ export default function App({ navigation }) {
   } else if (location) {
     text = JSON.stringify(location);
   }
-
-  // const openDrawer = () => {
-  //   setIsOpen(true);
-  // };
-
-  // const onClose = () => {
-  //   setIsOpen(false);
-  // };
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
+
+  Geocoder.from("28435 Gold Canyon Dr").then(
+    json => {
+        var location = json.results[0].geometry.location;
+        console.log(location);
+    }).catch(
+        error => console.log(error));
 
   return (
     <NativeBaseProvider>
@@ -130,6 +129,8 @@ export default function App({ navigation }) {
               coordinate={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
               }}
             />
             <Marker

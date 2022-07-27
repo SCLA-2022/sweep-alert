@@ -2,14 +2,22 @@ const mongoose = require("mongoose");
 
 const SweeperSchema = new mongoose.Schema({
     start_time:{
-        type: Number,
+        type: String,
         required: true
     },
     end_time:{
-        type: Number,
+        type: String,
         required: true
     },
     street: {
+        type: String,
+        required: true
+    },
+    days: {
+        type: String,
+        required: true
+    },
+    frequency: {
         type: String,
         required: true
     }
