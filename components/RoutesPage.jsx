@@ -17,6 +17,7 @@ import {
 export default function App({ navigation }) {
   return (
     <View>
+      <View style={styles.headspacing}>
       <Text style={styles.Textheading}>Route Schedules Near</Text>
       <Text style={styles.Textbody}>
         3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
@@ -25,9 +26,10 @@ export default function App({ navigation }) {
         onPress={() => navigation.navigate("MapPage")}
         style={styles.IconStyle}
         name="chevron-left"
-        size={24}
-        color="black"
+        size={26}
+        color="#420F0F"
       />
+      </View>
       <View style={styles.OuterView}>
         <View style={styles.Viewstyle}>
           <View>
@@ -70,15 +72,20 @@ const styles = StyleSheet.create({
   IconStyle: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    marginTop: -85,
+    // marginTop: -85,
+    marginVertical: 10,
+  },
+  headspacing: {
+    // flexDirection: "row",
+    marginVertical: 100,
   },
   Textheading: {
-    color: "#902E2E",
+    color: "black",
     textAlign: "center",
-    fontSize: 24,
-    fontWeight: "500",
-    marginBottom: 10,
-    marginTop: 50,
+    fontSize: 25,
+    // fontWeight: "500",
+    // marginBottom: 10,
+    // marginTop: 50,
   },
   IconViewone: {
     width: 25,
@@ -109,8 +116,8 @@ const styles = StyleSheet.create({
   OuterView: {
     justifyContent: "center",
     alignItems: "center",
-    padding: -50,
-    marginBottom: -75,
+    // padding: -50,
+    // marginBottom: -75,
   },
   IconView: {
     width: 25,

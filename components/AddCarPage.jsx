@@ -153,14 +153,16 @@ const App = ({ navigation }) => {
             >
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <Text style={styles.modalText}>Address has been saved</Text>
+                  <Text style={styles.modalText}>Address has been saved.{'\n'}Check your map.</Text>
                   <TouchableOpacity
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => {
                       setModalVisible(!modalVisible)
-                      setShow(false)  
+                      setShow(false)
+                      navigation.navigate("MapPage") 
                     }}
                   >
+                    <Text style={{ color: "white", }}>Okay</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -172,9 +174,9 @@ const App = ({ navigation }) => {
                 style={styles.buttonstyle}
                 onPress={() => setModalVisible(!modalVisible)}
               >
-              <Text style={{ color: "white", alignSelf: "center" }}>
+              <Text style={{ color: "white", alignSelf: "center", fontSize: 18,}}>
                 {" "}
-                Set Timer{" "}
+                Save{" "}
               </Text>
               </TouchableOpacity> : null}
             
@@ -235,29 +237,32 @@ const styles = StyleSheet.create({
     marginTop: 22
   },
   modalView: {
-    margin: 20,
-    backgroundColor: "white",
+    // margin: 15,
+    backgroundColor: "#222222",
     borderRadius: 20,
-    padding: 35,
+    padding: 25,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
   },
   
   modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+    // marginBottom: 15,
+    textAlign: "center",
+    color: "white",
+    fontSize: 18,
   },
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    marginTop: 5,
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#902E2E",
   },
   textStyle: {
     color: "white",
