@@ -60,16 +60,11 @@ const App = ({ navigation }) => {
             </Text>
           </View>
         </View>
-        {/* <View style={styles.boxtext}>
+        <View style={styles.boxtext}>
           <View>
-            <Text
-              onPress={() => navigation.navigate("CurrentAlarms")}
-              style={styles.boxestext}
-            >
-              View Current Alarms
-            </Text>
+            <Text onPress={() => navigation.navigate("SavedAddresses")} style={styles.boxestext}>View Saved Addresses</Text>
           </View>
-        </View> */}
+        </View>
       </View>
       <View style={styles.downwardboxes}>
         <View style={styles.boxtext}>

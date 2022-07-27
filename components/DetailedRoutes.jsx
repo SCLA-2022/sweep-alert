@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   Textheading: {
-    color: "#902E2E",
+    color: "black",
     textAlign: "center",
     fontSize: 24,
-    fontWeight: "500",
+    // fontWeight: "500",
   },
   Textbody: {
     color: "black",
