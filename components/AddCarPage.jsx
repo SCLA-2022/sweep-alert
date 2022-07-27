@@ -20,7 +20,9 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Constants from "expo-constants";
 import { Entypo } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
+import Geocoder from 'react-native-geocoding';
 const GOOGLE_PLACES_API_KEY = "AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU";
+Geocoder.init(GOOGLE_PLACES_API_KEY);
 
 const App = ({ navigation }) => {
   const [text, onChangeText] = React.useState("Useless Text");
@@ -170,7 +172,13 @@ const App = ({ navigation }) => {
             {show ?
               <TouchableOpacity
                 style={styles.buttonstyle}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => {setModalVisible(!modalVisible);
+                    Geocoder.from(search).then(
+                        json => {
+                        var location = json.results[0].geometry.location;
+                        console.log(location);
+                        }).catch(
+                         error => console.log(error));}}
               >
               <Text style={{ color: "white", alignSelf: "center" }}>
                 {" "}
