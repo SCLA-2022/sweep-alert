@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import AddCarPage from "./AddCarPage";
-import CurrentAlarms from "./CurrentAlarms";
 
 const App = ({ navigation }) => {
   return (
@@ -18,7 +16,7 @@ const App = ({ navigation }) => {
       </View>
       <Text style={styles.DashStyle}>CURRENT ALARMS</Text>
       <View style={styles.alignment}>
-        <Text style={styles.boxtext}>you have no current alarms :(</Text>
+        <Text style={styles.boxtext}>you have no current alarms :</Text>
       </View>
     </View>
   );

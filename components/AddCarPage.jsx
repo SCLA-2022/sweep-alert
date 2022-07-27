@@ -28,17 +28,17 @@ const App = ({ navigation }) => {
   const [search, setSearch] = React.useState("");
 
   // show timer button
-  const [show, setShow] = React.useState()
+  const [show, setShow] = React.useState();
 
   // ref
-  const bottomSheetRef = useRef < BottomSheet > null;
+  const bottomSheetRef = useRef(null);
 
   // variables
   const snapPoints = useMemo(() => ["25%", "85%"], []);
   // const snapPoints = useMemo(() => ["15%", "30%"], []);
 
   // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
+  const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
   }, []);
   const [modalVisible, setModalVisible] = useState(false);
@@ -61,7 +61,7 @@ const App = ({ navigation }) => {
             }}
             onPress={(data, details = null) => {
               console.log(details.description);
-              setShow(true)
+              setShow(true);
               setSearch(details.description);
             }}
             onFail={(error) => console.error(error)}
@@ -147,40 +147,42 @@ const App = ({ navigation }) => {
               visible={modalVisible}
               onRequestClose={() => {
                 Alert.alert("Modal has been closed.");
-                navigation.navigate("Dashboard")
+                navigation.navigate("Dashboard");
                 setModalVisible(!modalVisible);
               }}
             >
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <Text style={styles.modalText}>Address has been saved.{'\n'}Check your map.</Text>
+                  <Text style={styles.modalText}>
+                    Address has been saved.{"\n"}Check your map.
+                  </Text>
                   <TouchableOpacity
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => {
-                      setModalVisible(!modalVisible)
-                      setShow(false)
-                      navigation.navigate("MapPage") 
+                      setModalVisible(!modalVisible);
+                      setShow(false);
+                      navigation.navigate("MapPage");
                     }}
                   >
-                    <Text style={{ color: "white", }}>Okay</Text>
+                    <Text style={{ color: "white" }}>Okay</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </Modal>
-            
 
-            {show ?
+            {show ? (
               <TouchableOpacity
                 style={styles.buttonstyle}
                 onPress={() => setModalVisible(!modalVisible)}
               >
-              <Text style={{ color: "white", alignSelf: "center", fontSize: 18,}}>
-                {" "}
-                Save{" "}
-              </Text>
-              </TouchableOpacity> : null}
-            
-
+                <Text
+                  style={{ color: "white", alignSelf: "center", fontSize: 18 }}
+                >
+                  {" "}
+                  Save{" "}
+                </Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         </BottomSheet>
       </View>
@@ -234,7 +236,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   modalView: {
     // margin: 15,
@@ -248,7 +250,7 @@ const styles = StyleSheet.create({
     //   height: 2,
     // },
   },
-  
+
   modalText: {
     // marginBottom: 15,
     textAlign: "center",
@@ -267,9 +269,8 @@ const styles = StyleSheet.create({
   textStyle: {
     color: "white",
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
   },
-
 });
 
 export default App;

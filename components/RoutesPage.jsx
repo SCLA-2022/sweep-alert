@@ -1,15 +1,6 @@
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Button,
-  SafeAreaView,
-  TextInput,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 // function popup () {
 //     console.log(this is working)
@@ -18,17 +9,17 @@ export default function App({ navigation }) {
   return (
     <View>
       <View style={styles.headspacing}>
-      <Text style={styles.Textheading}>Route Schedules Near</Text>
-      <Text style={styles.Textbody}>
-        3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
-      </Text>
-      <Entypo
-        onPress={() => navigation.navigate("MapPage")}
-        style={styles.IconStyle}
-        name="chevron-left"
-        size={26}
-        color="#420F0F"
-      />
+        <Text style={styles.Textheading}>Route Schedules Near</Text>
+        <Text style={styles.Textbody}>
+          3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
+        </Text>
+        <Entypo
+          onPress={() => navigation.navigate("MapPage")}
+          style={styles.IconStyle}
+          name="chevron-left"
+          size={26}
+          color="#420F0F"
+        />
       </View>
       <View style={styles.OuterView}>
         <View style={styles.Viewstyle}>
@@ -38,8 +29,19 @@ export default function App({ navigation }) {
             <Text style={styles.headerstyle}>
               2nd & 4th Thursday of the month
             </Text>
-            <View style={styles.IconView, styles.IconViewone}>
-              <Entypo onPress={() => navigation.navigate("DetailedRoutes",{day:'Thursday', time:'4am - 6:30am', frequency:'2nd & 4th Thursday of the month'})} name="chevron-right" size={30} color="black" />
+            <View style={[styles.IconView, styles.IconViewone]}>
+              <Entypo
+                onPress={() =>
+                  navigation.navigate("DetailedRoutes", {
+                    day: "Thursday",
+                    time: "4am - 6:30am",
+                    frequency: "2nd & 4th Thursday of the month",
+                  })
+                }
+                name="chevron-right"
+                size={30}
+                color="black"
+              />
             </View>
           </View>
         </View>
@@ -53,7 +55,18 @@ export default function App({ navigation }) {
               2nd & 4th friday of the month
             </Text>
             <View style={styles.IconView}>
-              <Entypo  onPress={() => navigation.navigate("DetailedRoutes",{day:'Friday',time:'4am - 6:30am',frequency:'2nd & 4th Friday of the month'})}  name="chevron-right" size={30} color="black" />
+              <Entypo
+                onPress={() =>
+                  navigation.navigate("DetailedRoutes", {
+                    day: "Friday",
+                    time: "4am - 6:30am",
+                    frequency: "2nd & 4th Friday of the month",
+                  })
+                }
+                name="chevron-right"
+                size={30}
+                color="black"
+              />
             </View>
           </View>
         </View>
@@ -63,12 +76,12 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
+  //   input: {
+  //     height: 40,
+  //     margin: 12,
+  //     borderWidth: 1,
+  //     padding: 10,
+  //   },
   IconStyle: {
     flexDirection: "row",
     justifyContent: "flex-start",

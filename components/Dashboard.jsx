@@ -1,23 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import AddCarPage from "./AddCarPage";
-import CurrentAlarms from "./CurrentAlarms";
-import SavedAddresses from "./SavedAddresses";
-import {
-  Roboto_100Thin,
-  Roboto_100Thin_Italic,
-  Roboto_300Light,
-  Roboto_300Light_Italic,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_500Medium,
-  Roboto_500Medium_Italic,
-  Roboto_700Bold,
-  Roboto_700Bold_Italic,
-  Roboto_900Black,
-  Roboto_900Black_Italic,
-} from "@expo-google-fonts/roboto";
+
 // const Header = () => (
 //   <View style={styles.ViewStyle}>
 //     <Entypo
