@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE} from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -50,7 +50,56 @@ import {
 } from "@expo-google-fonts/roboto";
 
 const TAB_BAR_HEIGHT = 49;
-
+const mapStyle = [
+  {
+    "featureType": "landscape",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.attraction",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]
 export default function App({ navigation }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -103,6 +152,8 @@ export default function App({ navigation }) {
       <View style={styles.container}>
         {location === null ? null : (
           <MapView
+          provider={PROVIDER_GOOGLE}
+          customMapStyle={mapStyle}
             initialRegion={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
@@ -185,7 +236,7 @@ export default function App({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -234,7 +285,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2.5,
     justifyContent: "center",
     flexDirection: "row",
-    fontFamily: "RobotoCondensed_400Regular",
+    fontFamily: 'Roboto' //"RobotoCondensed_400Regular",
   },
   baseText: {
     fontSize: 27,
@@ -242,7 +293,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignSelf: "flex-start",
     marginTop: 15,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: "Roboto",
   },
   contentContainer: {
     // flex: 1,
@@ -263,6 +314,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
 });
+
 {
   /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
 }
@@ -307,3 +359,10 @@ const styles = StyleSheet.create({
 //     alignSelf: "center", //for align to right
 //   }}
 // ></View>
+{/* <Marker
+              coordinate={{ latitude: 34.03308, longitude: -118.29202 }}
+              pinColor={"lightblue"} // any color
+              title={"76 Gas Station"}
+              description={"Pump #2, beware"}
+              image={require('../assets/Group236.png')}
+            /> */}

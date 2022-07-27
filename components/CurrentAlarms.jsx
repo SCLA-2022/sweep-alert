@@ -3,29 +3,7 @@ import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import AddCarPage from "./AddCarPage";
 import CurrentAlarms from "./CurrentAlarms";
-import {
-  useFonts,
-  Roboto_100Thin,
-  Roboto_100Thin_Italic,
-  Roboto_300Light,
-  Roboto_300Light_Italic,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_500Medium,
-  Roboto_500Medium_Italic,
-  Roboto_700Bold,
-  Roboto_700Bold_Italic,
-  Roboto_900Black,
-  Roboto_900Black_Italic,
-} from "@expo-google-fonts/roboto";
-import {
-  RobotoCondensed_300Light,
-  RobotoCondensed_300Light_Italic,
-  RobotoCondensed_400Regular,
-  RobotoCondensed_400Regular_Italic,
-  RobotoCondensed_700Bold,
-  RobotoCondensed_700Bold_Italic,
-} from '@expo-google-fonts/roboto-condensed';
+
 const App = ({ navigation }) => {
   return (
     <View style={styles.flexstyle}>
@@ -92,20 +70,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     // backgroundColor: "#902E2E",
     // borderWidth: ,
-    fontFamily: " RobotoCondensed_300Light",
+    fontFamily: "Roboto" //RobotoCondensed_300Light",
   },
   formattingone: {
     color: "black",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "RobotoMono_600SemiBold",
+    fontFamily: "Roboto",//"RobotoMono_600SemiBold",
     marginTop: 15,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "RobotoMono_600SemiBold",
+    fontFamily: "Roboto", //"RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
@@ -114,7 +92,7 @@ const styles = StyleSheet.create({
   boxestext: {
     textAlign: "center",
     color: "white",
-    fontFamily: "Roboto_500Medium",
+    fontFamily: "Roboto", //"Roboto_500Medium",
     fontWeight: "bold",
     fontSize: 20,
   },

@@ -3,14 +3,7 @@ import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import AddCarPage from "./AddCarPage";
 import SavedAddresses from "./SavedAddresses";
-import {
-  RobotoCondensed_300Light,
-  RobotoCondensed_300Light_Italic,
-  RobotoCondensed_400Regular,
-  RobotoCondensed_400Regular_Italic,
-  RobotoCondensed_700Bold,
-  RobotoCondensed_700Bold_Italic,
-} from '@expo-google-fonts/roboto-condensed';
+
 const App = ({ navigation }) => {
   return (
     <View style={styles.flexstyle}>

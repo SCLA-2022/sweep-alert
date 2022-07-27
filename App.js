@@ -11,14 +11,18 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import RoutesPage from './components/RoutesPage'
 import DetailedRoutes from './components/DetailedRoutes'
 import Dashboard from './components/Dashboard'
-import usePreloadedFonts from './hooks/usePreloadedFonts';
+
 import SavedAddresses from './components/SavedAddresses'
+import {AppLoading} from 'expo'
+import { useFonts } from 'expo-font';
 
  const Stack = createNativeStackNavigator();
-
 const MyStack = () => {
+  const [loaded] = useFonts({
+    Roboto: require('./assets/fonts/Roboto-Regular.ttf'),
+  });
 
-  const {isLoading} = usePreloadedFonts();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
     <NavigationContainer>
