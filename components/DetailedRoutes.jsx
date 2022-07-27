@@ -1,16 +1,8 @@
 import React, {useState} from "react";
-import { Entypo } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
-  Pressable,
-  Button,
-  SafeAreaView,
-  TextInput,
-  Alert,
-  Modal,
 } from "react-native";
 
 // function popup () {

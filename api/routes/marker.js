@@ -7,9 +7,7 @@ router.post("/add", async (req,res) => {
     try{
         const newMarker = new Marker({
             username: req.body.username,
-            address: req.body.address,
-            lat: req.body.lat,
-            long: req.body.long});
+            address: req.body.address});
             const marker = await newMarker.save();
             res.status(200).json(marker);
     } catch(err){

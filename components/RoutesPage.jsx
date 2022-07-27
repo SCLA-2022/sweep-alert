@@ -1,36 +1,30 @@
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Button,
-  SafeAreaView,
-  TextInput,
-  Pressable,
-} from "react-native";
-
+import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
 // function popup () {
 //     console.log(this is working)
 // },
 export default function App({ navigation }) {
   return (
     <View>
-      <View style={styles.headspacing}>
-      <Text style={styles.Textheading}>Route Schedules Near</Text>
-      <Text style={styles.Textbody}>
-        3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
-      </Text>
-      <Entypo
-        onPress={() => navigation.navigate("MapPage")}
-        style={styles.IconStyle}
-        name="chevron-left"
-        size={26}
-        color="#420F0F"
-      />
+      <View style={styles.controller}>
+        <View style={styles.headspacing}>
+          <View style={styles.alignment}>
+            <Text style={styles.Textheading}>Route Schedules Near</Text>
+            <Text style={styles.Textbody}>
+              3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
+            </Text>
+          </View>
+          <Entypo
+            onPress={() => navigation.navigate("MapPage")}
+            style={styles.IconStyle}
+            name="chevron-left"
+            size={26}
+            color="#420F0F"
+          />
+        </View>
       </View>
-      <View style={styles.OuterView}>
+      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes")} style={styles.OuterViewforboxes}>
         <View style={styles.Viewstyle}>
           <View>
             <Text style={styles.headerstyle}>Thursday</Text>
@@ -38,23 +32,47 @@ export default function App({ navigation }) {
             <Text style={styles.headerstyle}>
               2nd & 4th Thursday of the month
             </Text>
-            <View style={styles.IconView, styles.IconViewone}>
-              <Entypo onPress={() => navigation.navigate("DetailedRoutes",{day:'Thursday', time:'4am - 6:30am', frequency:'2nd & 4th Thursday of the month'})} name="chevron-right" size={30} color="black" />
-            </View>
+            {/* <View style={[styles.IconView, styles.IconViewone]}>
+              <Entypo
+                onPress={() =>
+                  navigation.navigate("DetailedRoutes", {
+                    day: "Thursday",
+                    time: "4am - 6:30am",
+                    frequency: "2nd & 4th Thursday of the month",
+                  })
+                }
+                name="chevron-right"
+                size={30}
+                color="black"
+              />
+            </View> */}
           </View>
         </View>
-      </View>
-      <View style={styles.OuterView}>
-        <View style={styles.Viewstyle}>
+      </TouchableOpacity>
+      <View style={styles.OuterViewforboxes}>
+        <View
+          style={styles.Viewstyle}
+        >
           <View>
             <Text style={styles.headerstyle}>Friday</Text>
             <Text style={styles.headerstyle}>4am - 6:30am</Text>
             <Text style={styles.headerstyle}>
               2nd & 4th friday of the month
             </Text>
-            <View style={styles.IconView}>
-              <Entypo  onPress={() => navigation.navigate("DetailedRoutes",{day:'Friday',time:'4am - 6:30am',frequency:'2nd & 4th Friday of the month'})}  name="chevron-right" size={30} color="black" />
-            </View>
+            {/* <View style={styles.IconView}>
+              <Entypo
+                onPress={() =>
+                  navigation.navigate("DetailedRoutes", {
+                    day: "Friday",
+                    time: "4am - 6:30am",
+                    frequency: "2nd & 4th Friday of the month",
+                  })
+                }
+                name="chevron-right"
+                size={30}
+                color="black"
+              />
+            </View> */}
           </View>
         </View>
       </View>
@@ -63,29 +81,53 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
-  IconStyle: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    // marginTop: -85,
-    marginVertical: 10,
-  },
+  //   input: {
+  //     height: 40,
+  //     margin: 12,
+  //     borderWidth: 1,
+  //     padding: 10,
+  //   },
+
   headspacing: {
     // flexDirection: "row",
-    marginVertical: 100,
+    // marginVertical: 100,
+  },
+  IconStyle: {
+    backgroundColor: "purple",
+    position: "absolute",
+    // flexDirection: "column",
+    flexDirection: "row",
+    // justifyContent: "flex-start",
+    // marginTop: -85,
+    // marginVertical: 10,
+  },
+  controller: {
+    // flexDirection: "row",
+    backgroundColor: "blue",
+  },
+  alignment: {
+    justifyContent: "center",
+    textAlign: "center",
   },
   Textheading: {
+    // flexDirection: "column",
     color: "black",
+    backgroundColor: "yellow",
     textAlign: "center",
+    alignSelf: "center",
     fontSize: 25,
-    // fontWeight: "500",
+    letterSpacing: 1,
     // marginBottom: 10,
     // marginTop: 50,
+    fontFamily: "RobotoCondensedbold",
+  },
+  Textbody: {
+    backgroundColor: "red",
+    // flexDirection: "column",
+    color: "black",
+    // textAlign: "center",
+    fontSize: 22,
+    // fontWeight: "300",
   },
   IconViewone: {
     width: 25,
@@ -96,12 +138,6 @@ const styles = StyleSheet.create({
     left: 160,
     bottom: 80,
   },
-  Textbody: {
-    color: "black",
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "300",
-  },
   Viewstyle: {
     backgroundColor: "#902E2E",
     width: 349,
@@ -110,14 +146,19 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     marginTop: 100,
     padding: 5,
-    flexDirection: "row",
+    // flexDirection: "row",
     borderColor: "#902E2E",
   },
-  OuterView: {
+  OuterViewforboxes: {
     justifyContent: "center",
     alignItems: "center",
     // padding: -50,
     // marginBottom: -75,
+  },
+  headerstyle: {
+    fontSize: 22,
+    color: "white",
+    fontFamily: "Robotomid",
   },
   IconView: {
     width: 25,
@@ -128,10 +169,6 @@ const styles = StyleSheet.create({
     left: 180,
     bottom: 80,
   },
-  headerstyle: {
-    fontSize: 22,
-    color: "white",
-  },
   subHeaderStyle: {
     fontSize: 15,
   },
@@ -139,4 +176,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-// onPress={popup}

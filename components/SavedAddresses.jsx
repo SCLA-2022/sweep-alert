@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import AddCarPage from "./AddCarPage";
-import SavedAddresses from "./SavedAddresses";
 
 const App = ({ navigation }) => {
   return (
@@ -18,7 +16,7 @@ const App = ({ navigation }) => {
       </View>
       <Text style={styles.DashStyle}>SAVED ADDRESSES</Text>
       <View style={styles.alignment}>
-        <Text style={styles.boxtext}>you have no saved addresses :(</Text>
+        <Text style={styles.boxtext}>you have no saved addresses :</Text>
       </View>
     </View>
   );
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     color: "#591818",
     fontWeight: "bold",
     letterSpacing: 1,
-    fontFamily: "RobotoCondensed_700Bold",
+    fontFamily: "RobotoCondensedbold",
   },
   arrowstyle: {
     marginVertical: 10,
@@ -70,20 +68,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     // backgroundColor: "#902E2E",
     // borderWidth: ,
-    fontFamily: "RobotoCondensed_300Light",
+    fontFamily: "RobotoCondensedlight"
   },
   formattingone: {
     color: "black",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "RobotoMono_600SemiBold",
+    // fontFamily: "RobotoMono_600SemiBold",
     marginTop: 15,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "RobotoMono_600SemiBold",
+    // fontFamily: "RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
@@ -92,7 +90,7 @@ const styles = StyleSheet.create({
   boxestext: {
     textAlign: "center",
     color: "white",
-    fontFamily: "Roboto_500Medium",
+    fontFamily: "Robotomid",
     fontWeight: "bold",
     fontSize: 20,
   },

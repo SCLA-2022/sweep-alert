@@ -13,14 +13,22 @@ import DetailedRoutes from "./components/DetailedRoutes";
 import Dashboard from "./components/Dashboard";
 
 import SavedAddresses from "./components/SavedAddresses";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 
 const Stack = createNativeStackNavigator();
+
 const MyStack = () => {
   const [loaded] = useFonts({
     Roboto: require("./assets/fonts/Roboto-Regular.ttf"),
+    RobotoCondensedbold: require("./assets/fonts/RobotoCondensed-Bold.ttf"),
+    RobotoCondensedlight: require("./assets/fonts/RobotoCondensed-Light.ttf"),
+    Robotomid: require("./assets/fonts/Roboto-Medium.ttf")
   });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -77,4 +85,3 @@ const MyStack = () => {
   );
 };
 export default MyStack;
-// initialRouteName="AddCarPage"

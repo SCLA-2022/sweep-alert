@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TextInput, SafeAreaView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import AddCarPage from "./AddCarPage";
-import CurrentAlarms from "./CurrentAlarms";
 
 const App = ({ navigation }) => {
   return (
@@ -18,7 +16,7 @@ const App = ({ navigation }) => {
       </View>
       <Text style={styles.DashStyle}>CURRENT ALARMS</Text>
       <View style={styles.alignment}>
-        <Text style={styles.boxtext}>you have no current alarms :(</Text>
+        <Text style={styles.boxtext}>you have no current alarms :</Text>
       </View>
     </View>
   );
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     color: "#591818",
     fontWeight: "bold",
     letterSpacing: 1,
-    fontFamily: "RobotoCondensed_700Bold",
+    fontFamily: "RobotoCondensedbold", //"RobotoCondensed_700Bold",
   },
   arrowstyle: {
     marginVertical: 10,
@@ -70,20 +68,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     // backgroundColor: "#902E2E",
     // borderWidth: ,
-    fontFamily: "Roboto" //RobotoCondensed_300Light",
+    fontFamily: "RobotoCondensedlight" //RobotoCondensed_300Light",
   },
   formattingone: {
     color: "black",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "Roboto",//"RobotoMono_600SemiBold",
+    // fontFamily: "Roboto",//"RobotoMono_600SemiBold",
     marginTop: 15,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 20,
     letterSpacing: 4,
-    fontFamily: "Roboto", //"RobotoMono_600SemiBold",
+    // fontFamily: "Roboto", //"RobotoMono_600SemiBold",
   },
   minilogostyle: {
     alignSelf: "center",
@@ -92,7 +90,7 @@ const styles = StyleSheet.create({
   boxestext: {
     textAlign: "center",
     color: "white",
-    fontFamily: "Roboto", //"Roboto_500Medium",
+    fontFamily: "Robotomid", //"Roboto_500Medium",
     fontWeight: "bold",
     fontSize: 20,
   },

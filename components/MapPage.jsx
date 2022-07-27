@@ -5,101 +5,65 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import MapView, { Marker, PROVIDER_GOOGLE} from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Pressable,
-  Button,
-} from "react-native";
-import { Searchbar } from "react-native-paper";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import * as Location from "expo-location";
-import { NativeBaseProvider, Actionsheet, Box } from "native-base";
-import AddCarPage from "./AddCarPage";
-import AllCarsPage from "./AllCarsPage";
-import DetailedRoutes from "./DetailedRoutes";
-import CurrentAlarms from "./CurrentAlarms";
-import RoutesPage from "./RoutesPage";
+import { NativeBaseProvider } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
-import Dashboard from "./Dashboard";
-import {
-  RobotoCondensed_300Light,
-  RobotoCondensed_300Light_Italic,
-  RobotoCondensed_400Regular,
-  RobotoCondensed_400Regular_Italic,
-  RobotoCondensed_700Bold,
-  RobotoCondensed_700Bold_Italic,
-} from "@expo-google-fonts/roboto-condensed";
-
-import {
-  Roboto_100Thin,
-  Roboto_100Thin_Italic,
-  Roboto_300Light,
-  Roboto_300Light_Italic,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_500Medium,
-  Roboto_500Medium_Italic,
-  Roboto_700Bold,
-  Roboto_700Bold_Italic,
-  Roboto_900Black,
-  Roboto_900Black_Italic,
-} from "@expo-google-fonts/roboto";
 
 const TAB_BAR_HEIGHT = 49;
 const mapStyle = [
   {
-    "featureType": "landscape",
-    "stylers": [
+    featureType: "landscape",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "featureType": "poi",
-    "stylers": [
+    featureType: "poi",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "featureType": "poi.attraction",
-    "stylers": [
+    featureType: "poi.attraction",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "featureType": "poi.business",
-    "stylers": [
+    featureType: "poi.business",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "featureType": "transit",
-    "stylers": [
+    featureType: "transit",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
+        visibility: "off",
+      },
+    ],
   },
   {
-    "featureType": "water",
-    "stylers": [
+    featureType: "water",
+    stylers: [
       {
-        "visibility": "off"
-      }
-    ]
-  }
-]
+        visibility: "off",
+      },
+    ],
+  },
+];
+
 export default function App({ navigation }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -126,7 +90,7 @@ export default function App({ navigation }) {
   const snapPoints = useMemo(() => ["15%", "25%", "50%"], []);
 
   // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
+  const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
   }, []);
 
@@ -137,23 +101,22 @@ export default function App({ navigation }) {
   } else if (location) {
     text = JSON.stringify(location);
   }
-
-  // const openDrawer = () => {
-  //   setIsOpen(true);
-  // };
-
-  // const onClose = () => {
-  //   setIsOpen(false);
-  // };
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
+
+  // Geocoder.from("28435 Gold Canyon Dr").then(
+  //   json => {
+  //       var location = json.results[0].geometry.location;
+  //       console.log(location);
+  //   }).catch(
+  //       error => console.log(error));
 
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
         {location === null ? null : (
           <MapView
-          provider={PROVIDER_GOOGLE}
-          customMapStyle={mapStyle}
+            provider={PROVIDER_GOOGLE}
+            customMapStyle={mapStyle}
             initialRegion={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
@@ -166,6 +129,8 @@ export default function App({ navigation }) {
               coordinate={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
               }}
             />
             <Marker
@@ -285,7 +250,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2.5,
     justifyContent: "center",
     flexDirection: "row",
-    fontFamily: 'Roboto' //"RobotoCondensed_400Regular",
+    fontFamily: "Roboto", //"RobotoCondensed_400Regular",
   },
   baseText: {
     fontSize: 27,
@@ -359,10 +324,12 @@ const styles = StyleSheet.create({
 //     alignSelf: "center", //for align to right
 //   }}
 // ></View>
-{/* <Marker
+{
+  /* <Marker
               coordinate={{ latitude: 34.03308, longitude: -118.29202 }}
               pinColor={"lightblue"} // any color
               title={"76 Gas Station"}
               description={"Pump #2, beware"}
               image={require('../assets/Group236.png')}
-            /> */}
+            /> */
+}
