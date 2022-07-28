@@ -7,7 +7,23 @@ import React, {
 } from "react";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Modal,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
+
+//import CountDown to show the timer
+import CountDown from "react-native-countdown-component";
+
+//import moment to help you play with date and time
+import moment from "moment";
+
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -69,6 +85,10 @@ export default function App({ navigation }) {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  
+  const [show, setShow] = React.useState();
+  const [totalDuration, setTotalDuration] = useState(100);
   const onChangeSearch = (query) => setSearchQuery(query);
 
   useEffect(() => {
@@ -126,6 +146,9 @@ export default function App({ navigation }) {
             style={styles.map}
           >
             <Marker
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
               coordinate={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
@@ -134,12 +157,18 @@ export default function App({ navigation }) {
               }}
             />
             <Marker
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
               coordinate={{
                 latitude: 34.00327679084823,
                 longitude: -118.23254024639981,
               }}
             />
             <Marker
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
               coordinate={{
                 latitude: 34.022137315448866,
                 longitude: -118.30012121882638,
@@ -184,12 +213,77 @@ export default function App({ navigation }) {
                 size={30}
                 color="white"
               /> */}
+
               <Entypo
                 onPress={() => navigation.navigate("RoutesPage")}
                 name="magnifying-glass"
                 size={30}
                 color="white"
               />
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                  Alert.alert("Modal has been closed.");
+                  // navigation.navigate("Dashboard");
+                  setModalVisible(!modalVisible);
+                }}
+              >
+                <View style={styles.centeredView}>
+                  <View style={styles.modalView}>
+                    <Text style={styles.modalText}>
+                      300 W 23RD ST,{"\n"} LOS ANGELES, CA, 900007
+                    </Text>
+                    <AntDesign
+                      style={styles.AntStyle}
+                      onPress={() => {
+                        setModalVisible(!modalVisible);
+                        setShow(false);
+                        navigation.navigate("MapPage");
+                      }}
+                      name="close"
+                      size={30}
+                      color="white"
+                    />
+                    <Text style={styles.modalTexttwo}>Countdown </Text>
+                    <View>
+                    <CountDown
+                    style={styles.TimerStyleone}
+                      // until={totalDuration}
+                      until={60 * 10 + 30}
+                      //duration of countdown in seconds
+                      timeToShow={["D", "H", "M", "S"]}
+                      //formate to show
+                      onFinish={() => {}}
+                      // onFinish={() => alert("Finished")}
+
+                      //on Finish call
+                      onPress={() => {}}
+                      //on Press call
+                      size={30}
+                      digitStyle={{ backgroundColor: "#902E2E" }}
+                      digitTxtStyle={{ color: "white" , marginTop: 30, }}
+                      timeLabels={{
+                        d: "Days",
+                        h: "Hours",
+                        m: "Minutes",
+                        s: "Seconds",
+                      }}
+                      timeLabelStyle={{ color: "black" }}
+                      // digitStyle={{
+                      //   backgroundColor: "#FFF",
+                      //   borderWidth: 2,
+                      //   borderColor: "#1CC625",
+                      // }}
+                      separatorStyle={{ color: "black" }}
+                      showSeparator
+
+                    />
+                    </View>
+                  </View>
+                </View>
+              </Modal>
             </View>
           </View>
         </BottomSheet>
@@ -199,6 +293,65 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  TimerStyleone: {
+    // marginBottom: 50,
+    marginVertical: 40,
+    // backgroundColor: "red",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 100,
+  },
+  AntStyle: {
+    flexDirection: "row",
+    alignSelf: "flex-start",
+    position: "absolute",
+    margin: 10,
+  },
+  modalView: {
+    // margin: 15,
+    backgroundColor: "#902E2E",
+    borderRadius: 20,
+    width: 400,
+    height: 401,
+    padding: 0,
+    // width: "95%",
+    alignItems: "center",
+    // justifyContent: "center",
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+  },
+  modalTexttwo: {
+    fontSize: 20,
+    color: "white",
+    // bottom: 50,
+  },
+  modalText: {
+    // marginBottom: 15,
+    // marginVertical: 50,
+    // bottom: 75,
+    // margin
+    marginTop: 50,
+    marginBottom: 58,
+    textAlign: "center",
+    color: "white",
+    fontSize: 25,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 5,
+    backgroundColor: "black",
+  },
+  // buttonClose: {
+  //   backgroundColor: "#902E2E",
+  // },
   container: {
     flex: 1,
     // backgroundColor: "red",
@@ -279,7 +432,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
 });
-
+{
+  /* <TouchableOpacity
+                      style={[styles.button, styles.buttonClose]}
+                      onPress={() => {
+                        setModalVisible(!modalVisible);
+                        setShow(false);
+                        navigation.navigate("MapPage");
+                      }}
+                    >
+                      <Text style={{ color: "white" }}>Okay</Text>
+                    </TouchableOpacity> */
+}
 {
   /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
 }

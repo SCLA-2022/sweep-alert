@@ -19,12 +19,12 @@ export default function App({ navigation }) {
             onPress={() => navigation.navigate("MapPage")}
             style={styles.IconStyle}
             name="chevron-left"
-            size={26}
+            size={30}
             color="#420F0F"
           />
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes")} style={styles.OuterViewforboxes}>
+      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes", {})} style={styles.OuterViewforboxes}>
         <View style={styles.Viewstyle}>
           <View>
             <Text style={styles.headerstyle}>Thursday</Text>
@@ -49,7 +49,7 @@ export default function App({ navigation }) {
           </View>
         </View>
       </TouchableOpacity>
-      <View style={styles.OuterViewforboxes}>
+      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes", {})} style={styles.OuterViewforboxes}>
         <View
           style={styles.Viewstyle}
         >
@@ -75,7 +75,7 @@ export default function App({ navigation }) {
             </View> */}
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -90,29 +90,33 @@ const styles = StyleSheet.create({
 
   headspacing: {
     // flexDirection: "row",
-    // marginVertical: 100,
   },
   IconStyle: {
-    backgroundColor: "purple",
+    // backgroundColor: "purple",
     position: "absolute",
     // flexDirection: "column",
     flexDirection: "row",
     // justifyContent: "flex-start",
-    // marginTop: -85,
+    marginTop: 80,
+    marginHorizontal: 19,
     // marginVertical: 10,
   },
-  controller: {
+  changeone: {
     // flexDirection: "row",
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
+    marginTop: 50,
   },
   alignment: {
     justifyContent: "center",
     textAlign: "center",
+    marginTop: 102,
+    // marginVertical: 102,
+
   },
   Textheading: {
     // flexDirection: "column",
     color: "black",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     textAlign: "center",
     alignSelf: "center",
     fontSize: 25,
@@ -122,10 +126,10 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoCondensedbold",
   },
   Textbody: {
-    backgroundColor: "red",
+    // backgroundColor: "red",
     // flexDirection: "column",
     color: "black",
-    // textAlign: "center",
+    textAlign: "center",
     fontSize: 22,
     // fontWeight: "300",
   },
@@ -139,12 +143,13 @@ const styles = StyleSheet.create({
     bottom: 80,
   },
   Viewstyle: {
+    marginTop: 77,
     backgroundColor: "#902E2E",
     width: 349,
     height: 110,
     borderWidth: 2,
     borderRadius: 9,
-    marginTop: 100,
+    // marginTop: 100,
     padding: 5,
     // flexDirection: "row",
     borderColor: "#902E2E",
@@ -153,7 +158,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     // padding: -50,
-    // marginBottom: -75,
+    marginBottom: -36,
+    // marginBottom: 150,
+    // marginVertical: 100,
   },
   headerstyle: {
     fontSize: 22,
