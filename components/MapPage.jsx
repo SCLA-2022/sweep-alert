@@ -18,11 +18,7 @@ import {
   SafeAreaView,
 } from "react-native";
 
-//import CountDown to show the timer
-import CountDown from "react-native-countdown-component";
 
-//import moment to help you play with date and time
-import moment from "moment";
 
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
@@ -86,9 +82,9 @@ export default function App({ navigation }) {
   const [isOpen, setIsOpen] = useState(true);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  
+
   const [show, setShow] = React.useState();
-  const [totalDuration, setTotalDuration] = useState(100);
+
   const onChangeSearch = (query) => setSearchQuery(query);
 
   useEffect(() => {
@@ -248,38 +244,7 @@ export default function App({ navigation }) {
                     />
                     <Text style={styles.modalTexttwo}>Countdown </Text>
                     <View>
-                    <CountDown
-                    style={styles.TimerStyleone}
-                      // until={totalDuration}
-                      until={60 * 10 + 30}
-                      //duration of countdown in seconds
-                      timeToShow={["D", "H", "M", "S"]}
-                      //formate to show
-                      onFinish={() => {}}
-                      // onFinish={() => alert("Finished")}
-
-                      //on Finish call
-                      onPress={() => {}}
-                      //on Press call
-                      size={30}
-                      digitStyle={{ backgroundColor: "#902E2E" }}
-                      digitTxtStyle={{ color: "white" , marginTop: 30, }}
-                      timeLabels={{
-                        d: "Days",
-                        h: "Hours",
-                        m: "Minutes",
-                        s: "Seconds",
-                      }}
-                      timeLabelStyle={{ color: "black" }}
-                      // digitStyle={{
-                      //   backgroundColor: "#FFF",
-                      //   borderWidth: 2,
-                      //   borderColor: "#1CC625",
-                      // }}
-                      separatorStyle={{ color: "black" }}
-                      showSeparator
-
-                    />
+                      <CustomCountDown />
                     </View>
                   </View>
                 </View>
