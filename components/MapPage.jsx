@@ -227,9 +227,13 @@ export default function App({ navigation }) {
                 }}
               >
                 <View style={styles.centeredView}>
-                  <View style={styles.modalView}>
+                {/* opacity={0.86}  */}
+                  <View style={[styles.modalView, {backgroundColor: 'rgba(66, 15, 15, 0.86)'}]}>
                     <Text style={styles.modalText}>
                       300 W 23RD ST,{"\n"} LOS ANGELES, CA, 900007
+                    </Text>
+                    <Text style={styles.modalTexttwo}>
+                    TUESDAY, 4 AM - 6:30 AM, 1ST AND 3RD TUES. OF THE MONTH
                     </Text>
                     <AntDesign
                       style={styles.AntStyle}
@@ -242,10 +246,20 @@ export default function App({ navigation }) {
                       size={30}
                       color="white"
                     />
-                    <Text style={styles.modalTexttwo}>Countdown </Text>
+                    <Text style={styles.modalTextthree}>Countdown </Text>
                     <View>
-                      <CustomCountDown />
+                      {/* <CustomCountDown /> */}
                     </View>
+                    <Text style={styles.timeLabelStyle}>
+                    HR MIN SEC
+                      </Text>
+                      <TouchableOpacity style={styles.setAlarmbutton} >
+                        <View>
+                        <Text style={styles.setalarmtext}>
+                          Set Alarm
+                          </Text>
+                          </View>
+                        </TouchableOpacity>
                   </View>
                 </View>
               </Modal>
@@ -263,11 +277,39 @@ const styles = StyleSheet.create({
     marginVertical: 40,
     // backgroundColor: "red",
   },
+  setalarmtext: {
+    color: "white", 
+    alignSelf: "center", 
+    textAlign: "center", 
+    fontSize: 16,
+    letterSpacing: 5,
+
+  },
+
+  setAlarmbutton: {
+    alignItems: "center",
+    backgroundColor: "#420F0F",
+    padding: 10,
+    justifyContent: "center",
+    borderRadius: 10,
+    width: 278,
+    height: 60,
+    marginTop: 59,
+    // opacity={0.86},
+    // opacity: 1,
+    fontFamily: "Roboto",
+  },
+  timeLabelStyle: {
+    fontSize: 16,
+    color: "white",
+  },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 100,
+    marginBottom: 277,
+    marginTop: 97,
+    // backgroundColor: "blue",
   },
   AntStyle: {
     flexDirection: "row",
@@ -277,10 +319,10 @@ const styles = StyleSheet.create({
   },
   modalView: {
     // margin: 15,
-    backgroundColor: "#902E2E",
+    backgroundColor: "#420F0F",
     borderRadius: 20,
-    width: 400,
-    height: 401,
+    width: 379,
+    height: 561,
     padding: 0,
     // width: "95%",
     alignItems: "center",
@@ -292,8 +334,15 @@ const styles = StyleSheet.create({
     // },
   },
   modalTexttwo: {
+    fontSize: 10,
+    color: "white",
+    // bottom: 50,
+    marginTop: 7,
+  },
+  modalTextthree: {
     fontSize: 20,
     color: "white",
+    marginTop: 37,
     // bottom: 50,
   },
   modalText: {
@@ -301,11 +350,12 @@ const styles = StyleSheet.create({
     // marginVertical: 50,
     // bottom: 75,
     // margin
-    marginTop: 50,
-    marginBottom: 58,
+    // marginTop: 50,
+    // marginBottom: 58,
+    marginTop: 77,
     textAlign: "center",
     color: "white",
-    fontSize: 25,
+    fontSize: 24,
   },
   button: {
     borderRadius: 20,
