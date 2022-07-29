@@ -17,7 +17,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-
+import CustomCountDown from "./CustomCountDown.jsx"
 
 
 import * as Location from "expo-location";
