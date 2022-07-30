@@ -17,8 +17,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import CustomCountDown from "./CustomCountDown.jsx"
-
+import CustomCountDown from "./CustomCountDown.jsx";
 
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
@@ -97,7 +96,7 @@ export default function App({ navigation }) {
 
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      console.log(location);
+      // console.log(location);
     })();
   }, []);
 
@@ -211,9 +210,15 @@ export default function App({ navigation }) {
                 color="white"
               /> */}
 
-              <Entypo
+              {/* <Entypo
                 onPress={() => navigation.navigate("RoutesPage")}
                 name="magnifying-glass"
+                size={30}
+                color="white"
+              /> */}
+              <AntDesign
+                onPress={() => navigation.navigate("RoutesPage")}
+                name="plus"
                 size={30}
                 color="white"
               />
@@ -228,13 +233,18 @@ export default function App({ navigation }) {
                 }}
               >
                 <View style={styles.centeredView}>
-                {/* opacity={0.86}  */}
-                  <View style={[styles.modalView, {backgroundColor: 'rgba(66, 15, 15, 0.86)'}]}>
+                  {/* opacity={0.86}  */}
+                  <View
+                    style={[
+                      styles.modalView,
+                      { backgroundColor: "rgba(66, 15, 15, 0.86)" },
+                    ]}
+                  >
                     <Text style={styles.modalText}>
                       300 W 23RD ST,{"\n"} LOS ANGELES, CA, 900007
                     </Text>
                     <Text style={styles.modalTexttwo}>
-                    TUESDAY, 4 AM - 6:30 AM, 1ST AND 3RD TUES. OF THE MONTH
+                      TUESDAY, 4 AM - 6:30 AM, 1ST AND 3RD TUES. OF THE MONTH
                     </Text>
                     <AntDesign
                       style={styles.AntStyle}
@@ -251,16 +261,12 @@ export default function App({ navigation }) {
                     <View>
                       <CustomCountDown />
                     </View>
-                    <Text style={styles.timeLabelStyle}>
-                    HR MIN SEC
-                      </Text>
-                      <TouchableOpacity style={styles.setAlarmbutton} >
-                        <View>
-                        <Text style={styles.setalarmtext}>
-                          Set Alarm
-                          </Text>
-                          </View>
-                        </TouchableOpacity>
+                    <Text style={styles.timeLabelStyle}>HR MIN SEC</Text>
+                    <TouchableOpacity style={styles.setAlarmbutton}>
+                      <View>
+                        <Text style={styles.setalarmtext}>Set Alarm</Text>
+                      </View>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </Modal>
@@ -279,12 +285,11 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
   },
   setalarmtext: {
-    color: "white", 
-    alignSelf: "center", 
-    textAlign: "center", 
+    color: "white",
+    alignSelf: "center",
+    textAlign: "center",
     fontSize: 16,
     letterSpacing: 5,
-
   },
 
   setAlarmbutton: {
