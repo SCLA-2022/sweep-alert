@@ -21,43 +21,40 @@ import CountDown from "react-native-countdown-component";
 import moment from "moment";
 
 export default function CustomCountDown() {
-  const [totalDuration, setTotalDuration] = useState(100);
+//   const [totalDuration, setTotalDuration] = useState(100);
+    let duration = 100
 
-  useEffect(() => {
+//   useEffect(() => {
     //We are showing the coundown timer for a given expiry date-time
     //If you are making a quize type app then you need to make a simple timer
     //which can be done by using the simple like given below
     //that.setState({ totalDuration: 30 }); //which is 30 sec
     var date = moment().utcOffset('+05:30').format('YYYY-MM-DD hh:mm:ss');
     //Getting the current date-time with required formate and UTC
-    var expirydate = '2022-7-29 04:30:00'; //You can set your own date-time
+    var expirydate = '2022-08-01 04:30:00'; //You can set your own date-time
+
+
+    // console.log(date.add(5, 'hours'))
     //Let suppose we have to show the countdown for above date-time
     var diffr = moment.duration(moment(expirydate).diff(moment(date)));
     //difference of the expiry date-time given and current date-time
     var hours = parseInt(diffr.asHours());
     var minutes = parseInt(diffr.minutes());
     var seconds = parseInt(diffr.seconds());
-    var d = hours * 60 * 60 + minutes * 60 + seconds;
+    duration = hours * 60 * 60 + minutes * 60 + seconds
+    console.log('inside:', duration)
+    // setTotalDuration() = ;
     //converting in seconds
-    setTotalDuration(d);
+    // setTotalDuration(d);
+    // setTotalDuration(d);
     //Settign up the duration of countdown in seconds to re-render
-  }, [totalDuration]);
-
+//   }, []);
+  console.log( 'Outside', duration)
   return (
     <CountDown
       style={styles.TimerStyleone}
-      // until={totalDuration}
-      until={parseInt(totalDuration)}
-      //duration of countdown in seconds
+      until={parseInt(duration)}
       timeToShow={[ "H", "M", "S"]}
-      //formate to show
-    //   onFinish={() => {}}
-      // onFinish={() => alert("Finished")}
-
-      //on Finish call
-    //   onPress={() => {}}
-      //on Press call
-
       size={48}
       digitStyle={{ margin: 0, padding: 0, height: 100, width: 65 }}
       digitTxtStyle={{ color: "white", padding: 0, fontSize: 48,}}
@@ -68,56 +65,15 @@ export default function CustomCountDown() {
         s: "",
       }}
 
-      //time label code for it to show like hours,minutes,seconds under digits
-      //   timeLabelStyle={{ color: "black" }}
-      // digitStyle={{
-      //   backgroundColor: "#FFF",
-      //   borderWidth: 2,
-      //   borderColor: "#1CC625",
-      // }}
-
       separatorStyle={{ color: "white", padding: 0,}}
-
         showSeparator
-
-      //bottom is angels code and top is my original code
-
-    //   until={parseInt(totalDuration)}
-    //   style={props.listStyle}
-    //   //duration of countdown in seconds
-    //   timetoShow={("H", "M", "S")}
-    //   //formate to show
-    //   // onFinish={() => alert('finished')}
-    //   //on Finish call
-    //   //The size below controls the ssize of the countdown timer
-    //   size={15}
-    //   timeLabelStyle={{ color: "transparent" }}
-    //   digitStyle={{ color: "transparent" }}
-    //   // timeLabelStyle={{ color: 'transparent', fontWeight: 'bold', marginBottom: 20, fontSize: 8, width: 30 }}
-    //   // digitTxtStyle={{ color: 'black' }}
-    //   digitTxtStyle={{
-    //     color: getCountdownColor(props.changeColor),
-    //     fontWeight: "bold",
-    //     fontSize: 24,
-    //     lineHeight: 27,
-    //     fontFamily: "boldK2D",
-    //   }}
-    //   // showSeparator
-    //   // separatorStyle={{ color: 'white', marginBottom: 25, fontSize: 15,}}
-    //   separatorStyle={{
-    //     color: getCountdownColor(props.changeColor),
-    //     bottom: 8,
-    //     fontFamily: "semiBoldK2D",
-    //     fontSize: 24,
-    //   }}
-    //   showSeparator
     />
   );
 }
 const styles = StyleSheet.create({
-  TimerStyleone: {
-    // marginBottom: 50,
-    // marginVertical: 40,
-    // backgroundColor: "red",
-  },
+//   TimerStyleone: {
+//     // marginBottom: 50,
+//     // marginVertical: 40,
+//     // backgroundColor: "red",
+//   },
 });

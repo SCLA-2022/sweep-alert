@@ -23,7 +23,7 @@ const MyStack = () => {
     Roboto: require("./assets/fonts/Roboto-Regular.ttf"),
     RobotoCondensedbold: require("./assets/fonts/RobotoCondensed-Bold.ttf"),
     RobotoCondensedlight: require("./assets/fonts/RobotoCondensed-Light.ttf"),
-    Robotomid: require("./assets/fonts/Roboto-Medium.ttf")
+    Robotomid: require("./assets/fonts/Roboto-Medium.ttf"),
   });
 
   if (!loaded) {
@@ -39,36 +39,43 @@ const MyStack = () => {
             component={MapPage}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="AddCarPage"
             component={AddCarPage}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="AllCarsPage"
             component={AllCarsPage}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="LoginPage"
             component={LoginPage}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="CurrentAlarms"
             component={CurrentAlarms}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="RoutesPage"
             component={RoutesPage}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="DetailedRoutes"
             component={DetailedRoutes}
             options={{ headerShown: false }}
           />
+
           <Stack.Screen
             name="Dashboard"
             component={Dashboard}

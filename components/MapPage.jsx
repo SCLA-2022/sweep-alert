@@ -100,6 +100,7 @@ export default function App({ navigation }) {
       console.log(location);
     })();
   }, []);
+
   const bottomSheetRef = useRef(null);
 
   // variables
@@ -248,7 +249,7 @@ export default function App({ navigation }) {
                     />
                     <Text style={styles.modalTextthree}>Countdown </Text>
                     <View>
-                      {/* <CustomCountDown /> */}
+                      <CustomCountDown />
                     </View>
                     <Text style={styles.timeLabelStyle}>
                     HR MIN SEC
