@@ -7,7 +7,7 @@ const App = ({ navigation }) => {
     <View style={styles.flexstyle}>
       <View style={styles.ViewStyle}>
         <Entypo
-          onPress={() => navigation.navigate("MapPage")}
+          onPress={() => navigation.navigate("Dashboard")}
           style={styles.arrowstyle}
           name="chevron-left"
           size={30}

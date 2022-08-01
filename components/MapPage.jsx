@@ -22,7 +22,6 @@ import CustomCountDown from "./CustomCountDown.jsx";
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
-
 const TAB_BAR_HEIGHT = 49;
 const mapStyle = [
   {
@@ -151,6 +150,7 @@ export default function App({ navigation }) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
+              // image "../assets/startinglocation.png"
             />
             <Marker
               onPress={() => {
@@ -177,10 +177,17 @@ export default function App({ navigation }) {
                 size={24}
                 color="black"
               /> */}
-              <Entypo
+              {/* <Entypo
                 onPress={() => navigation.navigate("Dashboard")}
                 style={styles.dotsstyle}
                 name="dots-three-vertical"
+                size={24}
+                color="white"
+              /> */}
+              <AntDesign
+                onPress={() => navigation.navigate("Dashboard")}
+                name="dashboard"
+                style={styles.dotsstyle}
                 size={24}
                 color="white"
               />
