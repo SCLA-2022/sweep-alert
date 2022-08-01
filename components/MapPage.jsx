@@ -160,6 +160,7 @@ export default function App({ navigation }) {
                 latitude: 34.00327679084823,
                 longitude: -118.23254024639981,
               }}
+              icon={require("../assets/startinglocation.png")}
             />
             <Marker
               onPress={() => {
@@ -169,6 +170,7 @@ export default function App({ navigation }) {
                 latitude: 34.022137315448866,
                 longitude: -118.30012121882638,
               }}
+              icon={require("../assets/startinglocation.png")}
             />
             <View style={styles.IconStyle}>
               {/* <Entypo
