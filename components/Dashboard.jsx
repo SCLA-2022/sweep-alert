@@ -25,9 +25,8 @@ const App = ({ navigation }) => {
           style={styles.arrowstyle}
           name="chevron-left"
           size={30}
-          color="black"
+          color="#591818"
         />
-
         {/* , {position: 'relative', top: -30}  */}
         {/* style={styles.DashStyle} */}
         <Text style={styles.DashStyle}>DASHBOARD</Text>
@@ -50,6 +49,16 @@ const App = ({ navigation }) => {
               style={styles.boxestext}
             >
               View Saved Addresses
+            </Text>
+          </View>
+        </View>
+        <View style={styles.boxtext}>
+          <View>
+            <Text
+              onPress={() => navigation.navigate("CurrentAlarms")}
+              style={styles.boxestext}
+            >
+              View Current Alarms
             </Text>
           </View>
         </View>
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
   downwardboxes: {
     // margin: 35,
-    marginTop: 307,
+    marginTop: 53,
   },
   DashStyle: {
     // textAlign: "center",
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
     // marginTop: -100,
     // marginBottom: 25,
     // backgroundColor: 'blue',
-    color: "#000000",
+    color: "#420F0F",
     fontWeight: "bold",
     letterSpacing: 1,
     fontFamily: "RobotoCondensedbold",
@@ -134,7 +143,7 @@ const styles = StyleSheet.create({
     // overflow: "hidden",
     // borderWidth: ,
     borderRadius: 10,
-    margin: 15,
+    margin: 20,
     width: 300,
     height: 75,
   },
@@ -153,7 +162,7 @@ const styles = StyleSheet.create({
   },
   minilogostyle: {
     alignSelf: "center",
-    marginTop: 90,
+    marginTop: 100,
     // fontFamily: "Roboto",
     // marginTop: 50,
   },

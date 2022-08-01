@@ -7,7 +7,7 @@ const App = ({ navigation }) => {
     <View style={styles.flexstyle}>
       <View style={styles.ViewStyle}>
         <Entypo
-          onPress={() => navigation.navigate("MapPage")}
+          onPress={() => navigation.navigate("Dashboard")}
           style={styles.arrowstyle}
           name="chevron-left"
           size={30}
@@ -16,7 +16,7 @@ const App = ({ navigation }) => {
       </View>
       <Text style={styles.DashStyle}>CURRENT ALARMS</Text>
       <View style={styles.alignment}>
-        <Text style={styles.boxtext}>you have no current alarms :</Text>
+        <Text style={styles.boxtext}>you have no current alarms :(</Text>
       </View>
     </View>
   );

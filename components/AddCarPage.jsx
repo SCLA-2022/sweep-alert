@@ -20,9 +20,19 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Constants from "expo-constants";
 import { Entypo } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
-import Geocoder from 'react-native-geocoding';
+import Geocoder from "react-native-geocoding";
 const GOOGLE_PLACES_API_KEY = "AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU";
 Geocoder.init(GOOGLE_PLACES_API_KEY);
+
+const horizontalLine = ({ color }) => (
+  <hr
+    style={{
+      color,
+      backgroundColor: color,
+      height: 4,
+    }}
+  />
+);
 
 const App = ({ navigation }) => {
   const [text, onChangeText] = React.useState("Useless Text");
@@ -45,8 +55,83 @@ const App = ({ navigation }) => {
   }, []);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const renderModal = () => (
+    <View
+      style={{
+        position: "absolute",
+        ...StyleSheet.absolutefillObject,
+        backgroundColor: "rgba(0,0,0, 0.8)",
+        zIndex: 35,
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          navigation.navigate("Dashboard");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView} opacity={0.95}>
+            <Text style={styles.modalTexttwo}>Sweep Alert</Text>
+            <View style={{ paddingHorizontal: 25, flexDirection: "row" }}>
+              <Text style={styles.modalText}>
+                Address has been saved. Check your map.
+              </Text>
+            </View>
+            <View
+              style={{
+                // borderBottomColor: "#3A3A3A",
+                // backgroundColor: "red",
+                // backgroundColor: "blue",
+                // height: 0,
+                marginTop: 49.6,
+                borderBottomWidth: 1,
+                alignSelf: "stretch",
+                // marginTop: 49.6,
+                flex: 1,
+                // width: 380.21,
+                // alignItems: "center",
+              }}
+            />
+            <View style={styles.okstyle}>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  setShow(false);
+                  navigation.navigate("MapPage");
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    // backgroundColor: "blue",
+                    fontSize: 19.01,
+                    textAlign: "center",
+                  }}
+                >
+                  OK
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+
   return (
     <View style={styles.flexput}>
+      {modalVisible === true ? renderModal() : null}
+
       <View style={styles.container}>
         <BottomSheet
           // ref={bottomSheetRef}
@@ -137,51 +222,19 @@ const App = ({ navigation }) => {
               // backgroundColor: "black",
             }}
           >
-            {/* <Button
-              onPress={console.log("h")}
-              color = 'white'
-              style={styles.buttonstyle}
-              title="this is a button"
-          ></Button> */}
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                navigation.navigate("Dashboard");
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Text style={styles.modalText}>
-                    Address has been saved.{"\n"}Check your map.
-                  </Text>
-                  <TouchableOpacity
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      setModalVisible(!modalVisible);
-                      setShow(false);
-                      navigation.navigate("MapPage");
-                    }}
-                  >
-                    <Text style={{ color: "white" }}>Okay</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal>
-
             {show ? (
               <TouchableOpacity
                 style={styles.buttonstyle}
-                onPress={() => {setModalVisible(!modalVisible);
-                    Geocoder.from(search).then(
-                        json => {
-                        var location = json.results[0].geometry.location;
-                        console.log(location);
-                        }).catch(
-                         error => console.log(error));}}
+                onPress={() => {
+                  // toggles the boolean value of ismodaltrue
+                  setModalVisible(!modalVisible);
+                  Geocoder.from(search)
+                    .then((json) => {
+                      var location = json.results[0].geometry.location;
+                      console.log(location);
+                    })
+                    .catch((error) => console.log(error));
+                }}
               >
                 <Text
                   style={{ color: "white", alignSelf: "center", fontSize: 18 }}
@@ -242,16 +295,23 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: 358.08,
+    // backgroundColor: "blue",
   },
   modalView: {
     // margin: 15,
     backgroundColor: "#222222",
     borderRadius: 20,
-    padding: 25,
+    // padding: 25,
+    // paddingTop: 25,
+    width: 380.21,
+    height: 209.12,
+    overflow: "hidden",
     alignItems: "center",
+    // flexWrap: "wrap",
+    // paddingHorizontal: 25,
     // shadowColor: "#000",
     // shadowOffset: {
     //   width: 0,
@@ -262,17 +322,37 @@ const styles = StyleSheet.create({
   modalText: {
     // marginBottom: 15,
     textAlign: "center",
-    color: "white",
-    fontSize: 18,
+    color: "#929292",
+    fontSize: 16,
+    marginTop: 14.05,
+    width: 250,
+    // paddingHorizontal: 25,
+    // backgroundColor: "red",
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    marginTop: 5,
+  modalTexttwo: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 19.01,
+    // backgroundColor: "blue",
+    marginTop: 22.18,
+  },
+  // button: {
+  //   borderRadius: 20,
+  //   padding: 10,
+  //   elevation: 2,
+  //   marginTop: 5,
+  // },
+  okstyle: {
+    //  backgroundColor: "yellow",
+    width: "100%",
+    height: 55.58,
   },
   buttonClose: {
-    backgroundColor: "#902E2E",
+    flex: 1,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    // paddingVertical: 6
   },
   textStyle: {
     color: "white",
