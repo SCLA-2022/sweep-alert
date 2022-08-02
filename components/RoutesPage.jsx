@@ -3,7 +3,7 @@ import { Entypo } from "@expo/vector-icons";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 export default function App({ navigation }) {
   return (
-    <View>
+  <View>
       <View style={styles.controller}>
         <View style={styles.headspacing}>
           <View style={styles.alignment}>
@@ -21,7 +21,7 @@ export default function App({ navigation }) {
           />
         </View>
       </View>
-      <TouchableOpacity
+    <TouchableOpacity
         onPress={() => navigation.navigate("DetailedRoutes", {})}
         style={styles.OuterViewforboxes}
       >
@@ -36,7 +36,7 @@ export default function App({ navigation }) {
               // borderBottomWidth: 1,
               alignSelf: "stretch",
               width: 2,
-              height: 137,
+              height: 140,
               backgroundColor: "white",
               // color: "blue",
               position: "absolute",
@@ -49,27 +49,52 @@ export default function App({ navigation }) {
             }}
           />
           <View style={{flexDirection: "row",}}>
-            <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text>
-            <Text style={styles.headerstyletwo}>
-              1ST & 3RD TUESDAY OF THE MONTH
-            </Text>
+            {/* <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text> */}
+            <View style={{alignItems: "center", marginTop: 15,}}>
+            <Text style={styles.headerstyleone}>4:00</Text>
+            <Text style={styles.headerstyleone}>AM</Text>
+            <Text style={styles.headerstyleone}>-</Text>
+            <Text style={styles.headerstyleone}>6:30</Text>
+            <Text style={styles.headerstyleone}>AM</Text>
+            </View>
+            {/* <Text style={styles.headerstyletwo}>
+             marginTop: 15,
+            </Text> */}
+            <View style={{alignItems: "center", marginTop: 25, }}>
+            <Text style={styles.headerstyletwo}>1ST & 3RD</Text>
+            <Text style={styles.headerstyletwo}>TUESDAY OF</Text>
+            <Text style={styles.headerstyletwo}>THE MONTH</Text>
+            </View>
           </View>
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity
+    </TouchableOpacity>
+    <TouchableOpacity
         onPress={() => navigation.navigate("DetailedRoutes", {})}
         style={styles.OuterViewforboxes}
       >
         <View style={styles.Viewstyle}>
           <View>
-            <Text style={styles.headerstyleone}>4am - 6:30am</Text>
-            <Text style={styles.headerstyle}>
-              2nd & 4th friday of the month
-            </Text>
+           <View style={{flexDirection: "row",}}>
+            {/* <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text> */}
+            <View style={{alignItems: "center", marginTop: 15,}}>
+            <Text style={styles.headerstyleone}>4:00</Text>
+            <Text style={styles.headerstyleone}>AM</Text>
+            <Text style={styles.headerstyleone}>-</Text>
+            <Text style={styles.headerstyleone}>6:30</Text>
+            <Text style={styles.headerstyleone}>AM</Text>
+            </View>
+            {/* <Text style={styles.headerstyletwo}>
+             marginTop: 15,
+            </Text> */}
+            <View style={{alignItems: "center", marginTop: 25, }}>
+            <Text style={styles.headerstyletwo}> 2nd & 4th</Text>
+            <Text style={styles.headerstyletwo}>WEDNESDAY OF</Text>
+            <Text style={styles.headerstyletwo}>THE MONTH</Text>
+            </View>
           </View>
         </View>
-      </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
+  </View>
   );
 }
 
@@ -158,18 +183,23 @@ const styles = StyleSheet.create({
   },
   headerstyleone: {
     fontSize: 20,
-    width: 63,
-    height: 120,
+    // width: 63,
+    // height: 120,
     color: "white",
     fontFamily: "RobotoCondensedbold",
     // flexDirection: "column",
-    backgroundColor: "blue",
-    marginHorizontal: 23,
-    marginTop: 15,
+    // backgroundColor: "blue",
+    marginHorizontal: 34,
+    // marginHorizontal: 1,
+    // backgroundColor: "blue",
+    // marginTop: 15,
   },
   headerstyletwo: {
     fontSize: 28,
     color: "white",
+    letterSpacing: 5,
+    // backgroundColor: "blue",
+    marginHorizontal: 21,
     fontFamily: "RobotoCondensedregular",
 <<<<<<< HEAD
     alignSelf: "flex-end",
@@ -179,12 +209,12 @@ const styles = StyleSheet.create({
 =======
     // alignSelf: "flex-end",
     // marginHorizontal: 129,
-    flexWrap: "nowrap",
+    // flexWrap: "nowrap",
     // flexDirection: "column",
-    width: 197,
-    height: 99,
-    marginTop: 25,
-    marginHorizontal: 21,
+    // width: 197,
+    // height: 99,
+    // marginTop: 25,
+    // marginHorizontal: 48,
     // backgroundColor: "red",
 >>>>>>> 6cc9a97b37b86473cac0a107d0679c9f20927965
     // alignSelf: "flex-end",
