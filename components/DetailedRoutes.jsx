@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 22,
     fontWeight: "300",
+    fontFamily: "RobotoCondensedregular",
   },
   Viewstyle: {
     backgroundColor: "#902E2E",

@@ -1,16 +1,13 @@
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
-// function popup () {
-//     console.log(this is working)
-// },
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 export default function App({ navigation }) {
   return (
     <View>
       <View style={styles.controller}>
         <View style={styles.headspacing}>
           <View style={styles.alignment}>
-            <Text style={styles.Textheading}>Route Schedules Near</Text>
+            <Text style={styles.Textheading}>ROUTE SCHEDULES NEAR</Text>
             <Text style={styles.Textbody}>
               3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
             </Text>
@@ -24,55 +21,51 @@ export default function App({ navigation }) {
           />
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes", {})} style={styles.OuterViewforboxes}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("DetailedRoutes", {})}
+        style={styles.OuterViewforboxes}
+      >
         <View style={styles.Viewstyle}>
+          <View
+            style={{
+              // borderBottomColor: "#3A3A3A",
+              // backgroundColor: "red",
+              // backgroundColor: "blue",
+              // height: 0,
+              // marginTop: 49.6,
+              // borderBottomWidth: 1,
+              alignSelf: "stretch",
+              width: 2,
+              height: 137,
+              backgroundColor: "white",
+              // color: "blue",
+              position: "absolute",
+              marginHorizontal: 107,
+
+              // marginTop: 49.6,
+              flex: 1,
+              // width: 380.21,
+              // alignItems: "center",
+            }}
+          />
           <View>
-            <Text style={styles.headerstyle}>Thursday</Text>
-            <Text style={styles.headerstyle}>4am - 6:30am</Text>
-            <Text style={styles.headerstyle}>
-              2nd & 4th Thursday of the month
+            <Text style={styles.headerstyleone}>4am - 6:30am</Text>
+            <Text style={styles.headerstyletwo}>
+              1ST & 3RD TUESDAY OF THE MONTH
             </Text>
-            {/* <View style={[styles.IconView, styles.IconViewone]}>
-              <Entypo
-                onPress={() =>
-                  navigation.navigate("DetailedRoutes", {
-                    day: "Thursday",
-                    time: "4am - 6:30am",
-                    frequency: "2nd & 4th Thursday of the month",
-                  })
-                }
-                name="chevron-right"
-                size={30}
-                color="black"
-              />
-            </View> */}
           </View>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("DetailedRoutes", {})} style={styles.OuterViewforboxes}>
-        <View
-          style={styles.Viewstyle}
-        >
+      <TouchableOpacity
+        onPress={() => navigation.navigate("DetailedRoutes", {})}
+        style={styles.OuterViewforboxes}
+      >
+        <View style={styles.Viewstyle}>
           <View>
-            <Text style={styles.headerstyle}>Friday</Text>
-            <Text style={styles.headerstyle}>4am - 6:30am</Text>
+            <Text style={styles.headerstyleone}>4am - 6:30am</Text>
             <Text style={styles.headerstyle}>
               2nd & 4th friday of the month
             </Text>
-            {/* <View style={styles.IconView}>
-              <Entypo
-                onPress={() =>
-                  navigation.navigate("DetailedRoutes", {
-                    day: "Friday",
-                    time: "4am - 6:30am",
-                    frequency: "2nd & 4th Friday of the month",
-                  })
-                }
-                name="chevron-right"
-                size={30}
-                color="black"
-              />
-            </View> */}
           </View>
         </View>
       </TouchableOpacity>
@@ -111,7 +104,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 102,
     // marginVertical: 102,
-
   },
   Textheading: {
     // flexDirection: "column",
@@ -120,7 +112,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignSelf: "center",
     fontSize: 25,
-    letterSpacing: 1,
+    // letterSpacing: 1,
     // marginBottom: 10,
     // marginTop: 50,
     fontFamily: "RobotoCondensedbold",
@@ -145,27 +137,39 @@ const styles = StyleSheet.create({
   Viewstyle: {
     marginTop: 77,
     backgroundColor: "#902E2E",
+    // backgroundColor: "blue",
     width: 349,
-    height: 110,
-    borderWidth: 2,
+    height: 140,
+    // borderWidth: 2,
     borderRadius: 9,
     // marginTop: 100,
     padding: 5,
+    // position: "absolute",
     // flexDirection: "row",
     borderColor: "#902E2E",
   },
   OuterViewforboxes: {
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     // padding: -50,
-    marginBottom: -36,
+    // marginBottom: -36,
     // marginBottom: 150,
     // marginVertical: 100,
   },
-  headerstyle: {
-    fontSize: 22,
+  headerstyleone: {
+    fontSize: 20,
     color: "white",
-    fontFamily: "Robotomid",
+    fontFamily: "RobotoCondensedbold",
+  },
+  headerstyletwo: {
+    fontSize: 28,
+    color: "white",
+    fontFamily: "RobotoCondensedregular",
+    alignSelf: "flex-end",
+    // marginHorizontal: 10,
+    flexWrap: "wrap",
+    backgroundColor: "blue",
+    // alignSelf: "flex-end",
   },
   IconView: {
     width: 25,

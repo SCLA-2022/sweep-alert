@@ -24,6 +24,7 @@ const MyStack = () => {
     RobotoCondensedbold: require("./assets/fonts/RobotoCondensed-Bold.ttf"),
     RobotoCondensedlight: require("./assets/fonts/RobotoCondensed-Light.ttf"),
     Robotomid: require("./assets/fonts/Roboto-Medium.ttf"),
+    RobotoCondensedregular: require("./assets/fonts/RobotoCondensed-Regular.ttf")
   });
 
   if (!loaded) {
