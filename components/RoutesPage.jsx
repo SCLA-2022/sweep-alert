@@ -48,8 +48,8 @@ export default function App({ navigation }) {
               // alignItems: "center",
             }}
           />
-          <View>
-            <Text style={styles.headerstyleone}>4am - 6:30am</Text>
+          <View style={{flexDirection: "row",}}>
+            <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text>
             <Text style={styles.headerstyletwo}>
               1ST & 3RD TUESDAY OF THE MONTH
             </Text>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     // borderWidth: 2,
     borderRadius: 9,
     // marginTop: 100,
-    padding: 5,
+    // padding: 5,
     // position: "absolute",
     // flexDirection: "row",
     borderColor: "#902E2E",
@@ -158,17 +158,35 @@ const styles = StyleSheet.create({
   },
   headerstyleone: {
     fontSize: 20,
+    width: 63,
+    height: 120,
     color: "white",
     fontFamily: "RobotoCondensedbold",
+    // flexDirection: "column",
+    backgroundColor: "blue",
+    marginHorizontal: 23,
+    marginTop: 15,
   },
   headerstyletwo: {
     fontSize: 28,
     color: "white",
     fontFamily: "RobotoCondensedregular",
+<<<<<<< HEAD
     alignSelf: "flex-end",
     // marginHorizontal: 10,
     flexWrap: "nowrap",
     backgroundColor: "blue",
+=======
+    // alignSelf: "flex-end",
+    // marginHorizontal: 129,
+    flexWrap: "nowrap",
+    // flexDirection: "column",
+    width: 197,
+    height: 99,
+    marginTop: 25,
+    marginHorizontal: 21,
+    // backgroundColor: "red",
+>>>>>>> 6cc9a97b37b86473cac0a107d0679c9f20927965
     // alignSelf: "flex-end",
   },
   IconView: {
