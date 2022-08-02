@@ -115,13 +115,14 @@ export default function App({ navigation }) {
 
   let text = "Waiting..";
 
+  let _mapView;
+
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
     text = JSON.stringify(location);
   }
   const bodyText = "3655 S Grand Ave #220, Los Angeles, CA 90007";
-
   // Geocoder.from("28435 Gold Canyon Dr").then(
   //   json => {
   //       var location = json.results[0].geometry.location;
@@ -137,12 +138,13 @@ export default function App({ navigation }) {
             provider={PROVIDER_GOOGLE}
             customMapStyle={mapStyle}
             initialRegion={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+        }}
             style={styles.map}
+            ref = {(mapView) => { _mapView = mapView; }}
           >
         {/* <View style={styles.autocompleteview}> */}
           <GooglePlacesAutocomplete
@@ -258,7 +260,10 @@ export default function App({ navigation }) {
                 size={24}
                 color="white"
               />
-              <MaterialIcons style={styles.gpsstyle} name="gps-fixed" size={24} color="white" />
+              <MaterialIcons style={styles.gpsstyle} name="gps-fixed" size={24} color="white" onPress={() => _mapView.animateToRegion({
+        latitude: location.coords.latitude,
+        longitude:location.coords.longitude
+      }, 1000)} />
             </View>
           </MapView>
         )}
