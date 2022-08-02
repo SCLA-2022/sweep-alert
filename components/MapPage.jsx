@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -18,10 +19,13 @@ import {
   SafeAreaView,
 } from "react-native";
 import CustomCountDown from "./CustomCountDown.jsx";
-
+import { MaterialIcons } from '@expo/vector-icons';
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+const GOOGLE_PLACES_API_KEY = "AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU";
+
 const TAB_BAR_HEIGHT = 49;
 const mapStyle = [
   {
@@ -140,6 +144,80 @@ export default function App({ navigation }) {
             }}
             style={styles.map}
           >
+        {/* <View style={styles.autocompleteview}> */}
+          <GooglePlacesAutocomplete
+            placeholder="Search Here"
+            query={{
+              key: GOOGLE_PLACES_API_KEY,
+              language: "en", // language of the results
+            }}
+            onPress={(data, details = null) => {
+              console.log(details.description);
+              setShow(true);
+              setSearch(details.description);
+            }}
+            onFail={(error) => console.error(error)}
+            requestUrl={{
+              url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api",
+              useOnPlatform: "web",
+            }} // this in only required for use on the web. See https://git.io/JflFv more for details.
+            styles={{
+              container: {
+                flex: 1,
+                position: "absolute",
+                zIndex: 20,
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 47,
+                // backgroundColor: "blue",
+                // marginHorizontal: 7,
+              },
+              textInputContainer: {
+                flexDirection: "row",
+                width: 410,
+                height: 51,
+                marginHorizontal: 11,
+                // backgroundColor: "blue",
+              },
+              textInput: {
+                backgroundColor: "#FFFFFF",
+                height: 44,
+                // width: 100,
+                borderRadius: 25,
+                paddingVertical: 5,
+                paddingHorizontal: 10,
+                fontSize: 15,
+                flex: 1,
+              },
+              poweredContainer: {
+                justifyContent: "flex-end",
+                alignItems: "center",
+                borderBottomRightRadius: 5,
+                borderBottomLeftRadius: 5,
+                borderColor: "#c8c7cc",
+                borderTopWidth: 0.5,
+              },
+              powered: {},
+              listView: {},
+              row: {
+                backgroundColor: "#FFFFFF",
+                padding: 13,
+                height: 44,
+                flexDirection: "row",
+              },
+              separator: {
+                height: 0.5,
+                backgroundColor: "#c8c7cc",
+              },
+              description: {},
+              loader: {
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                height: 20,
+              },
+            }}
+          />
+        {/* </View> */}
             <Marker
               onPress={() => {
                 setModalVisible(!modalVisible);
@@ -150,7 +228,7 @@ export default function App({ navigation }) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
-              icon={require("../assets/startinglocation.png")}
+              // icon={require("../assets/startinglocation.png")}
             />
             <Marker
               onPress={() => {
@@ -173,26 +251,14 @@ export default function App({ navigation }) {
               icon={require("../assets/startinglocation.png")}
             />
             <View style={styles.IconStyle}>
-              {/* <Entypo
-                style={styles.magnifyingstyle}
-                name="magnifying-glass"
-                size={24}
-                color="black"
-              /> */}
-              {/* <Entypo
-                onPress={() => navigation.navigate("Dashboard")}
+              <Ionicons
+                onPress={() => navigation.navigate("CurrentAlarms")}
                 style={styles.dotsstyle}
-                name="dots-three-vertical"
-                size={24}
-                color="white"
-              /> */}
-              <AntDesign
-                onPress={() => navigation.navigate("Dashboard")}
-                name="dashboard"
-                style={styles.dotsstyle}
+                name="timer-outline"
                 size={24}
                 color="white"
               />
+              <MaterialIcons style={styles.gpsstyle} name="gps-fixed" size={24} color="white" />
             </View>
           </MapView>
         )}
@@ -212,19 +278,6 @@ export default function App({ navigation }) {
               </Text>
             </View>
             <View style={styles.iconContainer}>
-              {/* <Entypo
-                onPress={() => navigation.navigate("RoutesPage")}
-                name="chevron-right"
-                size={30}
-                color="white"
-              /> */}
-
-              {/* <Entypo
-                onPress={() => navigation.navigate("RoutesPage")}
-                name="magnifying-glass"
-                size={30}
-                color="white"
-              /> */}
               <AntDesign
                 onPress={() => navigation.navigate("RoutesPage")}
                 name="plus"
@@ -300,7 +353,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     letterSpacing: 5,
   },
-
   setAlarmbutton: {
     alignItems: "center",
     backgroundColor: "#420F0F",
@@ -408,7 +460,21 @@ const styles = StyleSheet.create({
     // borderWidth: 10,
     // borderColor: '#902E2E',
     overflow: "hidden",
-    top: 177,
+    top: 480,
+    //   width: 44,
+    //  height: 44,
+    borderRadius: 23,
+    padding: 10,
+    marginHorizontal: 6,
+  },
+  gpsstyle: {
+    flexDirection: "row",
+    backgroundColor: "#902E2E",
+    // borderRadius: 15,
+    // borderWidth: 10,
+    // borderColor: '#902E2E',
+    overflow: "hidden",
+    top: 505,
     //   width: 44,
     //  height: 44,
     borderRadius: 23,
@@ -423,6 +489,7 @@ const styles = StyleSheet.create({
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
+    
   },
   titleText: {
     fontSize: 20,
@@ -462,68 +529,3 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
 });
-{
-  /* <TouchableOpacity
-                      style={[styles.button, styles.buttonClose]}
-                      onPress={() => {
-                        setModalVisible(!modalVisible);
-                        setShow(false);
-                        navigation.navigate("MapPage");
-                      }}
-                    >
-                      <Text style={{ color: "white" }}>Okay</Text>
-                    </TouchableOpacity> */
-}
-{
-  /* <Button onPress={openDrawer} title="Dashboard" color="black" /> */
-}
-{
-  /* <Actionsheet isOpen={isOpen} onClose={onClose}>
-          <Actionsheet.Content>
-            <Searchbar
-              placeholder="Search"
-              onChangeText={onChangeSearch}
-              value={searchQuery}
-            />
-            <Actionsheet.Item onPress={() => navigation.navigate("AddCarPage")}>
-              Add Car
-            </Actionsheet.Item>
-            <Actionsheet.Item
-              onPress={() => navigation.navigate("AllCarsPage")}
-            >
-              View All Cars
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("LoginPage")}>
-              Login/Make account
-            </Actionsheet.Item>
-            <Actionsheet.Item onPress={() => navigation.navigate("Timer1")}>
-              Timer1
-            </Actionsheet.Item>
-            <Actionsheet.Item
-              onPress={() => navigation.navigate("DetailedRoutes", {
-                day: 'Thursyda',
-                time: '121:!2`121212',
-                frequency: 'frey sdfsasdsad'
-              })}
-            >
-              DetailedRoutesExample
-            </Actionsheet.Item>
-          </Actionsheet.Content>
-        </Actionsheet> */
-}
-//   <View
-//   style={{
-//     position: "absolute", //use absolute position to show button on top of the map
-//     top: "70%", //for center align
-//     alignSelf: "center", //for align to right
-//   }}
-// ></View>
-{
-  /* <Marker
-              coordinate={{ latitude: 34.03308, longitude: -118.29202 }}
-              pinColor={"lightblue"} // any color
-              title={"76 Gas Station"}
-              description={"Pump #2, beware"}
-              image={require('../assets/Group236.png')}
-            /> */
-}

@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   downwardboxes: {
     // margin: 35,
-    marginTop: 53,
+    marginTop: 43,
   },
   DashStyle: {
     // textAlign: "center",
@@ -150,19 +150,19 @@ const styles = StyleSheet.create({
   formattingone: {
     color: "black",
     fontSize: 32,
-    letterSpacing: 4,
-    // fontFamily: "RobotoMono_600SemiBold",
+    letterSpacing: 5,
+    fontFamily: "RobotoCondensedbold",
     // marginTop: 80,
   },
   formattingtwo: {
     color: "#902E2E",
     fontSize: 32,
-    letterSpacing: 4,
-    // fontFamily: "RobotoMono_600SemiBold",
+    letterSpacing: 5,
+    fontFamily: "RobotoCondensedbold",
   },
   minilogostyle: {
     alignSelf: "center",
-    marginTop: 100,
+    // marginTop: 100,
     // fontFamily: "Roboto",
     // marginTop: 50,
   },
