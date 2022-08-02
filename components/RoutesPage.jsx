@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoCondensedregular",
     alignSelf: "flex-end",
     // marginHorizontal: 10,
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
     backgroundColor: "blue",
     // alignSelf: "flex-end",
   },
