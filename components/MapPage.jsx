@@ -262,7 +262,9 @@ export default function App({ navigation }) {
               />
               <MaterialIcons style={styles.gpsstyle} name="gps-fixed" size={24} color="white" onPress={() => _mapView.animateToRegion({
         latitude: location.coords.latitude,
-        longitude:location.coords.longitude
+        longitude:location.coords.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
       }, 1000)} />
             </View>
           </MapView>
