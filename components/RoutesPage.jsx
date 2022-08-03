@@ -72,6 +72,28 @@ export default function App({ navigation }) {
         onPress={() => navigation.navigate("DetailedRoutes", {})}
         style={styles.OuterViewforboxes}
       >
+      <View
+            style={{
+              // borderBottomColor: "#3A3A3A",
+              // backgroundColor: "red",
+              // backgroundColor: "blue",
+              // height: 0,
+              // marginTop: 49.6,
+              // borderBottomWidth: 1,
+              alignSelf: "stretch",
+              width: 2,
+              height: 140,
+              backgroundColor: "white",
+              // color: "blue",
+              position: "absolute",
+              marginHorizontal: 107,
+
+              // marginTop: 49.6,
+              flex: 1,
+              // width: 380.21,
+              // alignItems: "center",
+            }}
+          />
         <View style={styles.Viewstyle}>
           <View>
            <View style={{flexDirection: "row",}}>
@@ -92,6 +114,7 @@ export default function App({ navigation }) {
             <Text style={styles.headerstyletwo}>THE MONTH</Text>
             </View>
           </View>
+        </View>
         </View>
     </TouchableOpacity>
   </View>
@@ -201,12 +224,6 @@ const styles = StyleSheet.create({
     // backgroundColor: "blue",
     marginHorizontal: 21,
     fontFamily: "RobotoCondensedregular",
-<<<<<<< HEAD
-    alignSelf: "flex-end",
-    // marginHorizontal: 10,
-    flexWrap: "nowrap",
-    backgroundColor: "blue",
-=======
     // alignSelf: "flex-end",
     // marginHorizontal: 129,
     // flexWrap: "nowrap",
@@ -216,7 +233,6 @@ const styles = StyleSheet.create({
     // marginTop: 25,
     // marginHorizontal: 48,
     // backgroundColor: "red",
->>>>>>> 6cc9a97b37b86473cac0a107d0679c9f20927965
     // alignSelf: "flex-end",
   },
   IconView: {
