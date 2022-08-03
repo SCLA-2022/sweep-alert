@@ -19,7 +19,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import CustomCountDown from "./CustomCountDown.jsx";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -129,97 +129,102 @@ export default function App({ navigation }) {
   //       console.log(location);
   //   }).catch(
   //       error => console.log(error));
-
+  const renderSearchBar = () => (
+    <View style={{ flex: 1, position: "absolute", zIndex: 20, paddingTop: 47,  }}>
+      {/* <View style={styles.autocompleteview}> */}
+      <GooglePlacesAutocomplete
+        placeholder="Search Here"
+        query={{
+          key: GOOGLE_PLACES_API_KEY,
+          language: "en", // language of the results
+        }}
+        onPress={(data, details = null) => {
+          console.log(details.description);
+          setShow(true);
+          setSearch(details.description);
+        }}
+        onFail={(error) => console.error(error)}
+        requestUrl={{
+          url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api",
+          useOnPlatform: "web",
+        }} // this in only required for use on the web. See https://git.io/JflFv more for details.
+        styles={{
+          container: {
+            justifyContent: "center",
+            alignItems: "center",
+            // backgroundColor: "yellow",
+            
+            // marginHorizontal: 7,
+          },
+          textInputContainer: {
+            flexDirection: "row",
+            width: 410,
+            height: 51,
+            marginHorizontal: 11,
+            // marginTop: 47,
+            // backgroundColor: "red",
+          },
+          textInput: {
+            backgroundColor: "#FFFFFF",
+            height: 44,
+            // width: 100,
+            borderRadius: 25,
+            paddingVertical: 5,
+            paddingHorizontal: 10,
+            fontSize: 15,
+            flex: 1,
+          },
+          poweredContainer: {
+            justifyContent: "flex-end",
+            alignItems: "center",
+            borderBottomRightRadius: 5,
+            borderBottomLeftRadius: 5,
+            borderColor: "#c8c7cc",
+            borderTopWidth: 0.5,
+          },
+          powered: {},
+          listView: {},
+          row: {
+            backgroundColor: "#FFFFFF",
+            padding: 13,
+            height: 44,
+            flexDirection: "row",
+          },
+          separator: {
+            height: 0.5,
+            backgroundColor: "#c8c7cc",
+          },
+          description: {},
+          loader: {
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            height: 20,
+          },
+        }}
+      />
+    </View>
+  );
   return (
     <NativeBaseProvider>
+      {renderSearchBar()}
+
       <View style={styles.container}>
         {location === null ? null : (
           <MapView
             provider={PROVIDER_GOOGLE}
             customMapStyle={mapStyle}
             initialRegion={{
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-        }}
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
             style={styles.map}
-            ref = {(mapView) => { _mapView = mapView; }}
+            ref={(mapView) => {
+              _mapView = mapView;
+            }}
           >
-        {/* <View style={styles.autocompleteview}> */}
-          <GooglePlacesAutocomplete
-            placeholder="Search Here"
-            query={{
-              key: GOOGLE_PLACES_API_KEY,
-              language: "en", // language of the results
-            }}
-            onPress={(data, details = null) => {
-              console.log(details.description);
-              setShow(true);
-              setSearch(details.description);
-            }}
-            onFail={(error) => console.error(error)}
-            requestUrl={{
-              url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api",
-              useOnPlatform: "web",
-            }} // this in only required for use on the web. See https://git.io/JflFv more for details.
-            styles={{
-              container: {
-                flex: 1,
-                position: "absolute",
-                zIndex: 20,
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 47,
-                // backgroundColor: "blue",
-                // marginHorizontal: 7,
-              },
-              textInputContainer: {
-                flexDirection: "row",
-                width: 410,
-                height: 51,
-                marginHorizontal: 11,
-                // backgroundColor: "blue",
-              },
-              textInput: {
-                backgroundColor: "#FFFFFF",
-                height: 44,
-                // width: 100,
-                borderRadius: 25,
-                paddingVertical: 5,
-                paddingHorizontal: 10,
-                fontSize: 15,
-                flex: 1,
-              },
-              poweredContainer: {
-                justifyContent: "flex-end",
-                alignItems: "center",
-                borderBottomRightRadius: 5,
-                borderBottomLeftRadius: 5,
-                borderColor: "#c8c7cc",
-                borderTopWidth: 0.5,
-              },
-              powered: {},
-              listView: {},
-              row: {
-                backgroundColor: "#FFFFFF",
-                padding: 13,
-                height: 44,
-                flexDirection: "row",
-              },
-              separator: {
-                height: 0.5,
-                backgroundColor: "#c8c7cc",
-              },
-              description: {},
-              loader: {
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                height: 20,
-              },
-            }}
-          />
-        {/* </View> */}
+            {/* </View> */}
             <Marker
               onPress={() => {
                 setModalVisible(!modalVisible);
@@ -260,12 +265,23 @@ export default function App({ navigation }) {
                 size={24}
                 color="white"
               />
-              <MaterialIcons style={styles.gpsstyle} name="gps-fixed" size={24} color="white" onPress={() => _mapView.animateToRegion({
-        latitude: location.coords.latitude,
-        longitude:location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }, 1000)} />
+              <MaterialIcons
+                style={styles.gpsstyle}
+                name="gps-fixed"
+                size={24}
+                color="white"
+                onPress={() =>
+                  _mapView.animateToRegion(
+                    {
+                      latitude: location.coords.latitude,
+                      longitude: location.coords.longitude,
+                      latitudeDelta: 0.0922,
+                      longitudeDelta: 0.0421,
+                    },
+                    1000
+                  )
+                }
+              />
             </View>
           </MapView>
         )}
@@ -496,7 +512,6 @@ const styles = StyleSheet.create({
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
-    
   },
   titleText: {
     fontSize: 20,
