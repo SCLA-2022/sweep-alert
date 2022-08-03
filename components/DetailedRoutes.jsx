@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import * as Location from "expo-location";
+import MapView, { Marker, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
 import { NativeBaseProvider } from "native-base";
 // import {mapvi}
 
@@ -61,37 +68,65 @@ const mapStyle = [
 
 export default function App({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log(route.params);
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
+  console.log(route.params);
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      // console.log(location);
+    })();
+  }, []);
+  let text = "Waiting..";
+
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
   return (
     <NativeBaseProvider>
       <View>
-        <View
-          style={{
-            // marginTop: 80,
-            flexDirection: "row",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "blue",
-          }}
-        >
+        <View style={{ position: "absolute", marginTop: 80 }}>
           <Entypo
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate("RoutesPage")}
             style={[styles.IconStyle]}
             name="chevron-left"
             size={30}
             color="#420F0F"
           />
+        </View>
+        <View
+          style={{
+            marginTop: 96,
+            flexDirection: "row",
+            // display: "flex",
+            justifyContent: "center",
+            // backgroundColor: "blue",
+            // position: "absolute",
+          }}
+        >
           <View
             style={
               {
-                /* marginTop: 22 */
+                // marginTop: 22
               }
             }
           >
-            <Text style={styles.Textheading}>Route Schedules Near</Text>
-            <Text style={styles.Textbody}>
+            <Text style={styles.Textheading}>ROUTE SCHEDULES NEAR</Text>
+            {/* <Text style={styles.Textbody}>
               3655 S Grand Ave #220,{"\n"} Los Angeles, CA 90007
+            </Text> */}
+            <Text style={styles.Textbody}>
+              3655 S GRAND AVE #220,{"\n"} LOS ANGELES, CA 90007
             </Text>
           </View>
         </View>
@@ -104,28 +139,82 @@ export default function App({ navigation, route }) {
               // alignSelf: "center",
               // paddingBottom: 56,
               // borderWidth: 100,
-              height: 567,
-              width: 354,
+              // height: 567,
+              // width: 354,
             }
           }
         >
           {/* <Text style = {{height: 50}}> Time tao find out </Text> */}
+          {location === null ? null : (
+            <MapView
+              provider={PROVIDER_GOOGLE}
+              customMapStyle={mapStyle}
+              // style={styles.map}
+              initialRegion={{
+                latitude: 34.017222,
+                // latitude: location.coords.latitude,
+                longitude: -118.278205,
+                // longitude: location.coords.longitude,
+                latitudeDelta: 0.0095,
+                longitudeDelta: 0.0095,
+              }}
+              style={styles.MapViewstyle}
+              pitchEnabled={false}
+              rotateEnabled={false}
+              zoomEnabled={false}
+              scrollEnabled={false}
+            >
+              <Marker
+                coordinate={{
+                  latitude: 34.017222,
+                  // latitude: location.coords.latitude,
 
-          <MapView
-            style={{ flex: 1 }}
-            // provider={PROVIDER_GOOGLE}
-            // customMapStyle={mapStyle}
-            // style={styles.map}
-            initialRegion={{
-              latitude: 34.017222,
-              // location.coords.latitude,
-              longitude: -118.278205,
-              // location.coords.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            style={styles.MapViewstyle}
-          ></MapView>
+                  // location.coords.latitude,
+                  longitude: -118.278205,
+                  // longitude: location.coords.longitude,
+
+                  // location.coords.longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
+                // icon={require("../assets/startinglocation.png")}
+                draggable
+                onDragEnd={(e) => console.log(e.nativeEvent.coordinate)}
+                // icon={require("../assets/test.png")}
+                rotation={40}
+                // 
+              />
+              <Polyline
+                coordinates={[
+                  { latitude: 34.01683926494254, longitude:  -118.27823049073167 },
+                  { latitude: 34.01866103766407, longitude: -118.27704830271887},
+                  { latitude: 34.020208340240806, longitude: -118.27620297491036 },
+                ]}
+                strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                strokeWidth={1}
+              />
+              <Polyline
+              coordinates={[
+                { latitude: 34.01866254770548, longitude:  -118.27714829755081 },
+                { latitude: 34.01686750095174, longitude: -118.27829834333208},
+              ]}
+              strokeColor="black"
+              strokeWidth={1}
+              />
+              <Polyline
+              coordinates={[
+                 
+                { latitude: 34.018705875964365, longitude:   -118.2771146922712 },
+                { latitude: 34.01878555399102, longitude: -118.27706913448912},
+                { latitude: 34.01971676639507, longitude:-118.27649663607662},
+                { latitude: 34.02015805972889, longitude:-118.27628050481168},
+                { latitude: 34.02015805972889, longitude:-118.27628050481168},
+              
+                { latitude: 34.02023452121139, longitude: -118.27626469032977},
+              ]}
+              />
+            </MapView>
+          )}
         </View>
 
         <View style={styles.OuterView}>
@@ -148,26 +237,31 @@ const styles = StyleSheet.create({
   MapViewstyle: {
     height: 567,
     width: 354,
+    // flex: 1,
     alignSelf: "center",
     borderColor: "black",
     borderStyle: "solid",
     borderWidth: 1,
     borderRadius: 25,
+    marginTop: 19,
   },
   Textheading: {
     color: "black",
     textAlign: "center",
     fontSize: 25,
-    // fontWeight: "500",
-    backgroundColor: "red",
+    fontWeight: "500",
+    // backgroundColor: "red",
+    fontFamily: "RobotoCondensedbold",
+    // letterSpacing: 1,
   },
   Textbody: {
     color: "black",
     textAlign: "center",
     fontSize: 22,
-    fontWeight: "300",
+    marginTop: 9,
+    fontWeight: "500",
     fontFamily: "RobotoCondensedregular",
-    backgroundColor: "green",
+    // backgroundColor: "green",
   },
   Viewstyle: {
     backgroundColor: "#902E2E",
@@ -183,17 +277,17 @@ const styles = StyleSheet.create({
   },
   TimerViewStyle: {
     backgroundColor: "#902E2E",
-    width: 200,
+    width: 253,
     height: 60,
     borderWidth: 1,
     borderRadius: 15,
-    // marginTop: 1,
+    marginTop: 95,
     // padding: 5,
     // flexDirection: "row",
-    borderColor: "#902E2E",
+    borderColor: "black",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "green",
+    // backgroundColor: "green",
   },
   OuterView: {
     justifyContent: "center",
@@ -227,8 +321,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   IconStyle: {
-    // right: 26,
-    // marginHorizontal: 28,
+    // right: 26
+    // backgroundColor: "yellow",
+    // position: "absolute",
+    marginHorizontal: 28,
+    // backgroundColor: "yellow",
   },
 });
 // onPress={popup}
