@@ -1,20 +1,14 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-} from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import MapView, { Marker, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
 import { NativeBaseProvider } from "native-base";
-// import {mapvi}
-
-// function popup () {
-//     console.log(this is working)
-// },
+import { Dimensions } from "react-native";
+import { getCoordinates } from "../services/polyline.service";
+const { height, width } = Dimensions.get("window");
+const LATITUDE_DELTA = 0.0055;
+const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 const mapStyle = [
   {
     featureType: "landscape",
@@ -65,8 +59,25 @@ const mapStyle = [
     ],
   },
 ];
-
+const sideOneCoord = [
+  { latitude: 34.01683926494254, longitude: -118.27823049073167 }, // start coord
+  { latitude: 34.02012751645479, longitude: -118.27616124328947 }, // end coord
+];
+const sideTwoCoord = [
+  { latitude: 34.01866254770548, longitude: -118.27714829755081 },
+  { latitude: 34.01686750095174, longitude: -118.27829834333208 },
+];
+const sideThreeCoord = [
+  { latitude: 34.018705875964365, longitude: -118.2771146922712 },
+  { latitude: 34.01878555399102, longitude: -118.27706913448912 },
+  { latitude: 34.01971676639507, longitude: -118.27649663607662 },
+  { latitude: 34.02015805972889, longitude: -118.27628050481168 },
+  { latitude: 34.02015805972889, longitude: -118.27628050481168 },
+  { latitude: 34.02023452121139, longitude: -118.27626469032977 },
+];
+const linesToRender = [sideOneCoord, sideTwoCoord,];
 export default function App({ navigation, route }) {
+  const [polyLines, setPolyLines] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [location, setLocation] = useState(null);
   const [markerLocation, setMarkerLocation] = useState({
@@ -74,34 +85,12 @@ export default function App({ navigation, route }) {
     longitude: -118.278205,
   });
   const [errorMsg, setErrorMsg] = useState(null);
-
   const [sideOneColor, setSideOneColor] = useState("#000");
   const [sideTwoColor, setSideTwoColor] = useState("#000");
   const [sideThreeColor, setSideThreeColor] = useState("#000");
-
-  const sideOneCoord = [
-    { latitude: 34.01683926494254, longitude: -118.27823049073167 },
-    { latitude: 34.01866103766407, longitude: -118.27704830271887 },
-    { latitude: 34.020208340240806, longitude: -118.27620297491036 },
-  ];
-  const sideTwoCoord = [
-    { latitude: 34.01866254770548, longitude: -118.27714829755081 },
-    { latitude: 34.01686750095174, longitude: -118.27829834333208 },
-  ];
-  const sideThreeCoord = [
-    { latitude: 34.018705875964365, longitude: -118.2771146922712 },
-    { latitude: 34.01878555399102, longitude: -118.27706913448912 },
-    { latitude: 34.01971676639507, longitude: -118.27649663607662 },
-    { latitude: 34.02015805972889, longitude: -118.27628050481168 },
-    { latitude: 34.02015805972889, longitude: -118.27628050481168 },
-    { latitude: 34.02023452121139, longitude: -118.27626469032977 },
-  ];
-
-  const routes = [sideOneCoord, sideTwoCoord, sideThreeCoord];
-
   const [minDistance, setMinDistance] = useState(1);
   const [shortestSide, setShortestSide] = useState(markerLocation);
-
+  const [test, setTest] = useState([]);
   function compareLoc(routeCoord) {
     // console.log(location);
     // console.log(routeCoord);
@@ -116,12 +105,9 @@ export default function App({ navigation, route }) {
     }
     //console.log(minDistance);
   }
-
   function getShortestLength(route) {
     route.forEach(compareLoc);
   }
-
-  console.log(route.params);
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -129,14 +115,42 @@ export default function App({ navigation, route }) {
         setErrorMsg("Permission to access location was denied");
         return;
       }
-
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      // console.log(location);
+      linesToRender.forEach((line) => {
+        // get all coords for one line
+        const coords = getCoordinates(
+          line[0].latitude,
+          line[0].longitude,
+          line[1].latitude,
+          line[1].longitude,
+          15 // distance in meters
+        );
+        // just for debug
+        setTest(
+          coords.map((c) => {
+            return { latitude: c[0], longitude: c[1] };
+          })
+        );
+        setPolyLines((oldVal) => [
+          ...oldVal,
+          {
+            coordinates: coords.map((c) => {
+              return { latitude: c[0], longitude: c[1] };
+            }),
+            id: oldVal.length + 1,
+            strokeColor: "#000",
+          },
+        ]);
+        // setTest(
+        //   (oldVal) => [...oldVal, ...coords.map((c) => {
+        //     return { lat: c[0], long: c[1] };
+        //   })]
+        // );
+      });
     })();
   }, []);
   let text = "Waiting..";
-
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
@@ -205,85 +219,85 @@ export default function App({ navigation, route }) {
                 // latitude: location.coords.latitude,
                 longitude: -118.278205,
                 // longitude: location.coords.longitude,
-                latitudeDelta: 0.0095,
-                longitudeDelta: 0.0095,
+                latitudeDelta: LATITUDE_DELTA, //0.0035,
+                longitudeDelta: LONGITUDE_DELTA, //0.0095,
               }}
               style={styles.MapViewstyle}
               pitchEnabled={false}
               rotateEnabled={false}
               zoomEnabled={false}
-              scrollEnabled={false}
+              scrollEnabled={true}
             >
               <Marker
                 coordinate={{
                   latitude: 34.017222,
-                  // latitude: location.coords.latitude,
-
-                  // location.coords.latitude,
                   longitude: -118.278205,
-                  // longitude: location.coords.longitude,
-
-                  // location.coords.longitude,
                   latitudeDelta: 0.0922,
                   longitudeDelta: 0.0421,
                 }}
-                // icon={require("../assets/startinglocation.png")}
                 draggable
                 onDragEnd={(e) => {
-                  setMarkerLocation(e.nativeEvent.coordinate);
-                  console.log(markerLocation);
-                  setMinDistance(1);
-                  routes.forEach(getShortestLength);
-                  if (
-                    sideOneCoord.find(
-                      (o) =>
-                        o.latitude === shortestSide.latitude &&
-                        o.longitude === shortestSide.longitude
-                    )
-                  ) {
-                    setSideOneColor("#f00");
-                    setSideTwoColor("#000");
-                    setSideThreeColor("#000");
-                  } else if (
-                    sideTwoCoord.find(
-                      (o) =>
-                        o.latitude === shortestSide.latitude &&
-                        o.longitude === shortestSide.longitude
-                    )
-                  ) {
-                    setSideOneColor("#000");
-                    setSideTwoColor("#f00");
-                    setSideThreeColor("#000");
-                  } else {
-                    setSideOneColor("#000");
-                    setSideTwoColor("#000");
-                    setSideThreeColor("#f00");
-                  }
-                  console.log(minDistance);
+                  const newCoord = e.nativeEvent.coordinate;
+                  // update marker location
+                  setMarkerLocation(newCoord);
+                  const distances = [];
+                  polyLines.forEach((line, i) => {
+                    distances.push({ lineId: line.id, distance: 0 });
+                    line.coordinates.forEach((coord, j) => {
+                      let curDistance = Math.sqrt(
+                        Math.pow(newCoord.latitude - coord.latitude, 2) +
+                          Math.pow(newCoord.longitude - coord.longitude, 2)
+                      );
+                      // if first coord in line
+                      if (j === 0) {
+                        distances[i].distance = curDistance;
+                      } else if (distances[i].distance > curDistance) {
+                        distances[i].distance = curDistance;
+                      }
+                    });
+                  });
+                  console.log(distances);
+                  const sorted = distances.sort(
+                    (a, b) => a.distance - b.distance
+                  );
+                  const id = sorted[0].lineId;
+                  console.log(id);
+                  setPolyLines(
+                    polyLines.filter((line) => {
+                      if (line.id === id) {
+                        line.strokeColor = "#ff0000";
+                      } else {
+                        line.strokeColor = "#000";
+                      }
+                      return line;
+                    })
+                  );
                 }}
                 // icon={require("../assets/test.png")}
-                rotation={40}
-                //
+                rotation={0}
               />
-              <Polyline
-                coordinates={sideOneCoord}
-                strokeColor={sideOneColor} // fallback for when `strokeColors` is not supported by the map-provider
-                strokeWidth={1}
-              />
-              <Polyline
-                coordinates={sideTwoCoord}
-                strokeColor={sideTwoColor}
-                strokeWidth={1}
-              />
-              <Polyline
-                coordinates={sideThreeCoord}
-                strokeColor={sideThreeColor}
-                strokeWidth={1}
-              />
+              {/* {test.map((t, i) => (
+                <Marker
+                  key={i}
+                  coordinate={{
+                    latitude: t.latitude,
+                    longitude: t.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                />
+              ))} */}
+              {polyLines.map((line) => (
+                <Polyline
+                  key={line.id}
+                  coordinates={line.coordinates}
+                  strokeColor={line.strokeColor} // fallback for when `strokeColors` is not supported by the map-provider
+                  strokeWidth={1}
+                />
+              ))}
             </MapView>
           )}
         </View>
-
         <View style={styles.OuterView}>
           <View style={styles.TimerViewStyle}>
             <Text style={styles.Timer}>Set Alarm</Text>
@@ -293,7 +307,6 @@ export default function App({ navigation, route }) {
     </NativeBaseProvider>
   );
 }
-
 const styles = StyleSheet.create({
   input: {
     height: 40,
