@@ -72,7 +72,6 @@ export default function App({ navigation }) {
         onPress={() => navigation.navigate("DetailedRoutes", {})}
         style={styles.OuterViewforboxes}
       >
-<<<<<<< HEAD
       <View
             style={{
               // borderBottomColor: "#3A3A3A",
@@ -96,9 +95,6 @@ export default function App({ navigation }) {
             }}
           />
         <View style={styles.Viewstyle}>
-=======
-        <View style={styles.Viewstyletwo}>
->>>>>>> 2a86f91ae205431c82ec4e7fc4e1b2f4ef4cfd5f
           <View>
             <View style={{ flexDirection: "row" }}>
               {/* <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text> */}
@@ -140,14 +136,8 @@ export default function App({ navigation }) {
             </View>
           </View>
         </View>
-<<<<<<< HEAD
-        </View>
     </TouchableOpacity>
   </View>
-=======
-      </TouchableOpacity>
-    </View>
->>>>>>> 2a86f91ae205431c82ec4e7fc4e1b2f4ef4cfd5f
   );
 }
 

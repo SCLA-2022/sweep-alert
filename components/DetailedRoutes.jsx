@@ -71,6 +71,60 @@ export default function App({ navigation, route }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
+  const [sideOneColor, setSideOneColor] = useState("#000");
+  const [sideTwoColor, setSideTwoColor] = useState("#000");
+  const [sideThreeColor, setSideThreeColor] = useState("#000");
+
+  const sideOneCoord = [{ latitude: 34.01683926494254, longitude:  -118.27823049073167 },
+    { latitude: 34.01866103766407, longitude: -118.27704830271887},
+    { latitude: 34.020208340240806, longitude: -118.27620297491036 }];
+  const sideTwoCoord = [
+    { latitude: 34.01866254770548, longitude:  -118.27714829755081 },
+    { latitude: 34.01686750095174, longitude: -118.27829834333208}
+  ];
+  const sideThreeCoord = [   
+    { latitude: 34.018705875964365, longitude: -118.2771146922712 },
+    { latitude: 34.01878555399102, longitude: -118.27706913448912},
+    { latitude: 34.01971676639507, longitude:-118.27649663607662},
+    { latitude: 34.02015805972889, longitude:-118.27628050481168},
+    { latitude: 34.02015805972889, longitude:-118.27628050481168},
+    { latitude: 34.02023452121139, longitude: -118.27626469032977},
+  ];
+
+  const routes = [sideOneCoord, sideTwoCoord, sideThreeCoord];
+
+  const [minDistance, setMinDistance] = useState(1);
+  const [shortestSide, setShortestSide] = useState(location);
+
+ function compareLoc(routeCoord){
+  // console.log(location);
+  // console.log(routeCoord);
+  let curDistance = Math.sqrt(Math.pow((location.latitude-routeCoord.latitude), 2) + Math.pow((location.longitude-routeCoord.longitude), 2));
+  //console.log(curDistance);  
+  if(minDistance > curDistance){
+      setMinDistance(curDistance);
+      setShortestSide(routeCoord);
+  }
+  //console.log(minDistance);
+ }
+
+ function getShortestLength(route){
+    route.forEach(compareLoc);
+    if(sideOneCoord.find(o => o.latitude === shortestSide.latitude && o.longitude === shortestSide.longitude)){
+      setSideOneColor("#f00");
+      setSideTwoColor("#000");
+      setSideThreeColor("#000");
+    } else if (sideTwoCoord.find(o => o.latitude === shortestSide.latitude && o.longitude === shortestSide.longitude)){
+      setSideOneColor("#000");
+      setSideTwoColor("#f00");
+      setSideThreeColor("#000");
+    } else {
+      setSideOneColor("#000");
+      setSideTwoColor("#000");
+      setSideThreeColor("#f00");
+    }
+ }
+
   console.log(route.params);
   useEffect(() => {
     (async () => {
@@ -179,39 +233,30 @@ export default function App({ navigation, route }) {
                 }}
                 // icon={require("../assets/startinglocation.png")}
                 draggable
-                onDragEnd={(e) => console.log(e.nativeEvent.coordinate)}
+                onDragEnd={(e) => {
+                  setLocation(e.nativeEvent.coordinate);
+                  console.log(location);
+                  setMinDistance(1);
+                  routes.forEach(getShortestLength);
+                  console.log(minDistance);
+                  }}
                 // icon={require("../assets/test.png")}
                 rotation={40}
                 // 
               />
               <Polyline
-                coordinates={[
-                  { latitude: 34.01683926494254, longitude:  -118.27823049073167 },
-                  { latitude: 34.01866103766407, longitude: -118.27704830271887},
-                  { latitude: 34.020208340240806, longitude: -118.27620297491036 },
-                ]}
-                strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                coordinates={sideOneCoord}
+                strokeColor= {sideOneColor} // fallback for when `strokeColors` is not supported by the map-provider
                 strokeWidth={1}
               />
               <Polyline
-              coordinates={[
-                { latitude: 34.01866254770548, longitude:  -118.27714829755081 },
-                { latitude: 34.01686750095174, longitude: -118.27829834333208},
-              ]}
-              strokeColor="black"
+              coordinates={sideTwoCoord}
+              strokeColor={sideTwoColor}
               strokeWidth={1}
               />
               <Polyline
-              coordinates={[
-                 
-                { latitude: 34.018705875964365, longitude:   -118.2771146922712 },
-                { latitude: 34.01878555399102, longitude: -118.27706913448912},
-                { latitude: 34.01971676639507, longitude:-118.27649663607662},
-                { latitude: 34.02015805972889, longitude:-118.27628050481168},
-                { latitude: 34.02015805972889, longitude:-118.27628050481168},
-              
-                { latitude: 34.02023452121139, longitude: -118.27626469032977},
-              ]}
+              coordinates={sideThreeCoord}
+              strokeColor={sideThreeColor}
               />
             </MapView>
           )}
