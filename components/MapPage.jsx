@@ -83,7 +83,7 @@ export default function App({ navigation }) {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [modalVisible, setModalVisible] = useState(false);
+  const [curModalVisible, setCurModalVisible] = useState(false);
 
   const [show, setShow] = React.useState();
 
@@ -227,7 +227,8 @@ export default function App({ navigation }) {
             {/* </View> */}
             <Marker
               onPress={() => {
-                setModalVisible(!modalVisible);
+                setCurModalVisible(true);
+                console.log("Modal has been opened.");
               }}
               coordinate={{
                 latitude: location.coords.latitude,
@@ -238,9 +239,9 @@ export default function App({ navigation }) {
               // icon={require("../assets/startinglocation.png")}
             />
             <Marker
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
+              // onPress={() => {
+              //   setModalVisible(!modalVisible);
+              // }}
               coordinate={{
                 latitude: 34.00327679084823,
                 longitude: -118.23254024639981,
@@ -248,9 +249,9 @@ export default function App({ navigation }) {
               icon={require("../assets/startinglocation.png")}
             />
             <Marker
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
+              // onPress={() => {
+              //   setModalVisible(!modalVisible);
+              // }}
               coordinate={{
                 latitude: 34.022137315448866,
                 longitude: -118.30012121882638,
@@ -310,12 +311,12 @@ export default function App({ navigation }) {
               <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                  Alert.alert("Modal has been closed.");
-                  // navigation.navigate("Dashboard");
-                  setModalVisible(!modalVisible);
-                }}
+                visible={curModalVisible}
+                // onRequestClose={() => {
+                //   Alert.alert("Modal has been closed.");
+                //   // navigation.navigate("Dashboard");
+                //   setCurModalVisible(false);
+                // }}
               >
                 <View style={styles.centeredView}>
                   {/* opacity={0.86}  */}
@@ -326,7 +327,7 @@ export default function App({ navigation }) {
                     ]}
                   >
                     <Text style={styles.modalText}>
-                      300 W 23RD ST,{"\n"} LOS ANGELES, CA, 900007
+                      300 W 23RD ST,{"\n"} LOS ANGELES, CA, 90007
                     </Text>
                     <Text style={styles.modalTexttwo}>
                       TUESDAY, 4 AM - 6:30 AM, 1ST AND 3RD TUES. OF THE MONTH
@@ -334,7 +335,8 @@ export default function App({ navigation }) {
                     <AntDesign
                       style={styles.AntStyle}
                       onPress={() => {
-                        setModalVisible(!modalVisible);
+                        setCurModalVisible(false);
+                        console.log("Modal has been closed.");
                         setShow(false);
                         navigation.navigate("MapPage");
                       }}
@@ -344,12 +346,12 @@ export default function App({ navigation }) {
                     />
                     <Text style={styles.modalTextthree}>Countdown </Text>
                     <View>
-                      <CustomCountDown />
+                      <CustomCountDown expirydate={'2022-08-16 04:00:00'}/>
                     </View>
-                    <Text style={styles.timeLabelStyle}>HR MIN SEC</Text>
+                    <Text style={styles.timeLabelStyle}>DAYS HR MIN SEC</Text>
                     <TouchableOpacity style={styles.setAlarmbutton}>
                       <View>
-                        <Text style={styles.setalarmtext}>Set Alarm</Text>
+                        <Text style={styles.setalarmtext}>Cancel Alarm</Text>
                       </View>
                     </TouchableOpacity>
                   </View>

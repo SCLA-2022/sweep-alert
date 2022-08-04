@@ -278,6 +278,7 @@ export default function App({ navigation, route }) {
               <Polyline
                 coordinates={sideThreeCoord}
                 strokeColor={sideThreeColor}
+                strokeWidth={1}
               />
             </MapView>
           )}
