@@ -82,14 +82,39 @@ const sideThreeCoord = [
   { latitude: 34.02023452121139, longitude: -118.27626469032977 },
 ];
 const sideFourCoord = [
-  {latitude: 34.01683702330492, longitude: -118.27823471334372 },
-  {latitude: 34.0163143790497,  longitude: -118.27711148278959 },
+  { latitude: 34.01683702330492, longitude: -118.27823471334372 },
+  { latitude: 34.0163143790497, longitude: -118.27711148278959 },
 ];
 const sideFiveCoord = [
-  {latitude: 34.01679477499265, longitutde: -118.27826927285786 },
-  {latitude: 34.01626459896893, longitutde: -118.27712618001468 },
+  { latitude: 34.01679477499265, longitude: -118.27826927285786 },
+  { latitude: 34.01626459896893, longitude: -118.27712618001468 },
 ];
-const linesToRender = [sideOneCoord, sideTwoCoord, sideFourCoord, sideFiveCoord,  ];
+const sideSixCoord = [
+  { latitude: 34.016307418892744, longitude: -118.27710616190059 },
+
+  { latitude: 34.0196610225235, longitude: -118.2749645817906 },
+];
+
+const sideSevenCoord = [
+  { latitude: 34.01627445677251, longitude: -118.2770553014391 },
+
+  { latitude: 34.01962269092813, longitude: -118.27489049313029 },
+];
+
+const sideEightCoord = [
+  { latitude: 34.02024481758994, longitude: -118.27621094197974 },
+
+  { latitude: 34.01966514874994, longitude: -118.27494642831488 },
+];
+const linesToRender = [
+  sideOneCoord,
+  sideTwoCoord,
+  sideFourCoord,
+  sideFiveCoord,
+  sideSixCoord,
+  sideSevenCoord,
+  sideEightCoord,
+];
 export default function App({ navigation, route }) {
   const [polyLines, setPolyLines] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -249,6 +274,8 @@ export default function App({ navigation, route }) {
                   latitudeDelta: 0.0922,
                   longitudeDelta: 0.0421,
                 }}
+                image={require("../assets/NewMarker.png")}
+                // style={{height: 50, width: 50,}}
                 draggable
                 onDragEnd={(e) => {
                   const newCoord = e.nativeEvent.coordinate;

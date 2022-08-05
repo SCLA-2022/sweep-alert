@@ -236,7 +236,7 @@ export default function App({ navigation }) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
-              // icon={require("../assets/startinglocation.png")}
+              icon={require("../assets/startinglocation.png")}
             />
             <Marker
               // onPress={() => {
