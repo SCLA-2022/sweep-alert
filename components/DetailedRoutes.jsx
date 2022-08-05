@@ -81,7 +81,15 @@ const sideThreeCoord = [
   { latitude: 34.02015805972889, longitude: -118.27628050481168 },
   { latitude: 34.02023452121139, longitude: -118.27626469032977 },
 ];
-const linesToRender = [sideOneCoord, sideTwoCoord,];
+const sideFourCoord = [
+  {latitude: 34.01683702330492, longitude: -118.27823471334372 },
+  {latitude: 34.0163143790497,  longitude: -118.27711148278959 },
+];
+const sideFiveCoord = [
+  {latitude: 34.01679477499265, longitutde: -118.27826927285786 },
+  {latitude: 34.01626459896893, longitutde: -118.27712618001468 },
+];
+const linesToRender = [sideOneCoord, sideTwoCoord, sideFourCoord, sideFiveCoord,  ];
 export default function App({ navigation, route }) {
   const [polyLines, setPolyLines] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
