@@ -73,23 +73,18 @@ const sideTwoCoord = [
   { latitude: 34.01866254770548, longitude: -118.27714829755081 },
   { latitude: 34.01686750095174, longitude: -118.27829834333208 },
 ];
-const sideThreeCoord = [
-  { latitude: 34.018705875964365, longitude: -118.2771146922712 },
-  { latitude: 34.01878555399102, longitude: -118.27706913448912 },
-  { latitude: 34.01971676639507, longitude: -118.27649663607662 },
-  { latitude: 34.02015805972889, longitude: -118.27628050481168 },
-  { latitude: 34.02015805972889, longitude: -118.27628050481168 },
-  { latitude: 34.02023452121139, longitude: -118.27626469032977 },
-];
+// const sideThreeCoord = [
+//   { latitude: 34.018705875964365, longitude: -118.2771146922712 },
+//   { latitude: 34.01878555399102, longitude: -118.27706913448912 }]
 const sideFourCoord = [
   {latitude: 34.01683702330492, longitude: -118.27823471334372 },
   {latitude: 34.0163143790497,  longitude: -118.27711148278959 },
 ];
 const sideFiveCoord = [
   {latitude: 34.01679477499265, longitutde: -118.27826927285786 },
-  {latitude: 34.01626459896893, longitutde: -118.27712618001468 },
+  {latitude: 34.01626459896893, longitutde: -118.27712618001468},
 ];
-const linesToRender = [sideOneCoord, sideTwoCoord, sideFourCoord, sideFiveCoord,  ];
+const linesToRender = [sideOneCoord, sideTwoCoord, sideFourCoord, sideFiveCoord];
 export default function App({ navigation, route }) {
   const [polyLines, setPolyLines] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -99,9 +94,9 @@ export default function App({ navigation, route }) {
     longitude: -118.278205,
   });
   const [errorMsg, setErrorMsg] = useState(null);
-  const [sideOneColor, setSideOneColor] = useState("#000");
-  const [sideTwoColor, setSideTwoColor] = useState("#000");
-  const [sideThreeColor, setSideThreeColor] = useState("#000");
+  // const [sideOneColor, setSideOneColor] = useState("#000");
+  // const [sideTwoColor, setSideTwoColor] = useState("#000");
+  // const [sideThreeColor, setSideThreeColor] = useState("#000");
   const [minDistance, setMinDistance] = useState(1);
   const [shortestSide, setShortestSide] = useState(markerLocation);
   const [test, setTest] = useState([]);
