@@ -13,7 +13,7 @@ import { NativeBaseProvider } from "native-base";
 import { Dimensions } from "react-native";
 import { getCoordinates } from "../services/polyline.service";
 const { height, width } = Dimensions.get("window");
-const LATITUDE_DELTA = 0.0055;
+const LATITUDE_DELTA = 0.0015;
 const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 const mapStyle = [
   {
@@ -101,6 +101,33 @@ const sideEightCoord = [
 
   { latitude: 34.01966514874994, longitude: -118.27494642831488 },
 ];
+const sideNineCoord = [
+  { latitude: 34.01681362517269, longitude:  -118.27831988729422 },
+  { latitude: 34.01662438612242, longitude:  -118.27844987314559 },
+
+];
+const sideTenCoord = [
+  { latitude: 34.01658253092938, longitude: -118.27847110469766 },
+  { latitude:  34.01519029254901, longitude:  -118.27937032889442 },
+
+];
+const sideElevenCoord = [
+  { latitude: 34.01517092994526, longitude: -118.2793173802406 },
+  { latitude: 34.016789628513145, longitude: -118.27826930847561 },
+
+];
+const sideTwelveCoord = [
+  { latitude: 34.016265598543455, longitude: -118.2771590061323 },
+  { latitude: 34.01467106047987, longitude: -118.27818250056144 },
+];
+const sideThirteenCoord = [
+  { latitude: 34.01622532097006, longitude: -118.27705384607724 },
+  { latitude: 34.015460015987436, longitude: -118.27753744105495 },
+];
+const sideFourteenCoord  = [
+  { latitude: 34.015400606942755, longitude: -118.2775689772969 },
+  { latitude: 34.014621156426244, longitude: -118.27808215796267 },
+];
 const linesToRender = [
   sideOneCoord,
   sideTwoCoord,
@@ -109,6 +136,12 @@ const linesToRender = [
   sideSixCoord,
   sideSevenCoord,
   sideEightCoord,
+  sideNineCoord,
+  sideTenCoord,
+  sideElevenCoord,
+  sideTwelveCoord,
+  sideThirteenCoord,
+  sideFourteenCoord,
 ];
 export default function App({ navigation, route }) {
   const [polyLines, setPolyLines] = useState([]);
@@ -333,7 +366,7 @@ export default function App({ navigation, route }) {
                   key={line.id}
                   coordinates={line.coordinates}
                   strokeColor={line.strokeColor} // fallback for when `strokeColors` is not supported by the map-provider
-                  strokeWidth={1}
+                  strokeWidth={2}
                 />
               ))}
             </MapView>

@@ -17,7 +17,7 @@ import {
   Modal,
   TouchableOpacity,
   SafeAreaView,
-  Image
+  Image,
 } from "react-native";
 import CustomCountDown from "./CustomCountDown.jsx";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -87,7 +87,6 @@ export default function App({ navigation }) {
   const [curModalVisible, setCurModalVisible] = useState(false);
   const [search, setSearch] = React.useState("");
 
-
   const [show, setShow] = React.useState();
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -133,7 +132,7 @@ export default function App({ navigation }) {
   //   }).catch(
   //       error => console.log(error));
   const renderSearchBar = () => (
-    <View style={{ flex: 1, position: "absolute", zIndex: 20, paddingTop: 47,  }}>
+    <View style={{ flex: 1, position: "absolute", zIndex: 20, paddingTop: 47 }}>
       {/* <View style={styles.autocompleteview}> */}
       <GooglePlacesAutocomplete
         placeholder="Search Here"
@@ -156,7 +155,7 @@ export default function App({ navigation }) {
             justifyContent: "center",
             alignItems: "center",
             // backgroundColor: "yellow",
-            
+
             // marginHorizontal: 7,
           },
           textInputContainer: {
@@ -233,18 +232,24 @@ export default function App({ navigation }) {
                 setCurModalVisible(true);
                 console.log("Modal has been opened.");
               }}
-              coordinate={{
-                latitude: location.coords.latitude,
-                longitude: location.coords.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
+              // coordinate={{
+              //   latitude: location.coords.latitude,
+              //   longitude: location.coords.longitude,
+              //   latitudeDelta: 0.0922,
+              //   longitudeDelta: 0.0421,
+              // }}
+                 coordinate={{
+                  latitude: 34.017222,
+                  longitude: -118.278205,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
             >
-            <Image
-    source={require("../assets/startinglocation.png")}
-    style={{width: 26, height: 28}}
-    resizeMode="contain"
-  />
+              <Image
+                source={require("../assets/startinglocation.png")}
+                style={{ width: 26, height: 28 }}
+                resizeMode="contain"
+              />
             </Marker>
             <Marker
               // onPress={() => {
@@ -255,11 +260,11 @@ export default function App({ navigation }) {
                 longitude: -118.23254024639981,
               }}
             >
-                  <Image
-    source={require("../assets/startinglocation.png")}
-    style={{width: 26, height: 28}}
-    resizeMode="contain"
-  />
+              <Image
+                source={require("../assets/startinglocation.png")}
+                style={{ width: 26, height: 28 }}
+                resizeMode="contain"
+              />
             </Marker>
             <Marker
               // onPress={() => {
@@ -269,13 +274,12 @@ export default function App({ navigation }) {
                 latitude: 34.022137315448866,
                 longitude: -118.30012121882638,
               }}
-              
             >
-                  <Image
-    source={require("../assets/startinglocation.png")}
-    style={{width: 26, height: 28}}
-    resizeMode="contain"
-  />
+              <Image
+                source={require("../assets/startinglocation.png")}
+                style={{ width: 26, height: 28 }}
+                resizeMode="contain"
+              />
             </Marker>
             <View style={styles.IconStyle}>
               <Ionicons
@@ -322,8 +326,8 @@ export default function App({ navigation }) {
             </View>
             <View style={styles.iconContainer}>
               <AntDesign
-            onPress={() => navigation.navigate("DetailedRoutes")}
-            name="plus"
+                onPress={() => navigation.navigate("DetailedRoutes")}
+                name="plus"
                 size={30}
                 color="white"
               />
@@ -346,8 +350,7 @@ export default function App({ navigation }) {
                     ]}
                   >
                     <Text style={styles.modalText}>
-                      300 W 23RD ST,{"\n"} LOS ANGELES, CA, 90007
-                    </Text>
+                    3655 S Grand Ave #220,{"\n"}Los Angeles, CA 90007                    </Text>
                     <Text style={styles.modalTexttwo}>
                       TUESDAY, 4 AM - 6:30 AM, 1ST AND 3RD TUES. OF THE MONTH
                     </Text>
@@ -365,10 +368,14 @@ export default function App({ navigation }) {
                     />
                     <Text style={styles.modalTextthree}>Countdown </Text>
                     <View>
-                      <CustomCountDown expirydate={'2022-08-16 04:00:00'}/>
+                      <CustomCountDown expirydate={"2022-08-16 04:00:00"} />
                     </View>
                     <Text style={styles.timeLabelStyle}>DAYS HR MIN SEC</Text>
-                    <TouchableOpacity style={styles.setAlarmbutton}>
+                    <TouchableOpacity 
+                        onPress={() => {
+                          setCurModalVisible(false);
+                        }}
+                    style={styles.setAlarmbutton}>
                       <View>
                         <Text style={styles.setalarmtext}>Cancel Alarm</Text>
                       </View>
