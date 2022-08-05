@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import MapView, { Marker, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
@@ -81,12 +81,6 @@ const sideFourCoord = [
   { latitude: 34.0163143790497, longitude: -118.27711148278959 },
 ];
 const sideFiveCoord = [
-<<<<<<< HEAD
-  {latitude: 34.01679477499265, longitutde: -118.27826927285786 },
-  {latitude: 34.01626459896893, longitutde: -118.27712618001468},
-];
-const linesToRender = [sideOneCoord, sideTwoCoord, sideFourCoord, sideFiveCoord];
-=======
   { latitude: 34.01679477499265, longitude: -118.27826927285786 },
   { latitude: 34.01626459896893, longitude: -118.27712618001468 },
 ];
@@ -116,7 +110,6 @@ const linesToRender = [
   sideSevenCoord,
   sideEightCoord,
 ];
->>>>>>> bba3daff0f203f67c45521c8730dd5defddb9d1f
 export default function App({ navigation, route }) {
   const [polyLines, setPolyLines] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -276,7 +269,6 @@ export default function App({ navigation, route }) {
                   latitudeDelta: 0.0922,
                   longitudeDelta: 0.0421,
                 }}
-                image={require("../assets/NewMarker.png")}
                 // style={{height: 50, width: 50,}}
                 draggable
                 onDragEnd={(e) => {
@@ -318,7 +310,13 @@ export default function App({ navigation, route }) {
                 }}
                 // icon={require("../assets/test.png")}
                 rotation={0}
-              />
+              >
+                <Image
+    source={require("../assets/NewMarker.png")}
+    style={{width: 26, height: 28}}
+    resizeMode="contain"
+  />
+              </Marker>
               {/* {test.map((t, i) => (
                 <Marker
                   key={i}
