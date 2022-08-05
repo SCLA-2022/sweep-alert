@@ -303,8 +303,8 @@ export default function App({ navigation }) {
             </View>
             <View style={styles.iconContainer}>
               <AntDesign
-                onPress={() => navigation.navigate("RoutesPage")}
-                name="plus"
+            onPress={() => navigation.navigate("DetailedRoutes")}
+            name="plus"
                 size={30}
                 color="white"
               />

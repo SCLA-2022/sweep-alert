@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import MapView, { Marker, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
@@ -147,7 +147,7 @@ export default function App({ navigation, route }) {
       <View>
         <View style={{ position: "absolute", marginTop: 80 }}>
           <Entypo
-            onPress={() => navigation.navigate("RoutesPage")}
+            onPress={() => navigation.navigate("MapPage")}
             style={[styles.IconStyle]}
             name="chevron-left"
             size={30}
@@ -284,11 +284,14 @@ export default function App({ navigation, route }) {
           )}
         </View>
 
-        <View style={styles.OuterView}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RoutesPage")}
+          style={styles.OuterView}
+        >
           <View style={styles.TimerViewStyle}>
             <Text style={styles.Timer}>Set Alarm</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </NativeBaseProvider>
   );

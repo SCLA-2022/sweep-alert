@@ -13,7 +13,7 @@ export default function App({ navigation }) {
             </Text>
           </View>
           <Entypo
-            onPress={() => navigation.navigate("MapPage")}
+            onPress={() => navigation.navigate("DetailedRoutes")}
             style={styles.IconStyle}
             name="chevron-left"
             size={30}
@@ -21,10 +21,11 @@ export default function App({ navigation }) {
           />
         </View>
       </View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => navigation.navigate("DetailedRoutes", {})}
         style={styles.OuterViewforboxes}
-      >
+      > */}
+      <View style={{ alignItems: "center" }}>
         <View style={styles.Viewstyle}>
           <View
             style={{
@@ -67,37 +68,11 @@ export default function App({ navigation }) {
             </View>
           </View>
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("DetailedRoutes", {})}
-        style={styles.OuterViewforboxes}
-      >
-      <View
-            style={{
-              // borderBottomColor: "#3A3A3A",
-              // backgroundColor: "red",
-              // backgroundColor: "blue",
-              // height: 0,
-              // marginTop: 49.6,
-              // borderBottomWidth: 1,
-              alignSelf: "stretch",
-              width: 2,
-              height: 140,
-              backgroundColor: "white",
-              // color: "blue",
-              position: "absolute",
-              marginHorizontal: 107,
-
-              // marginTop: 49.6,
-              flex: 1,
-              // width: 380.21,
-              // alignItems: "center",
-            }}
-          />
+      </View>
+      {/* <View style={{ alignItems: "center",}}>
         <View style={styles.Viewstyle}>
           <View>
             <View style={{ flexDirection: "row" }}>
-              {/* <Text style={styles.headerstyleone}>4am{"\n"} - 6:30am</Text> */}
               <View style={{ alignItems: "center", marginTop: 15 }}>
                 <Text style={styles.headerstyleone}>4:00</Text>
                 <Text style={styles.headerstyleone}>AM</Text>
@@ -107,24 +82,13 @@ export default function App({ navigation }) {
               </View>
               <View
             style={{
-              // borderBottomColor: "#3A3A3A",
-              // backgroundColor: "red",
-              // backgroundColor: "blue",
-              // height: 0,
-              // marginTop: 49.6,
-              // borderBottomWidth: 1,
               alignSelf: "stretch",
               width: 2,
               height: 140,
               backgroundColor: "white",
-              // color: "blue",
               position: "absolute",
               marginHorizontal: 107,
-
-              // marginTop: 49.6,
               flex: 1,
-              // width: 380.21,
-              // alignItems: "center",
             }}
           />
               <View style={{ alignItems: "center", marginTop: 5, }}>
@@ -136,8 +100,16 @@ export default function App({ navigation }) {
             </View>
           </View>
         </View>
-    </TouchableOpacity>
-  </View>
+        </View> */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("MapPage")}
+        style={styles.OuterView}
+      >
+        <View style={styles.TimerViewStyle}>
+          <Text style={styles.Timer}>confirm alarm</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -148,7 +120,36 @@ const styles = StyleSheet.create({
   //     borderWidth: 1,
   //     padding: 10,
   //   },
-
+  OuterView: {
+    // justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "blue",
+    // width: 50,
+    // height: 50,
+    flex: 1,
+  },
+  TimerViewStyle: {
+    backgroundColor: "#902E2E",
+    width: 253,
+    height: 60,
+    borderWidth: 1,
+    borderRadius: 15,
+    marginTop: 430,
+    // padding: 5,
+    // flexDirection: "row",
+    borderColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "green",
+  },
+  Timer: {
+    letterSpacing: 2,
+    color: "white",
+    justifyContent: "center",
+    textAlign: "center",
+    fontFamily: "Robotomid",
+    fontWeight: "500",
+  },
   headspacing: {
     // flexDirection: "row",
   },
