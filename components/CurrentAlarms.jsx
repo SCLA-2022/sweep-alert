@@ -36,7 +36,7 @@ const App = ({ navigation }) => {
           </Text>
           <Entypo
             onPress={() => {
-              setShow(true);
+              setShow(!show);
               // setShow(false);
 
             }}

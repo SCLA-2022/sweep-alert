@@ -85,6 +85,8 @@ export default function App({ navigation }) {
   const [isOpen, setIsOpen] = useState(true);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [curModalVisible, setCurModalVisible] = useState(false);
+  const [search, setSearch] = React.useState("");
+
 
   const [show, setShow] = React.useState();
 
