@@ -17,6 +17,7 @@ import {
   Modal,
   TouchableOpacity,
   SafeAreaView,
+  Image
 } from "react-native";
 import CustomCountDown from "./CustomCountDown.jsx";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -236,8 +237,13 @@ export default function App({ navigation }) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
-              icon={require("../assets/startinglocation.png")}
-            />
+            >
+            <Image
+    source={require("../assets/startinglocation.png")}
+    style={{width: 26, height: 28}}
+    resizeMode="contain"
+  />
+            </Marker>
             <Marker
               // onPress={() => {
               //   setModalVisible(!modalVisible);
@@ -246,8 +252,13 @@ export default function App({ navigation }) {
                 latitude: 34.00327679084823,
                 longitude: -118.23254024639981,
               }}
-              icon={require("../assets/startinglocation.png")}
-            />
+            >
+                  <Image
+    source={require("../assets/startinglocation.png")}
+    style={{width: 26, height: 28}}
+    resizeMode="contain"
+  />
+            </Marker>
             <Marker
               // onPress={() => {
               //   setModalVisible(!modalVisible);
@@ -256,8 +267,14 @@ export default function App({ navigation }) {
                 latitude: 34.022137315448866,
                 longitude: -118.30012121882638,
               }}
-              icon={require("../assets/startinglocation.png")}
-            />
+              
+            >
+                  <Image
+    source={require("../assets/startinglocation.png")}
+    style={{width: 26, height: 28}}
+    resizeMode="contain"
+  />
+            </Marker>
             <View style={styles.IconStyle}>
               <Ionicons
                 onPress={() => navigation.navigate("CurrentAlarms")}
