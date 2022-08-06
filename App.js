@@ -15,7 +15,13 @@ import Dashboard from "./components/Dashboard";
 import SavedAddresses from "./components/SavedAddresses";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
+import { LogBox } from "react-native";
 
+LogBox.ignoreLogs([
+  "warning you want to remove",
+  "EventEmitter.removeListener('appStateDidChange', ...): Method has been deprecated. Please instead use `remove()` on the subscription returned by `EventEmitter.addListener`.",
+  "Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in %s.%s, a useEffect cleanup function,",
+]);
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -24,8 +30,8 @@ const MyStack = () => {
     RobotoCondensedbold: require("./assets/fonts/RobotoCondensed-Bold.ttf"),
     RobotoCondensedlight: require("./assets/fonts/RobotoCondensed-Light.ttf"),
     Robotomid: require("./assets/fonts/Roboto-Medium.ttf"),
-    RobotoCondensedregular: require("./assets/fonts/RobotoCondensed-Regular.ttf")
-  });
+    RobotoCondensedregular: require("./assets/fonts/RobotoCondensed-Regular.ttf"),
+  })
 
   if (!loaded) {
     return null;

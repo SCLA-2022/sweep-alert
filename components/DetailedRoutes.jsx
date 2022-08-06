@@ -175,48 +175,61 @@ export default function App({ navigation, route }) {
   function getShortestLength(route) {
     route.forEach(compareLoc);
   }
+
   useEffect(() => {
+    let mounted = true;
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
+
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
         return;
       }
+
       let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      linesToRender.forEach((line) => {
-        // get all coords for one line
-        const coords = getCoordinates(
-          line[0].latitude,
-          line[0].longitude,
-          line[1].latitude,
-          line[1].longitude,
-          15 // distance in meters
-        );
-        // just for debug
-        setTest(
-          coords.map((c) => {
-            return { latitude: c[0], longitude: c[1] };
-          })
-        );
-        setPolyLines((oldVal) => [
-          ...oldVal,
-          {
-            coordinates: coords.map((c) => {
+
+      if(mounted) {
+        setLocation(location);
+        linesToRender.forEach((line) => {
+          // get all coords for one line
+          const coords = getCoordinates(
+            line[0].latitude,
+            line[0].longitude,
+            line[1].latitude,
+            line[1].longitude,
+            15 // distance in meters
+          );
+          // just for debug
+          setTest(
+            coords.map((c) => {
               return { latitude: c[0], longitude: c[1] };
-            }),
-            id: oldVal.length + 1,
-            strokeColor: "#000",
-          },
-        ]);
-        // setTest(
-        //   (oldVal) => [...oldVal, ...coords.map((c) => {
-        //     return { lat: c[0], long: c[1] };
-        //   })]
-        // );
-      });
+            })
+          );
+          setPolyLines((oldVal) => [
+            ...oldVal,
+            {
+              coordinates: coords.map((c) => {
+                return { latitude: c[0], longitude: c[1] };
+              }),
+              id: oldVal.length + 1,
+              strokeColor: "#000",
+            },
+          ]);
+          // setTest(
+          //   (oldVal) => [...oldVal, ...coords.map((c) => {
+          //     return { lat: c[0], long: c[1] };
+          //   })]
+          // );
+        });
+      }
+
     })();
+
+    return () => {
+      mounted =false;
+    }
   }, []);
+
   let text = "Waiting..";
   if (errorMsg) {
     text = errorMsg;
