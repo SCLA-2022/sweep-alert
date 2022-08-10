@@ -106,7 +106,7 @@ export default function App({ navigation }) {
         style={styles.OuterView}
       >
         <View style={styles.TimerViewStyle}>
-          <Text style={styles.Timer}>confirm alarm</Text>
+          <Text style={styles.Timer}>Confirm Alarm</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -143,11 +143,11 @@ const styles = StyleSheet.create({
     // backgroundColor: "green",
   },
   Timer: {
-    letterSpacing: 2,
+    letterSpacing: 4,
     color: "white",
     justifyContent: "center",
     textAlign: "center",
-    fontFamily: "Robotomid",
+    // fontFamily: "Robotomid",
     fontWeight: "500",
   },
   headspacing: {
