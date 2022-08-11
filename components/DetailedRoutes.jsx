@@ -359,7 +359,7 @@ export default function App({ navigation, route }) {
               >
                 <Image
     source={require("../assets/NewMarker.png")}
-    style={{width: 26, height: 28}}
+    style={{width: 52, height: 56}}
     resizeMode="contain"
   />
               </Marker>
