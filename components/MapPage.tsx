@@ -19,7 +19,7 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-import CustomCountDown from "./CustomCountDown.jsx";
+import CustomCountDown from "./CustomCountDown.js";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import { NativeBaseProvider } from "native-base";
