@@ -21,18 +21,10 @@ import Constants from "expo-constants";
 import { Entypo } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Geocoder from "react-native-geocoding";
-const GOOGLE_PLACES_API_KEY = "AIzaSyBxUMsP-Bl2NGRTU32nkCEkG13EbYekCDU";
+import {GOOGLE_PLACES_API_KEY} from '@env';
+
 Geocoder.init(GOOGLE_PLACES_API_KEY);
 
-const horizontalLine = ({ color }) => (
-  <hr
-    style={{
-      color,
-      backgroundColor: color,
-      height: 4,
-    }}
-  />
-);
 
 const App = ({ navigation }) => {
   const [text, onChangeText] = React.useState("Useless Text");

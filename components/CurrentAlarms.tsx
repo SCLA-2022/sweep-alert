@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import CustomCountDown from "./CustomCountDown.jsx";
+import CustomCountDown from "./CustomCountDown";
 
 const App = ({ navigation }) => {
   const [show, setShow] = React.useState();
